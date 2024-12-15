@@ -23,6 +23,9 @@ public class UserEntity {
     private String password;
 
     @Indexed(unique = true)
-    @NonNull
+    @com.mongodb.lang.NonNull
     private String username;
+
+    @NonNull
+    private String ROLE;
 }
