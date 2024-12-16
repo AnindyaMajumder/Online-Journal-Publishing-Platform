@@ -12,4 +12,9 @@ public class hello {
     public ResponseEntity<?> Hello() {
         return ResponseEntity.ok("Hello World");
     }
+
+    @GetMapping("/home")
+    public ResponseEntity<?> Landing() {
+        return ResponseEntity.ok("Successfully Logged In");
+    }
 }
