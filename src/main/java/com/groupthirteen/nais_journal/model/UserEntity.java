@@ -26,6 +26,5 @@ public class UserEntity {
     @com.mongodb.lang.NonNull
     private String username;
 
-    @NonNull
     private String ROLE;
 }
