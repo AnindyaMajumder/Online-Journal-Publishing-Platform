@@ -37,10 +37,11 @@ public class AuthService {
             user.setFirstName(user.getFirstName());
             user.setLastName(user.getLastName());
             user.setEmail(user.getEmail());
+            user.setROLE(user.getROLE());
 
             user.setUsername(user.getUsername());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.setROLE(user.getROLE());
+
 
             userEntryRepo.save(user);
 
