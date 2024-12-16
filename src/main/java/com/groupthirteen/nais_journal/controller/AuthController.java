@@ -1,7 +1,9 @@
 package com.groupthirteen.nais_journal.controller;
 
 import com.groupthirteen.nais_journal.model.UserEntity;
+import com.groupthirteen.nais_journal.security.JwtUtils;
 import com.groupthirteen.nais_journal.service.AuthService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     @Autowired
     private AuthService authService;
+    @Autowired
+    private JwtUtils jwtUtils;
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserEntity user){
@@ -32,8 +36,16 @@ public class AuthController {
         return ResponseEntity.badRequest().body("Invalid username or password");
     }
 
-//    @PutMapping("/forget-pass")
-//    public ResponseEntity<?> forgetPass(@RequestBody UserEntity user){
-//
-//    }
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest req){
+        String authHeader = req.getHeader("Authorization");
+
+        if(authHeader != null && authHeader.startsWith("Bearer ")){
+            String token = authHeader.substring(7);
+            jwtUtils.blacklistToken(token);
+
+            return ResponseEntity.ok("User logged out successfully");
+        }
+        return ResponseEntity.badRequest().body("Invalid token");
+    }
 }
