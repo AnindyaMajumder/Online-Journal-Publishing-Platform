@@ -26,6 +26,7 @@ public class UserEntity {
     @com.mongodb.lang.NonNull
     private String username;
 
+    // Non-Null
     private String ROLE;
 
     private String resetCode; // never store
