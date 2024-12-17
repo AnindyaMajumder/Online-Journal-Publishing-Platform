@@ -3,16 +3,22 @@ package com.groupthirteen.nais_journal.controller;
 import com.groupthirteen.nais_journal.model.UserEntity;
 import com.groupthirteen.nais_journal.security.JwtUtils;
 import com.groupthirteen.nais_journal.service.AuthService;
+import com.groupthirteen.nais_journal.service.ResetPasswordService;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping
 public class AuthController {
     @Autowired
     private AuthService authService;
+    @Autowired
+    private ResetPasswordService resetPasswordService;
     @Autowired
     private JwtUtils jwtUtils;
 
@@ -48,4 +54,29 @@ public class AuthController {
         }
         return ResponseEntity.badRequest().body("Invalid token");
     }
+
+    @PostMapping("/forget-password")
+    public ResponseEntity<?> forgetPassword(@RequestBody Map<String, String> req){
+        String username = req.get("username");
+        try {
+            resetPasswordService.generateResetCode(username);
+            return ResponseEntity.ok("Reset password successfully");
+        } catch (MessagingException e) {
+            return ResponseEntity.unprocessableEntity().body(e.getMessage());
+        }
+    }
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody UserEntity user){
+        String username = user.getUsername();
+        String resetCode = user.getResetCode();
+        String password = user.getPassword();
+
+        try {
+            resetPasswordService.resetPassword(username, resetCode, password);
+            return ResponseEntity.ok("Reset password successfully");
+        } catch (MessagingException e) {
+            return ResponseEntity.unprocessableEntity().body(e.getMessage());
+        }
+    }
+
 }
