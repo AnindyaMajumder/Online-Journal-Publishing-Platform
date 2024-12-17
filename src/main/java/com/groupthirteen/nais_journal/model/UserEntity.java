@@ -27,4 +27,6 @@ public class UserEntity {
     private String username;
 
     private String ROLE;
+
+    private String resetCode; // never store
 }
