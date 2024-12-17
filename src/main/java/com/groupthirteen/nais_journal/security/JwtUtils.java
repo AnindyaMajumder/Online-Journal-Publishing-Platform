@@ -17,7 +17,7 @@ public class JwtUtils {
     private final Set<String> blacklistedTokens = new HashSet<>();
 
     public String generateToken(String username) {
-        long tokenValidity = 24 * 60 * 60 * 1000;
+        long tokenValidity = 24 * 60 * 60 * 1000; // 24 hours
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
