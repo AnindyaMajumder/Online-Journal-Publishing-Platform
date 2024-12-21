@@ -56,8 +56,8 @@ public class AuthController {
     }
 
     @PostMapping("/forget-password")
-    public ResponseEntity<?> forgetPassword(@RequestBody Map<String, String> req){
-        String username = req.get("username");
+    public ResponseEntity<?> forgetPassword(@RequestBody Map<String, String> request){
+        String username = request.get("username");
         try {
             resetPasswordService.generateResetCode(username);
             return ResponseEntity.ok("Reset password successfully");
