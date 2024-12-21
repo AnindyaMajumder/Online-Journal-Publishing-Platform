@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.aggregation.VariableOperators;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class ResetPasswordService {
     @Autowired
     UserEntryRepo userEntryRepo;
 
+    @Autowired
     JavaMailSender mailSender;
     PasswordEncoder passwordEncoder;
 
@@ -43,6 +45,10 @@ public class ResetPasswordService {
     public void generateResetCode(String username) throws MessagingException {
 
         UserEntity user = userEntryRepo.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
 
         String resetCode = UUID.randomUUID().toString().substring(0,6);
         LocalDateTime expire = LocalDateTime.now().plusMinutes(10);
@@ -76,7 +82,7 @@ public class ResetPasswordService {
     }
     public void resetPassword(String username, String resetCode, String password) throws MessagingException {
         PasswordResetToken token = resetTokenStore.get(username);
-        if (token == null || token.getCode().equals(resetCode)){
+        if (token == null || !token.getCode().equals(resetCode)){
             throw new MessagingException("Invalid reset code");
         }
         if (token.getExpiryTime().isBefore(LocalDateTime.now())){
@@ -84,6 +90,9 @@ public class ResetPasswordService {
         }
 
         UserEntity user = userEntryRepo.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
         user.setPassword(passwordEncoder.encode(password));
         userEntryRepo.save(user);
 
