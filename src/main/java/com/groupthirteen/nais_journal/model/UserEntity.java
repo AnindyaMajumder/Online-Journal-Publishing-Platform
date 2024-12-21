@@ -20,6 +20,8 @@ public class UserEntity {
 
     private String firstName;
     private String lastName;
+
+    @NonNull
     private String email;
 
     @NonNull
