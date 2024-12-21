@@ -23,7 +23,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
         return http.csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/","/login","/register","/logout").permitAll()
+                        .requestMatchers("/","/login","/register","/logout",
+                                "/forget-password","/reset-password").permitAll()
                         .anyRequest().authenticated()
                 )
                 .logout(logout->logout.disable())
