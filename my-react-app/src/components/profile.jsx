@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
+import Navbar from "./navbar";
 
 const ProfilePage = () => {
   const [userInfo, setUserInfo] = useState({
@@ -16,6 +17,7 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+            <div><Navbar/></div>
       <div className="max-w-4xl mx-auto py-8">
         <h1 className="text-3xl font-bold text-center mb-8">My Profile</h1>
 
