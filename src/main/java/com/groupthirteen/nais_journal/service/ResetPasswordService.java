@@ -6,9 +6,7 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.aggregation.VariableOperators;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,11 +19,10 @@ import java.util.UUID;
 
 @Service
 public class ResetPasswordService {
+    @Getter
     private static class PasswordResetToken{
-        @Getter
-        private String code;
-        @Getter
-        private LocalDateTime expiryTime;
+        private final String code;
+        private final LocalDateTime expiryTime;
 
         public PasswordResetToken(String code, LocalDateTime expiryTime) {
             this.code = code;
@@ -38,6 +35,7 @@ public class ResetPasswordService {
 
     @Autowired
     JavaMailSender mailSender;
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     private final Map<String, PasswordResetToken> resetTokenStore = new HashMap<>();
@@ -53,7 +51,7 @@ public class ResetPasswordService {
         String resetCode = UUID.randomUUID().toString().substring(0,6);
         LocalDateTime expire = LocalDateTime.now().plusMinutes(10);
 
-        resetTokenStore.put(resetCode, new PasswordResetToken(resetCode, expire));
+        resetTokenStore.put(username, new PasswordResetToken(resetCode, expire));
 
         String subject = "Reset Password Request";
         String body = """
@@ -98,7 +96,4 @@ public class ResetPasswordService {
 
         resetTokenStore.remove(user.getUsername());
     }
-
-
-
 }
