@@ -33,4 +33,6 @@ public class UserEntity {
 
     // Non-Null
     private String ROLE;
+
+    private String resetCode;
 }
