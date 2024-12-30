@@ -60,7 +60,7 @@ public class AuthController {
         String username = request.get("username");
         try {
             resetPasswordService.generateResetCode(username);
-            return ResponseEntity.ok("Reset password successfully");
+            return ResponseEntity.ok("Mail with reset-code has been sent");
         } catch (MessagingException e) {
             return ResponseEntity.unprocessableEntity().body(e.getMessage());
         }
