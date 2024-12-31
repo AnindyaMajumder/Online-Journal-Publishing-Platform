@@ -1,18 +1,27 @@
 package com.groupthirteen.nais_journal.service;
 
+import com.groupthirteen.nais_journal.Repository.JournalRepo;
 import com.groupthirteen.nais_journal.Repository.UserEntryRepo;
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
     @Autowired
     private UserEntryRepo userEntryRepo;
+
+    @Autowired
+    private JournalRepo journalRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public boolean updateUser(UserEntity user) {
         UserEntity userEntity = userEntryRepo.findByUsername(user.getUsername());
@@ -21,20 +30,47 @@ public class UserService {
         }
         else {
             try {
-                userEntity.setFirstName(user.getFirstName());
-                userEntity.setLastName(user.getLastName());
-                userEntity.setBio(user.getBio());
-                userEntity.setEmail(user.getEmail());
+                if (passwordEncoder.matches(user.getPassword(), userEntity.getPassword())){
 
-                userEntryRepo.save(userEntity);
+                    if (user.getFirstName() != null) userEntity.setFirstName(user.getFirstName());
+                    if (user.getLastName() != null) userEntity.setLastName(user.getLastName());
+                    if (user.getBio() != null) userEntity.setBio(user.getBio());
 
-                return true;
+                    userEntity.setEmail(user.getEmail());
+
+                    userEntryRepo.save(userEntity);
+                    return true;
+                } else {
+                    return false;
+                }
             }
             catch(Exception e) {
                 return false;
             }
         }
     }
+
+    public boolean deleteUser(UserEntity user) {
+        UserEntity userEntity = userEntryRepo.findByUsername(user.getUsername());
+        if(userEntity == null) {
+            return false;
+        }else {
+            if(passwordEncoder.matches(user.getPassword(), userEntity.getPassword())) {
+                List<JournalEntity> journalEntities = userEntity.getJournalEntries();
+                if(journalEntities != null) {
+                    journalRepo.deleteAll(journalEntities);
+                }
+                userEntryRepo.delete(userEntity);
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+    }
+
+
+    // Journals Section
     public boolean addJournals(JournalEntity journal) {
         try{
             UserEntity userEntity = userEntryRepo.findByUsername(journal.getAuthor());
@@ -54,26 +90,19 @@ public class UserService {
 
     public boolean removeJournalFromUser(JournalEntity journal) {
         try {
-            // Find the user by the journal's author
             UserEntity userEntity = userEntryRepo.findByUsername(journal.getAuthor());
 
             if (userEntity != null) {
-                // Get the user's journal entries
                 List<JournalEntity> journals = userEntity.getJournalEntries();
 
-                // Remove the specific journal
                 if (journals != null && journals.removeIf(j -> j.getId().equals(journal.getId()))) {
-                    // Save the updated user entity
                     userEntryRepo.save(userEntity);
                     return true;
                 }
             }
-            return false; // Return false if the user or journal list was not found
+            return false;
         } catch (Exception e) {
-            return false; // Handle any exceptions
+            return false;
         }
     }
-
-
-
 }

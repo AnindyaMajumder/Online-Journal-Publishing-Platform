@@ -20,4 +20,14 @@ public class UserController {
         }
         return ResponseEntity.badRequest().body("User update failed");
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> delete(@RequestBody UserEntity user) {
+        boolean isDeleted = userService.deleteUser(user);
+        if (isDeleted) {
+            return ResponseEntity.ok("User deleted successfully");
+        } else{
+            return ResponseEntity.badRequest().body("User delete failed");
+        }
+    }
 }
