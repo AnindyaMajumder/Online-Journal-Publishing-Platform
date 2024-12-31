@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3dfa2ca2-afad-45cd-bd1a-475d18718dbf",
+		"_postman_id": "5dd53dae-1c05-49f9-a2a0-1f76a727ffbd",
 		"name": "NAIS Journal-app",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37738126"
+		"_exporter_id": "40102424"
 	},
 	"item": [
 		{
@@ -216,6 +216,128 @@
 			]
 		},
 		{
+			"name": "Journal",
+			"item": [
+				{
+					"name": "Edit Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb24iLCJpYXQiOjE3MzU2NTcyMTcsImV4cCI6MTczNTc0MzYxN30.XediuymnzJOzaQuQ2wv1fJN1T90KOojVK7ynMhn1RS4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"6774046c2172ff35768edeea\",\r\n    \"title\": \"BashiYear\",\r\n    \"body\": \"Potka Futay Na Polapain\",\r\n    \"tags\": [\"Potaka Nai\", \"Shanti\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/edit-details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"edit-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb24iLCJpYXQiOjE3MzU2NTg2ODQsImV4cCI6MTczNTc0NTA4NH0.sBJiRTdErB5LJT8jRCfqqFpjHpZEIYeS7YWJLV-emA8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"NewYear\",\r\n    \"body\": \"Potka Futay Polapain\",\r\n    \"author\": \"ron\",\r\n    \"tags\": [\"Potaka\", \"Shobdo\", \"Moja\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/add-journal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"add-journal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb24iLCJpYXQiOjE3MzU2NTg2ODQsImV4cCI6MTczNTc0NTA4NH0.sBJiRTdErB5LJT8jRCfqqFpjHpZEIYeS7YWJLV-emA8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"67740cda76b00d6f3a66f0ee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/delete-journal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"delete-journal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "EntryCheck",
 			"request": {
 				"method": "GET",
@@ -239,7 +361,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb24iLCJpYXQiOjE3MzU2NDQxNzMsImV4cCI6MTczNTczMDU3M30.atOatWOkpGDQ33Y0euA6MNv0b0PW2nEAbir3veKfYw4",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb24iLCJpYXQiOjE3MzU2NTM4NjAsImV4cCI6MTczNTc0MDI2MH0.2z9dNbOiVtWhxWtF5QccrKdclKACG0Znp3_hbZBpQHQ",
 							"type": "string"
 						}
 					]
