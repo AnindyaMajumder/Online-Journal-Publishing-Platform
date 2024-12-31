@@ -33,5 +33,5 @@ public class UserEntity {
     // Non-Null
     private String ROLE;
 
-    private String resetCode;
+    private String resetCode; // dont store
 }
