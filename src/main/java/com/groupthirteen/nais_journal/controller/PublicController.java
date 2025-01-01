@@ -46,9 +46,8 @@ public class PublicController {
     }
 
     @PostMapping("/article")
-    public ResponseEntity<?> AddArticle(@RequestBody JournalEntity journal) {
-        ObjectId id = journal.getId();
-        JournalEntity journalEntity = publicService.getJournal(journal.getId());
+    public ResponseEntity<?> AddArticle(@RequestBody String objectId) {
+        JournalEntity journalEntity = publicService.getJournal(new ObjectId(objectId));
         if (journalEntity == null) {
             return ResponseEntity.notFound().build();
         } else {
