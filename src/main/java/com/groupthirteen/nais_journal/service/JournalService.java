@@ -105,16 +105,6 @@ public class JournalService {
         }
     }
 
-    public List<JournalEntity> getAllJournals() {
-        try {
-            // Fetch all journal entries from the repository
-            return journalRepo.findAll();
-        } catch (Exception e) {
-            // Log exception for debugging (if necessary) and return an empty list
-            return new ArrayList<>();
-        }
-    }
-
     public boolean likeJournal(String username, ObjectId journalId) {
         try {
             Optional<JournalEntity> journalEntity = journalRepo.findById(journalId);
@@ -164,12 +154,12 @@ public class JournalService {
             UserEntity user = userEntryRepo.findByUsername(username);
 
             if (journalEntityOpt.isPresent() && user != null) {
-                if (user.getRepostedJournals().contains(journalId)) {
+                if (user.getRepostedJournals().contains(journalEntityOpt.get())) {
                     return false; // Already reposted
                 }
 
                 // Add journal to user's repost list
-                user.getRepostedJournals().add(journalId);
+                user.getRepostedJournals().add(journalEntityOpt.get());
                 userEntryRepo.save(user);
 
                 return true;
@@ -179,21 +169,6 @@ public class JournalService {
         } catch (Exception e) {
             return false;
         }
-    }
-
-    // Get popular posts (most liked posts in descending order of likeCount)
-    public List<JournalEntity> getPopularPosts() {
-        return journalRepo.findAll(Sort.by(Sort.Direction.DESC, "likeCount"));
-    }
-
-    // Get recent posts (sorted by publishedDate in descending order)
-    public List<JournalEntity> getRecentPosts() {
-        return journalRepo.findAll(Sort.by(Sort.Direction.DESC, "publishedDate"));
-    }
-
-    // Search journals by title (case-insensitive partial search)
-    public List<JournalEntity> searchJournalsByTitle(String query) {
-        return journalRepo.findByTitleRegex("(?i).*" + query + ".*");
     }
 
 }
