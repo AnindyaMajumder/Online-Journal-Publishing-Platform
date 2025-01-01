@@ -4,10 +4,7 @@ import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.service.PublicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,5 +42,16 @@ public class PublicController {
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/article")
+    public ResponseEntity<?> AddArticle(@RequestBody JournalEntity journal) {
+        JournalEntity journalEntity = publicService.getJournal(journal.getId());
+        if (journalEntity == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(journalEntity);
+        }
+
     }
 }
