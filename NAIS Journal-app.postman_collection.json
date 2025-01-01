@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"elon\",\r\n    \"password\": \"elon\"\r\n}",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -251,6 +251,43 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "MyPosts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTcxMDc1OSwiZXhwIjoxNzM1Nzk3MTU5fQ.fmqtkk6tw3kGonjT5vxeDf-KbcJyfEPGSQEbdhcCXyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/my-posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"my-posts"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -304,7 +341,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG9uIiwiaWF0IjoxNzM1Njc3NTgwLCJleHAiOjE3MzU3NjM5ODB9.NIgamV3d-u-tjGy0-1beDguXnEOAXgPtZ60bvdCNVZQ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTcxMDc1OSwiZXhwIjoxNzM1Nzk3MTU5fQ.fmqtkk6tw3kGonjT5vxeDf-KbcJyfEPGSQEbdhcCXyw",
 									"type": "string"
 								}
 							]
@@ -313,7 +350,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"SpaceX\",\r\n    \"body\": \"Fuuuuusssssss\",\r\n    \"author\": \"elon\",\r\n    \"tags\": [\"Rocket\"]\r\n}",
+							"raw": "{\r\n    \"title\": \"WorldCup\",\r\n    \"body\": \"GOAT\",\r\n    \"author\": \"messi\",\r\n    \"tags\": [\"WC\",\"Qatar\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
