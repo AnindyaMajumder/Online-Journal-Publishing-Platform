@@ -82,7 +82,6 @@ public class UserService {
         }
     }
 
-
     // Journals Section
     public boolean addJournals(JournalEntity journal) {
         try{
@@ -116,6 +115,33 @@ public class UserService {
             return false;
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public List<JournalEntity> listJournals(String username) {
+        try {
+            UserEntity userEntity = userEntryRepo.findByUsername(username);
+            if (userEntity == null) {
+                return null;
+            } else {
+                return userEntity.getLikedJournals();
+
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public List<JournalEntity> repostJournals(String username) {
+        try {
+            UserEntity userEntity = userEntryRepo.findByUsername(username);
+            if (userEntity == null) {
+                return null;
+            } else {
+                return userEntity.getRepostedJournals();
+            }
+        } catch (Exception e) {
+            return null;
         }
     }
 }

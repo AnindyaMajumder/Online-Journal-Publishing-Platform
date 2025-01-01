@@ -157,24 +157,6 @@ public class JournalService {
         }
     }
 
-    public List<JournalEntity> getLikedJournals(String username) {
-        try {
-            // Find the user entity by username
-            UserEntity user = userEntryRepo.findByUsername(username);
-
-            if (user != null && !user.getLikedJournals().isEmpty()) {
-                // Fetch all liked journal IDs and retrieve corresponding journals
-                List<JournalEntity> likedJournalIds = user.getLikedJournals();
-                return journalRepo.findAllById(likedJournalIds);
-            }
-
-            return new ArrayList<>(); // Return empty list if user or liked journals not found
-        } catch (Exception e) {
-            // Log the exception if needed and return an empty list
-            return new ArrayList<>();
-        }
-    }
-
     // Repost a journal
     public boolean repostJournal(ObjectId journalId, String username) {
         try {
@@ -196,22 +178,6 @@ public class JournalService {
             return false; // Journal or user not found
         } catch (Exception e) {
             return false;
-        }
-    }
-
-    // Get reposted journals
-    public List<JournalEntity> getRepostedJournals(String username) {
-        try {
-            UserEntity user = userEntryRepo.findByUsername(username);
-
-            if (user != null && !user.getRepostedJournals().isEmpty()) {
-                List<ObjectId> repostedJournalIds = user.getRepostedJournals();
-                return journalRepo.findAllById(repostedJournalIds);
-            }
-
-            return new ArrayList<>(); // Return empty list if none found
-        } catch (Exception e) {
-            return new ArrayList<>();
         }
     }
 

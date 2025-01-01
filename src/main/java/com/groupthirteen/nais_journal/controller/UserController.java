@@ -32,15 +32,6 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @GetMapping("/my-posts")
-    public ResponseEntity<List<JournalEntity>> getMyPosts(@RequestHeader("Authorization") String token) {
-        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
-        String username = jwtUtils.getUsername(jwtToken);
-
-        Optional<List<JournalEntity>> posts = userService.userPosts(username);
-        return posts.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.noContent().build());
-    }
-
     @PutMapping("/edit-details")
     public ResponseEntity<?> editDetails(@RequestBody UserEntity user) {
         boolean isUpdated = userService.updateUser(user);
@@ -57,6 +48,38 @@ public class UserController {
             return ResponseEntity.ok("User deleted successfully");
         } else{
             return ResponseEntity.badRequest().body("User delete failed");
+        }
+    }
+
+    @GetMapping("/my-posts")
+    public ResponseEntity<List<JournalEntity>> getMyPosts(@RequestHeader("Authorization") String token) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+
+        Optional<List<JournalEntity>> posts = userService.userPosts(username);
+        return posts.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.noContent().build());
+    }
+    @GetMapping("/liked")
+    public ResponseEntity<?> like(@RequestHeader("Authorization") String token) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+
+        List<JournalEntity> liked = userService.listJournals(username);
+        if (liked.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(liked);
+    }
+    @GetMapping("reposted")
+    public ResponseEntity<?> reposted(@RequestHeader("Authorization") String token) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+
+        List<JournalEntity> reposted = userService.listJournals(username);
+        if (reposted.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(reposted);
         }
     }
 }
