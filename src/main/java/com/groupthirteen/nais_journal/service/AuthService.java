@@ -34,15 +34,7 @@ public class AuthService {
             return false;
         }
         else {
-            user.setFirstName(user.getFirstName());
-            user.setLastName(user.getLastName());
-            user.setEmail(user.getEmail());
-            user.setROLE(user.getROLE());
-
-            user.setUsername(user.getUsername());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-
             userEntryRepo.save(user);
 
             return true;
