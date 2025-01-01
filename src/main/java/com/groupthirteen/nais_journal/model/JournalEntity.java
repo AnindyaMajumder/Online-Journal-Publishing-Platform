@@ -26,5 +26,5 @@ public class JournalEntity {
     private List<String> tags = new ArrayList<>() ;
     private LocalDateTime publishedDate;
     private LocalDateTime updatedDate;
-
+    private int likeCount;
 }
