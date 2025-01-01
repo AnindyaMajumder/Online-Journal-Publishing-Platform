@@ -2,6 +2,7 @@ package com.groupthirteen.nais_journal.controller;
 
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.service.PublicService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,6 +47,7 @@ public class PublicController {
 
     @PostMapping("/article")
     public ResponseEntity<?> AddArticle(@RequestBody JournalEntity journal) {
+        ObjectId id = journal.getId();
         JournalEntity journalEntity = publicService.getJournal(journal.getId());
         if (journalEntity == null) {
             return ResponseEntity.notFound().build();
