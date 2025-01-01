@@ -42,4 +42,10 @@ public class UserEntity {
     @DBRef
     private List<JournalEntity> journalEntries = new ArrayList<>();
 
+    @DBRef
+    private List<JournalEntity> likedJournals = new ArrayList<>();
+
+    @DBRef
+    private List<JournalEntity> repostedJournals = new ArrayList<>();
+
 }
