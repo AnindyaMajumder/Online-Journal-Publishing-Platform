@@ -1,5 +1,7 @@
 package com.groupthirteen.nais_journal.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.groupthirteen.nais_journal.utils.ObjectIdSerializer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -18,6 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 public class JournalEntity {
     @Id
+    @JsonSerialize(using = ObjectIdSerializer.class)
     private ObjectId id;
 
     private String title;
