@@ -21,12 +21,11 @@ const QuillEditor = ({ journalContent, setJournalContent, isEditing }) => {
             ["blockquote", "code-block"],
             [{ script: "sub" }, { script: "super" }],
             [{ direction: "rtl" }],
-            ["emoji"], // Optional if you want emoji support
+            ["emoji"],
           ],
         },
       });
 
-      // Set initial content of Quill editor
       quillRef.current.root.innerHTML = journalContent;
 
       quillRef.current.on("text-change", () => {
@@ -36,12 +35,11 @@ const QuillEditor = ({ journalContent, setJournalContent, isEditing }) => {
 
     return () => {
       if (quillRef.current && !isEditing) {
-        quillRef.current = null; // Clean up Quill when not editing
+        quillRef.current = null; // Destroy Quill instance
       }
     };
-  }, [journalContent, setJournalContent, isEditing]);
+  }, [isEditing, journalContent, setJournalContent]);
 
-  // Only render editor when in editing mode
   return isEditing ? <div ref={editorRef} className="editor" /> : null;
 };
 
