@@ -24,17 +24,32 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserEntity user){
-        boolean isRegistered = authService.addUser(user);
-        if(isRegistered){
-            return ResponseEntity.ok("User registered successfully");
-        }
-        else {
-            return ResponseEntity.badRequest().body("User already exists");
+        if(user.getROLE().equals("ADMIN")){
+            return ResponseEntity.unprocessableEntity().body("ADMIN access DENIED");
+        } else {
+            boolean isRegistered = authService.addUser(user);
+            if (isRegistered) {
+                return ResponseEntity.ok("User registered successfully");
+            } else {
+                return ResponseEntity.badRequest().body("User already exists");
+            }
         }
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserEntity user){
+        user.setROLE("USER");
+        String token = authService.authenticate(user);
+        if (!token.isBlank()) {
+            return ResponseEntity.ok(token);
+        }
+        return ResponseEntity.badRequest().body("Invalid username or password");
+
+    }
+
+    @PostMapping("/admin-login")
+    public ResponseEntity<?> adminLogin(@RequestBody UserEntity user){
+        user.setROLE("ADMIN");
         String token = authService.authenticate(user);
         if(!token.isBlank()){
             return ResponseEntity.ok(token);
