@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,24 +21,6 @@ public class JournalService {
 
     @Autowired
     private UserService userService;
-
-    public boolean updateJournal(JournalEntity journal) {
-
-        Optional<JournalEntity> journalEntity = journalRepo.findById(journal.getId());
-        try {
-            journalEntity.get().setTitle(journal.getTitle());
-            journalEntity.get().setBody(journal.getBody());
-            journalEntity.get().setTags(journal.getTags());
-            journalEntity.get().setUpdatedDate(LocalDateTime.now());
-
-            journalRepo.save(journalEntity.get());
-
-            return true;
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
     public boolean addJournal(JournalEntity journal) {
         try {
@@ -64,166 +44,109 @@ public class JournalService {
             return false;
         }
     }
-
-
-    public boolean deleteJournal(JournalEntity journal) {
+    public boolean updateJournal(String username, JournalEntity journal) {
         try {
-            // Find the journal entity by its ID
-            Optional<JournalEntity> journalEntity = journalRepo.findById(journal.getId());
+            // Fetch the journal by ID
+            Optional<JournalEntity> journalEntityOpt = journalRepo.findById(journal.getId());
 
-            if (journalEntity.isPresent()) {
-                // Remove the journal from the user's journal list
-                boolean isRemovedFromUser = userService.removeJournalFromUser(journalEntity.get());
+            if (journalEntityOpt.isPresent()) {
+                JournalEntity existingJournal = journalEntityOpt.get();
 
-                // If successful, delete the journal entity from the repository
-                if (isRemovedFromUser) {
-                    journalRepo.delete(journalEntity.get());
-                    return true; // Return true if deletion was successful
+                // Fetch the user by username
+                UserEntity user = userEntryRepo.findByUsername(username);
+
+                if (user != null) {
+                    // Ensure the journal exists in the user's journal list
+                    boolean isJournalOwnedByUser = user.getJournalEntries().stream()
+                            .anyMatch(j -> j.getId().equals(existingJournal.getId()));
+
+                    if (isJournalOwnedByUser) {
+                        // Update the journal
+                        existingJournal.setTitle(journal.getTitle());
+                        existingJournal.setBody(journal.getBody());
+                        existingJournal.setTags(journal.getTags());
+                        existingJournal.setUpdatedDate(LocalDateTime.now());
+
+                        // Save the updated journal
+                        journalRepo.save(existingJournal);
+                        return true; // Successfully updated
+                    } else {
+                        System.err.println("Journal is not in the user's journal list.");
+                        return false; // Journal not in the user's list
+                    }
                 } else {
-                    return false; // Return false if it could not be removed from the user's journal list
+                    System.err.println("User not found with username: " + username);
+                    return false; // User not found
                 }
             } else {
-                return false; // Return false if the journal was not found
+                System.err.println("Journal not found with ID: " + journal.getId());
+                return false; // Journal not found
             }
         } catch (Exception e) {
-            // Handle any exceptions during deletion
-            return false;
-        }
-    }
-
-    public List<JournalEntity> getAllJournals() {
-        try {
-            // Fetch all journal entries from the repository
-            return journalRepo.findAll();
-        } catch (Exception e) {
-            // Log exception for debugging (if necessary) and return an empty list
-            return new ArrayList<>();
+            System.err.println("Error updating journal: " + e.getMessage());
+            return false; // Exception occurred
         }
     }
 
 
-    public boolean likeJournal(ObjectId journalId, String username) {
+    public boolean deleteJournal(String username, JournalEntity journal) {
         try {
-            // Retrieve journal and user entities
-            Optional<JournalEntity> journalEntityOpt = journalRepo.findById(journalId);
-            UserEntity user = userEntryRepo.findByUsername(username);
-
-            if (journalEntityOpt.isPresent() && user != null) {
-                JournalEntity journal = journalEntityOpt.get();
-
-                // Check if the user has already liked the journal
-                if (user.getLikedJournals().contains(journal)) {
-                    return false; // User already liked this journal
+            Optional<JournalEntity> journalEntity = journalRepo.findById(journal.getId());
+            if (journalEntity.isPresent()) {
+                UserEntity user = userEntryRepo.findByUsername(username);
+                if (user.getLikedJournals().stream().anyMatch(j -> j.getId().equals(journal.getId()))) {
+                    journalRepo.delete(journalEntity.get());
+                    user.getLikedJournals().removeIf(j -> j.getId().equals(journal.getId()));
+                    userEntryRepo.save(user); // Save updated user
+                    return true;
                 }
-
-                // Increment like count and update user's liked journals
-                journal.setLikeCount(journal.getLikeCount() + 1);
-                user.getLikedJournals().add(journal);
-
-                // Save changes to database
-                journalRepo.save(journal);
-                userEntryRepo.save(user);
-
-                return true;
             }
-
-            return false; // Journal or user not found
+            return false; // Journal not found or not liked by user
         } catch (Exception e) {
+            System.err.println("Error deleting journal: " + e.getMessage());
             return false;
         }
     }
 
-    public boolean unlikeJournal(ObjectId journalId, String username) {
+    public boolean likeJournal(String username, ObjectId journalId) {
         try {
-            // Retrieve journal and user entities
-            Optional<JournalEntity> journalEntityOpt = journalRepo.findById(journalId);
-            UserEntity user = userEntryRepo.findByUsername(username);
-
-            if (journalEntityOpt.isPresent() && user != null) {
-                JournalEntity journal = journalEntityOpt.get();
-
-                // Check if the user has not liked the journal
-                if (!user.getLikedJournals().contains(journal)) {
-                    return false; // Journal was not liked by this user
+            Optional<JournalEntity> journalEntity = journalRepo.findById(journalId);
+            if (journalEntity.isPresent()) {
+                UserEntity user = userEntryRepo.findByUsername(username);
+                if (user.getLikedJournals().stream().noneMatch(j -> j.getId().equals(journalId))) {
+                    JournalEntity journal = journalEntity.get();
+                    journal.setLikeCount(journal.getLikeCount() + 1);
+                    user.getLikedJournals().add(journal);
+                    userEntryRepo.save(user);
+                    journalRepo.save(journal);
+                    return true;
                 }
-
-                // Decrement like count and update user's liked journals
-                journal.setLikeCount(journal.getLikeCount() - 1);
-                user.getLikedJournals().remove(journal);
-
-                // Save changes to database
-                journalRepo.save(journal);
-                userEntryRepo.save(user);
-
-                return true;
             }
-
-            return false; // Journal or user not found
+            return false; // Journal not found or already liked by user
         } catch (Exception e) {
+            System.err.println("Error liking journal: " + e.getMessage());
             return false;
         }
     }
 
-    public List<JournalEntity> getLikedJournals(String username) {
+    public boolean unlikeJournal(String username, ObjectId journalId) {
         try {
-            // Find the user entity by username
-            UserEntity user = userEntryRepo.findByUsername(username);
-
-            if (user != null && !user.getLikedJournals().isEmpty()) {
-                // Fetch all liked journal IDs and retrieve corresponding journals
-                List<JournalEntity> likedJournalIds = user.getLikedJournals();
-                return journalRepo.findAllById(likedJournalIds);
-            }
-
-            return new ArrayList<>(); // Return empty list if user or liked journals not found
-        } catch (Exception e) {
-            // Log the exception if needed and return an empty list
-            return new ArrayList<>();
-        }
-    }
-
-    // Repost a journal
-    public boolean repostJournal(ObjectId journalId, String username) {
-        try {
-            Optional<JournalEntity> journalEntityOpt = journalRepo.findById(journalId);
-            UserEntity user = userEntryRepo.findByUsername(username);
-
-            if (journalEntityOpt.isPresent() && user != null) {
-                if (user.getRepostedJournals().contains(journalId)) {
-                    return false; // Already reposted
+            Optional<JournalEntity> journalEntity = journalRepo.findById(journalId);
+            if (journalEntity.isPresent()) {
+                UserEntity user = userEntryRepo.findByUsername(username);
+                if (user.getLikedJournals().stream().anyMatch(j -> j.getId().equals(journalId))) {
+                    JournalEntity journal = journalEntity.get();
+                    journal.setLikeCount(journal.getLikeCount() - 1);
+                    user.getLikedJournals().removeIf(j -> j.getId().equals(journalId));
+                    userEntryRepo.save(user);
+                    journalRepo.save(journal);
+                    return true;
                 }
-
-                // Add journal to user's repost list
-                user.getRepostedJournals().add(journalId);
-                userEntryRepo.save(user);
-
-                return true;
             }
-
-            return false; // Journal or user not found
+            return false; // Journal not found or not liked by user
         } catch (Exception e) {
+            System.err.println("Error unliking journal: " + e.getMessage());
             return false;
         }
     }
-
-    // Get reposted journals
-    public List<JournalEntity> getRepostedJournals(String username) {
-        try {
-            UserEntity user = userEntryRepo.findByUsername(username);
-
-            if (user != null && !user.getRepostedJournals().isEmpty()) {
-                List<ObjectId> repostedJournalIds = user.getRepostedJournals();
-                return journalRepo.findAllById(repostedJournalIds);
-            }
-
-            return new ArrayList<>(); // Return empty list if none found
-        } catch (Exception e) {
-            return new ArrayList<>();
-        }
-    }
-
-
-
 }
-
-
