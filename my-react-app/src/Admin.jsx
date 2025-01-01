@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import AdminBack from "./AdminBack";
 import JournalRemove from "./JournalRemove";
 import ReportLog from "./ReportLog";
@@ -8,13 +8,18 @@ import ManageTags from "./ManageTags";
 
 export default function AdminPanel() {
   const [activeFeature, setActiveFeature] = useState("JournalRemove");
+  const [reports, setReports] = useState([
+    { id: 1, user: "JohnDoe", content: "Spam post in the forums", status: "Pending" },
+    { id: 2, user: "JaneSmith", content: "Inappropriate comment", status: "Pending" },
+    { id: 3, user: "AliceBrown", content: "Harassment in messages", status: "Resolved" },
+  ]);
 
   const renderFeature = () => {
     switch (activeFeature) {
       case "JournalRemove":
         return <JournalRemove />;
       case "ReportLog":
-        return <ReportLog />;
+        return <ReportLog reports={reports} setReports={setReports} />;
       case "AccountRemove":
         return <AccountRemove />;
       case "Announcement":
@@ -35,41 +40,31 @@ export default function AdminPanel() {
             Admin Panel
           </h1>
           <button
-            className={`py-2 px-4 text-left ${
-              activeFeature === "JournalRemove" ? "bg-gray-700" : "hover:bg-gray-600"
-            }`}
+            className={`py-2 px-4 text-left ${activeFeature === "JournalRemove" ? "bg-gray-700" : "hover:bg-gray-600"}`}
             onClick={() => setActiveFeature("JournalRemove")}
           >
             Journal Remove
           </button>
           <button
-            className={`py-2 px-4 text-left ${
-              activeFeature === "ReportLog" ? "bg-gray-700" : "hover:bg-gray-600"
-            }`}
+            className={`py-2 px-4 text-left ${activeFeature === "ReportLog" ? "bg-gray-700" : "hover:bg-gray-600"}`}
             onClick={() => setActiveFeature("ReportLog")}
           >
             Report Log
           </button>
           <button
-            className={`py-2 px-4 text-left ${
-              activeFeature === "AccountRemove" ? "bg-gray-700" : "hover:bg-gray-600"
-            }`}
+            className={`py-2 px-4 text-left ${activeFeature === "AccountRemove" ? "bg-gray-700" : "hover:bg-gray-600"}`}
             onClick={() => setActiveFeature("AccountRemove")}
           >
             Account Remove
           </button>
           <button
-            className={`py-2 px-4 text-left ${
-              activeFeature === "Announcement" ? "bg-gray-700" : "hover:bg-gray-600"
-            }`}
+            className={`py-2 px-4 text-left ${activeFeature === "Announcement" ? "bg-gray-700" : "hover:bg-gray-600"}`}
             onClick={() => setActiveFeature("Announcement")}
           >
             Announcement
           </button>
           <button
-            className={`py-2 px-4 text-left ${
-              activeFeature === "ManageTags" ? "bg-gray-700" : "hover:bg-gray-600"
-            }`}
+            className={`py-2 px-4 text-left ${activeFeature === "ManageTags" ? "bg-gray-700" : "hover:bg-gray-600"}`}
             onClick={() => setActiveFeature("ManageTags")}
           >
             Manage Tags

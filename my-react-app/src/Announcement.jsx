@@ -23,7 +23,7 @@ export default function Announcement() {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gray-50">
+    <div className="h-screen flex flex-col items-center justify-center bg-gray-40">
       <div className="w-full max-w-2xl text-center">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Manage Announcements</h2>
 
