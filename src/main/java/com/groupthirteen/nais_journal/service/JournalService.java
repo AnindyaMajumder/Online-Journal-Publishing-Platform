@@ -3,6 +3,7 @@ package com.groupthirteen.nais_journal.service;
 import com.groupthirteen.nais_journal.Repository.JournalRepo;
 import com.groupthirteen.nais_journal.Repository.UserEntryRepo;
 import com.groupthirteen.nais_journal.model.JournalEntity;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,23 +40,28 @@ public class JournalService {
     }
 
     public boolean addJournal(JournalEntity journal) {
-        JournalEntity journalEntity = new JournalEntity();
         try {
+            // Create a new JournalEntity and populate fields
+            JournalEntity journalEntity = new JournalEntity();
             journalEntity.setTitle(journal.getTitle());
             journalEntity.setBody(journal.getBody());
             journalEntity.setAuthor(journal.getAuthor());
             journalEntity.setTags(journal.getTags());
             journalEntity.setPublishedDate(LocalDateTime.now());
+            journalEntity.setLikeCount(0); // Initialize like count to 0
 
+            // Save the journal to the database
             journalRepo.save(journalEntity);
 
+            // Return the result of adding to the user's list
             return userService.addJournals(journalEntity);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
+            // Log the exception for debugging purposes
+//            e.printStackTrace();
             return false;
         }
-
     }
+
 
     public boolean deleteJournal(JournalEntity journal) {
         try {
@@ -81,6 +87,28 @@ public class JournalService {
             return false;
         }
     }
+
+    public boolean likeJournal(ObjectId journalId) {
+        try {
+            Optional<JournalEntity> journalEntity = journalRepo.findById(journalId);
+
+            if (journalEntity.isPresent()) {
+                JournalEntity journal = journalEntity.get();
+                journal.setLikeCount(journal.getLikeCount() + 1); // Increment like count
+                journalRepo.save(journal); // Save updated journal
+                System.out.println("Like added successfully to journal with ID: " + journalId); // Debug log
+                return true;
+            }
+
+            System.out.println("Journal not found with ID: " + journalId); // Debug log
+            return false;
+        } catch (Exception e) {
+//            e.printStackTrace(); // Log the exception for debugging
+            return false;
+        }
+    }
+
+
 
 }
 

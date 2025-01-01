@@ -2,6 +2,7 @@ package com.groupthirteen.nais_journal.controller;
 
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.service.JournalService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,4 +39,25 @@ public class JournalController {
         }
         return ResponseEntity.badRequest().body("Journal delete failed");
     }
+
+    @PostMapping("/like")
+    public ResponseEntity<?> likeJournal(@RequestBody String journalId) {
+        try {
+            ObjectId id = new ObjectId(journalId); // Convert String to ObjectId
+            boolean isLiked = journalService.likeJournal(id);
+            if (isLiked) {
+                return ResponseEntity.ok("Journal liked successfully");
+            } else {
+                System.out.println("Failed to like journal with ID: " + journalId); // Debug log
+                return ResponseEntity.badRequest().body("Failed to like journal");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid ObjectId: " + journalId); // Debug log
+            return ResponseEntity.badRequest().body("Invalid journal ID format");
+        } catch (Exception e) {
+//            e.printStackTrace(); // Log exception for debugging
+            return ResponseEntity.internalServerError().body("An error occurred");
+        }
+    }
+
 }
