@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"elon\",\r\n    \"password\" : \"elon\",\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"ROLE\" : \"USER\"\r\n}",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\",\r\n    \"email\" : \"anindya.majumder@g.bracu.ac.bd\",\r\n    \"ROLE\" : \"ADMIN\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -66,6 +66,37 @@
 							"port": "8000",
 							"path": [
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin-login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin-login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin-login"
 							]
 						}
 					},
@@ -175,6 +206,80 @@
 			"name": "User",
 			"item": [
 				{
+					"name": "MyInfo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc0NzQzOCwiZXhwIjoxNzM1ODMzODM4fQ.SEC1Q8a4mWoV3E21TGIvEFGaI0SzIlbvpyxy1IhzDHU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/my-info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"my-info"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MyPosts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc0NzQzOCwiZXhwIjoxNzM1ODMzODM4fQ.SEC1Q8a4mWoV3E21TGIvEFGaI0SzIlbvpyxy1IhzDHU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/my-posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"my-posts"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "UpdateUser",
 					"request": {
 						"auth": {
@@ -251,43 +356,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "MyPosts",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTcxMDc1OSwiZXhwIjoxNzM1Nzk3MTU5fQ.fmqtkk6tw3kGonjT5vxeDf-KbcJyfEPGSQEbdhcCXyw",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/user/my-posts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"user",
-								"my-posts"
-							],
-							"query": [
-								{
-									"key": "username",
-									"value": "wefwefe",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -341,7 +409,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTcxMDc1OSwiZXhwIjoxNzM1Nzk3MTU5fQ.fmqtkk6tw3kGonjT5vxeDf-KbcJyfEPGSQEbdhcCXyw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTczNzUxNywiZXhwIjoxNzM1ODIzOTE3fQ.2w8BcghabcUAC5fmO6Wg_BexcHr6vFeT1SIl2BFzzsY",
 									"type": "string"
 								}
 							]
@@ -367,6 +435,45 @@
 							"path": [
 								"journal",
 								"add-journal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LikeJournal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTczNzY5MywiZXhwIjoxNzM1ODI0MDkzfQ.Ket_tbrhPuzXK0H1OllHLgVTE03WxorzfBrC8C4yui4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677540c05d01fe3d02e4c3f7",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/like",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"like"
 							]
 						}
 					},
