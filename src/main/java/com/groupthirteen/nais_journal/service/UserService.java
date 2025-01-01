@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,6 +23,18 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    public UserEntity userInfo(String username) {
+        try {
+            return userEntryRepo.findByUsername(username);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Optional<List<JournalEntity>> userPosts(String username) {
+        return Optional.ofNullable(userEntryRepo.findByUsername(username).getJournalEntries());
+    }
 
     public boolean updateUser(UserEntity user) {
         UserEntity userEntity = userEntryRepo.findByUsername(user.getUsername());
