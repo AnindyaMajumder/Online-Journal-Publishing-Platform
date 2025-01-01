@@ -26,13 +26,15 @@ public class JournalController {
 //    }
 
     @PutMapping("/edit-details")
-    public ResponseEntity<?> editDetails(@RequestBody JournalEntity journal) {
-        boolean isUpdated = journalService.updateJournal(journal);
-        if (isUpdated) {
-            return ResponseEntity.ok("Journal updated successfully");
-        }
-        return ResponseEntity.badRequest().body("Journal update failed");
+    public ResponseEntity<?> editDetails(@RequestHeader("Authorization") String token, @RequestBody JournalEntity journal) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+        boolean isUpdated = journalService.updateJournal(username, journal);
+        return isUpdated ? ResponseEntity.ok("Journal updated successfully") :
+                ResponseEntity.badRequest().body("Journal update failed");
     }
+
+
 
     @PostMapping("/add-journal")
     public ResponseEntity<?> addJournal(@RequestBody JournalEntity journal) {
@@ -44,12 +46,12 @@ public class JournalController {
     }
 
     @DeleteMapping("/delete-journal")
-    public ResponseEntity<?> deleteJournal(@RequestBody JournalEntity journal) {
-        boolean isDeleted = journalService.deleteJournal(journal);
-        if (isDeleted) {
-            return ResponseEntity.ok("Journal deleted successfully");
-        }
-        return ResponseEntity.badRequest().body("Journal delete failed");
+    public ResponseEntity<?> deleteJournal(@RequestHeader("Authorization") String token, @RequestBody JournalEntity journal) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+        boolean isDeleted = journalService.deleteJournal(username, journal);
+        return isDeleted ? ResponseEntity.ok("Journal deleted successfully") :
+                ResponseEntity.badRequest().body("Journal delete failed");
     }
 
     @GetMapping("/timeline")
@@ -69,44 +71,31 @@ public class JournalController {
         }
     }
 
-
     @PostMapping("/like")
     public ResponseEntity<?> likeJournal(@RequestHeader("Authorization") String token, @RequestBody String journalId) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
         try {
-            ObjectId id = new ObjectId(journalId); // Convert String to ObjectId
-            String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
-            String username = jwtUtils.getUsername(jwtToken);
-
-            boolean isLiked = journalService.likeJournal(id, username);
-            if (isLiked) {
-                return ResponseEntity.ok("Journal liked successfully");
-            } else {
-                return ResponseEntity.badRequest().body("Journal already liked");
-            }
+            ObjectId id = new ObjectId(journalId);
+            boolean isLiked = journalService.likeJournal(username, id);
+            return isLiked ? ResponseEntity.ok("Journal liked successfully") :
+                    ResponseEntity.badRequest().body("Failed to like journal");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Invalid journal ID format");
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("An error occurred");
         }
     }
 
     @PostMapping("/unlike")
     public ResponseEntity<?> unlikeJournal(@RequestHeader("Authorization") String token, @RequestBody String journalId) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
         try {
-            ObjectId id = new ObjectId(journalId); // Convert String to ObjectId
-            String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
-            String username = jwtUtils.getUsername(jwtToken);
-
-            boolean isUnliked = journalService.unlikeJournal(id, username);
-            if (isUnliked) {
-                return ResponseEntity.ok("Journal unliked successfully");
-            } else {
-                return ResponseEntity.badRequest().body("Journal was not liked");
-            }
+            ObjectId id = new ObjectId(journalId);
+            boolean isUnliked = journalService.unlikeJournal(username, id);
+            return isUnliked ? ResponseEntity.ok("Journal unliked successfully") :
+                    ResponseEntity.badRequest().body("Failed to unlike journal");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Invalid journal ID format");
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("An error occurred");
         }
     }
 
