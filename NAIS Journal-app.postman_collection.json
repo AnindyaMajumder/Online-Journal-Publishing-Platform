@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Lionel\",\r\n    \"lastName\": \"Messi\",\r\n    \"bio\": \"Footballer\"\r\n}",
+							"raw": "{\r\n    \"username\": \"lamo\",\r\n    \"password\": \"lamo\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"mola\",\r\n    \"lastName\": \"lamo\",\r\n    \"bio\": \"Sportsman\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\"\r\n}",
+							"raw": "{\r\n    \"username\": \"adnan\",\r\n    \"password\": \"adnan\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,7 +79,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MzM1MiwiZXhwIjoxNzM1ODc5NzUyfQ.VvKwMBX28gOsOq1e43tZ7yYqb4vvslL7UBjw9AfOiaI",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbiIsImlhdCI6MTczNTg1MzgyNywiZXhwIjoxNzM1OTQwMjI3fQ.tlFywUVSdM7NiKwz2NUGNJGuos2fkVYhsu2dB8ANNCM",
 									"type": "string"
 								}
 							]
@@ -182,7 +182,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5Mzc1NiwiZXhwIjoxNzM1ODgwMTU2fQ.kbKMmoacLV-4ldG0eSEWNJOAiR-Fu1AmGmSoE4oxl8g",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbiIsImlhdCI6MTczNTg1MzM4MSwiZXhwIjoxNzM1OTM5NzgxfQ.vVDy__Df_ezpcuBVL63Iecd8N5FEfsjHOrCcv8eCbIk",
 									"type": "string"
 								}
 							]
@@ -413,7 +413,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFzdCIsImlhdCI6MTczNTg1MjY1MywiZXhwIjoxNzM1OTM5MDUzfQ.QBruOdCItcK2LNwurBdD8O0otDd4NvOoooj0Sigpico",
 									"type": "string"
 								}
 							]
@@ -422,7 +422,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"The Hidden World of Deep-Sea Bioluminescence\",\r\n    \"body\": \"In the ocean's darkest depths, an extraordinary light show unfolds as countless creatures produce their own biological light. This phenomenon, known as bioluminescence, serves various purposes: attracting prey, deterring predators, and finding mates. Recent deep-sea expeditions have discovered new species with unprecedented light-producing capabilities, challenging our understanding of marine biology. These discoveries not only expand our knowledge of ocean ecosystems but also inspire innovations in biotechnology and sustainable lighting solutions.\",\r\n    \"author\": \"messi\",\r\n    \"tags\": [\"marine biology\", \"science\", \"nature\", \"discovery\", \"innovation\"]\r\n}",
+							"raw": "{\r\n    \"title\": \"The Art of Traditional Tea Ceremonies\",\r\n    \"body\": \"Tea ceremonies represent more than just drinking tea—they embody cultural heritage, mindfulness, and social connection. From Japanese chanoyu to Chinese gongfu cha, these ritualized practices emphasize presence, respect, and attention to detail. Each movement and utensil carries symbolic meaning, creating a meditative experience that transcends mere refreshment. As modern life grows increasingly fast-paced, these ancient traditions offer valuable lessons in slowing down and finding beauty in simplicity.\",\r\n    \"tags\": [ \"culture\", \"tradition\", \"mindfulness\", \"beverages\", \"history\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -491,7 +491,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MjIxMiwiZXhwIjoxNzM1ODc4NjEyfQ.4cYruJ8Ajq1r2jPYcBUk5SLejVgLTUoioXd42tlKRFU",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFzdCIsImlhdCI6MTczNTg1MjY1MywiZXhwIjoxNzM1OTM5MDUzfQ.QBruOdCItcK2LNwurBdD8O0otDd4NvOoooj0Sigpico",
 									"type": "string"
 								}
 							]
@@ -500,10 +500,10 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "67760c7be2ce0e09923e3877",
+							"raw": "677702f1ae9be405a9ed4e71",
 							"options": {
 								"raw": {
-									"language": "json"
+									"language": "text"
 								}
 							}
 						},
@@ -569,7 +569,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MjU5MywiZXhwIjoxNzM1ODc4OTkzfQ.lR_-EU7IEoSA1y1lmNRvBUUkiQ4SdG-sEcyFNNOwREk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbiIsImlhdCI6MTczNTg1MzM4MSwiZXhwIjoxNzM1OTM5NzgxfQ.vVDy__Df_ezpcuBVL63Iecd8N5FEfsjHOrCcv8eCbIk",
 									"type": "string"
 								}
 							]
@@ -578,7 +578,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "67760c7be2ce0e09923e3877",
+							"raw": "67761d74784559016c8d97b4",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -683,7 +683,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MjgzMSwiZXhwIjoxNzM1ODc5MjMxfQ.bjvZ5Sajnlv7VqzyO-RQ4gl3O7n1XXJXzDu9g5mXZ9w",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
 									"type": "string"
 								}
 							]
@@ -713,7 +713,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MzM4NiwiZXhwIjoxNzM1ODc5Nzg2fQ.ng2Rd-LpE4U52Qc2t1DyzfymE1vrMtQ764NNT_gYihI",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
 									"type": "string"
 								}
 							]
@@ -743,7 +743,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MjgzMSwiZXhwIjoxNzM1ODc5MjMxfQ.bjvZ5Sajnlv7VqzyO-RQ4gl3O7n1XXJXzDu9g5mXZ9w",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
 									"type": "string"
 								}
 							]
@@ -752,7 +752,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "messi",
+							"raw": "adnan",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -782,7 +782,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MzQ5MiwiZXhwIjoxNzM1ODc5ODkyfQ.0q4uRfXn0wtl2zwYkHEKX3sUNLiSaeOkoWHVuY1QNio",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
 									"type": "string"
 								}
 							]
@@ -918,6 +918,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Summarizer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677702aaae9be405a9ed4e70",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/summary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"summary"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -925,14 +956,7 @@
 			"name": "Hello",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [],
@@ -945,6 +969,47 @@
 					"port": "8000",
 					"path": [
 						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckOrigin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputs\": \" Make it within 20 words. - The tower is 324 metres (1,063 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. It was the first structure to reach a height of 300 metres. Due to the addition of a broadcasting aerial at the top of the tower in 1957, it is now taller than the Chrysler Building by 5.2 metres (17 ft). Excluding transmitters, the Eiffel Tower is the second tallest free-standing structure in France after the Millau Viaduct.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
+					"protocol": "https",
+					"host": [
+						"api-inference",
+						"huggingface",
+						"co"
+					],
+					"path": [
+						"models",
+						"facebook",
+						"bart-large-cnn"
 					]
 				}
 			},

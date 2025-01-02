@@ -28,11 +28,11 @@ public class JournalController {
                 ResponseEntity.badRequest().body("Journal update failed");
     }
 
-
-
     @PostMapping("/add-journal")
-    public ResponseEntity<?> addJournal(@RequestBody JournalEntity journal) {
-        boolean isAdded = journalService.addJournal(journal);
+    public ResponseEntity<?> addJournal(@RequestHeader("Authorization") String token, @RequestBody JournalEntity journal) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+        boolean isAdded = journalService.addJournal(journal, username);
         if (isAdded) {
             return ResponseEntity.ok("Journal added successfully");
         }

@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -69,10 +66,7 @@ public class PublicService {
             ObjectMapper objectMapper = new ObjectMapper();
             List<Map<String, String>> responseList = objectMapper.readValue(response, List.class);
 
-            // Extract the "summary_text" value from the first item in the list
-            String summary = responseList.get(0).get("summary_text");
-
-            return summary;
+            return responseList.get(0).get("summary_text");
 
         }
         return null;

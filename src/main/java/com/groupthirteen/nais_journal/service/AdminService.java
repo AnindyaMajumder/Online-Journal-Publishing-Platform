@@ -21,19 +21,28 @@ public class AdminService {
 
     public List<UserEntity> users(String username){
         UserEntity admin = userEntryRepo.findByUsername(username);
-        return userEntryRepo.findAll();
+        if(admin == null || admin.getROLE().equals("USER")){
+            return null;
+        }
+        else {
+            return userEntryRepo.findAll();
+        }
     }
 
     public List<JournalEntity> journals(String username){
         UserEntity admin = userEntryRepo.findByUsername(username);
-        return journalRepo.findAll();
+        if(admin == null || admin.getROLE().equals("USER")){
+            return null;
+        } else{
+            return journalRepo.findAll();
+        }
     }
 
     public boolean DeleteUser(String adminId, String username){
         try{
             UserEntity admin = userEntryRepo.findByUsername(adminId);
             UserEntity user = userEntryRepo.findByUsername(username);
-            if (admin == null || user == null) {
+            if (admin == null || user == null || admin.getROLE().equals("USER")) {
                 return false;
             }
             List<JournalEntity> journals = user.getJournalEntries();
@@ -52,7 +61,7 @@ public class AdminService {
         try{
             UserEntity adminEntity = userEntryRepo.findByUsername(adminId);
             Optional<JournalEntity> journalEntity = journalRepo.findById(journalId);
-            if (journalEntity.isEmpty()) {
+            if (journalEntity.isEmpty() || adminEntity == null || adminEntity.getROLE().equals("USER")) {
                 return false;
             } else {
                 journalRepo.delete(journalEntity.get());

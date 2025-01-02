@@ -69,13 +69,13 @@ public class JournalService {
         }
     }
 
-    public boolean addJournal(JournalEntity journal) {
+    public boolean addJournal(JournalEntity journal, String username) {
         try {
             // Create a new JournalEntity and populate fields
             JournalEntity journalEntity = new JournalEntity();
             journalEntity.setTitle(journal.getTitle());
             journalEntity.setBody(journal.getBody());
-            journalEntity.setAuthor(journal.getAuthor());
+            journalEntity.setAuthor(username);
             journalEntity.setTags(journal.getTags());
             journalEntity.setPublishedDate(LocalDateTime.now());
             journalEntity.setLikeCount(0); // Initialize like count to 0
