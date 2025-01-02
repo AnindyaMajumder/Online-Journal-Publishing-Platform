@@ -15,6 +15,10 @@ public class PublicController {
     @Autowired
     PublicService publicService;
 
+    @GetMapping("/hello")
+    public ResponseEntity<?> Hello(){
+        return ResponseEntity.ok("WELCOME TO NAIS JOURNAL");
+    }
     @GetMapping
     public ResponseEntity<?> Popular() {
         try{

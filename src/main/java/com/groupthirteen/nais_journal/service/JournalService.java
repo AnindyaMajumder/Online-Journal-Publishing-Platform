@@ -42,13 +42,19 @@ public class JournalService {
                             .anyMatch(j -> j.getId().equals(existingJournal.getId()));
 
                     if (isJournalOwnedByUser) {
-                        existingJournal.setTitle(journal.getTitle());
-                        existingJournal.setBody(journal.getBody());
-                        existingJournal.setTags(journal.getTags());
+                        if(!journal.getTitle().isBlank()) {
+                            existingJournal.setTitle(journal.getTitle());
+                        }
+                        if(!journal.getBody().isBlank()) {
+                            existingJournal.setBody(journal.getBody());
+                        }
+                        if (!journal.getTags().isEmpty()) {
+                            existingJournal.setTags(journal.getTags());
+                        }
                         existingJournal.setUpdatedDate(LocalDateTime.now());
 
                         journalRepo.save(existingJournal);
-                        return true; // Successfully updated
+                        return true;
                     } else {
                         return false; // Journal not in the user's list
                     }
@@ -86,14 +92,14 @@ public class JournalService {
         }
     }
 
-    public boolean deleteJournal(String username, JournalEntity journal) {
+    public boolean deleteJournal(String username, ObjectId journal) {
         try {
-            Optional<JournalEntity> journalEntity = journalRepo.findById(journal.getId());
+            Optional<JournalEntity> journalEntity = journalRepo.findById(journal);
             if (journalEntity.isPresent()) {
                 UserEntity user = userEntryRepo.findByUsername(username);
-                if (user.getLikedJournals().stream().anyMatch(j -> j.getId().equals(journal.getId()))) {
+                if (user.getLikedJournals().stream().anyMatch(j -> j.getId().equals(journal))) {
                     journalRepo.delete(journalEntity.get());
-                    user.getLikedJournals().removeIf(j -> j.getId().equals(journal.getId()));
+                    user.getLikedJournals().removeIf(j -> j.getId().equals(journal));
                     userEntryRepo.save(user); // Save updated user
                     return true;
                 }
@@ -154,19 +160,25 @@ public class JournalService {
             UserEntity user = userEntryRepo.findByUsername(username);
 
             if (journalEntityOpt.isPresent() && user != null) {
-                if (user.getRepostedJournals().contains(journalEntityOpt.get())) {
+                JournalEntity journal = journalEntityOpt.get();
+                if (user.getRepostedJournals().contains(journal)) {
                     return false; // Already reposted
                 }
 
-                // Add journal to user's repost list
-                user.getRepostedJournals().add(journalEntityOpt.get());
+                user.getRepostedJournals().add(journal);
+
                 userEntryRepo.save(user);
 
-                return true;
+                return true; // Successfully reposted
             }
 
-            return false; // Journal or user not found
+            // Return false if either the journal or user is not found
+            return false;
         } catch (Exception e) {
+            // Log the exception for debugging purposes
+            e.printStackTrace();
+
+            // Return false in case of any exceptions
             return false;
         }
     }

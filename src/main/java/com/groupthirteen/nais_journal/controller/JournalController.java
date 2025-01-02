@@ -19,12 +19,6 @@ public class JournalController {
     @Autowired
     private JwtUtils jwtUtils;
 
-
-//    public JournalController(JournalService journalService, JwtUtils jwtUtils) {
-//        this.journalService = journalService;
-//        this.jwtUtils = jwtUtils;
-//    }
-
     @PutMapping("/edit-details")
     public ResponseEntity<?> editDetails(@RequestHeader("Authorization") String token, @RequestBody JournalEntity journal) {
         String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
@@ -46,10 +40,10 @@ public class JournalController {
     }
 
     @DeleteMapping("/delete-journal")
-    public ResponseEntity<?> deleteJournal(@RequestHeader("Authorization") String token, @RequestBody JournalEntity journal) {
+    public ResponseEntity<?> deleteJournal(@RequestHeader("Authorization") String token, @RequestBody String journal) {
         String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
         String username = jwtUtils.getUsername(jwtToken);
-        boolean isDeleted = journalService.deleteJournal(username, journal);
+        boolean isDeleted = journalService.deleteJournal(username, new ObjectId(journal));
         return isDeleted ? ResponseEntity.ok("Journal deleted successfully") :
                 ResponseEntity.badRequest().body("Journal delete failed");
     }
@@ -82,10 +76,11 @@ public class JournalController {
         }
     }
 
-    // Repost a journal
     @PostMapping("/repost")
-    public ResponseEntity<String> repostJournal(@RequestParam ObjectId journalId, @RequestParam String username) {
-        boolean isReposted = journalService.repostJournal(journalId, username);
+    public ResponseEntity<String> repostJournal(@RequestHeader("Authorization") String token, @RequestBody String journalId) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+        boolean isReposted = journalService.repostJournal(new ObjectId(journalId), username);
         if (isReposted) {
             return ResponseEntity.ok("Journal reposted successfully.");
         } else {

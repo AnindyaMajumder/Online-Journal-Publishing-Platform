@@ -57,10 +57,10 @@ public class AdminController {
     }
 
     @PostMapping("remove-journal")
-    public ResponseEntity<String> removeJournal(@RequestHeader("Authorization") String token, @RequestBody ObjectId journalID) {
+    public ResponseEntity<String> removeJournal(@RequestHeader("Authorization") String token, @RequestBody String journalID) {
         String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
         String admin_username = jwtUtils.getUsername(jwtToken);
-        boolean isDeleted = adminService.DeleteJournal(admin_username, journalID);
+        boolean isDeleted = adminService.DeleteJournal(admin_username, new ObjectId(journalID));
         if (isDeleted) {
             return ResponseEntity.ok("Journal deleted successfully");
         } else{
