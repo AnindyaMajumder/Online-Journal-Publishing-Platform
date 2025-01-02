@@ -14,6 +14,16 @@ http://localhost:8000
 
 ## **Endpoints Overview**
 
+### 0. Hello Endpoint
+
+#### **Hello Message**
+**GET** `/hello`
+- **Headers:**
+  - `Authorization: Bearer <JWT_TOKEN>`
+- **Response:**
+  - `200 OK`: "WELCOME TO NAIS JOURNAL"
+ 
+---
 ### 1. Authentication
 
 #### **Register**
@@ -286,13 +296,3 @@ http://localhost:8000
   - `204 No Content`: "Journal not found"
 
 ---
-
-### 6. Hello Endpoint
-
-#### **Hello Message**
-**GET** `/hello`
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: "WELCOME TO NAIS JOURNAL"
-
