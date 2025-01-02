@@ -1,6 +1,8 @@
 package com.groupthirteen.nais_journal.service;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.groupthirteen.nais_journal.Repository.JournalRepo;
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import org.bson.types.ObjectId;
@@ -50,7 +52,7 @@ public class PublicService {
         return journal.orElse(null);
     }
 
-    public String summarizer(ObjectId journalId) {
+    public String summarizer(ObjectId journalId) throws JsonProcessingException {
         JournalEntity journal = journalRepo.findById(journalId).orElse(null);
         if (journal != null) {
             RestTemplate restTemplate = new RestTemplate();
@@ -62,9 +64,16 @@ public class PublicService {
             String payload = "{ \"inputs\": \"" + journal.getBody() + "\" }";
             HttpEntity<String> entity = new HttpEntity<>(payload, headers);
 
-            ResponseEntity<String> response = restTemplate.postForEntity(apiUrl, entity, String.class);
+            String response = restTemplate.postForEntity(apiUrl, entity, String.class).getBody();
 
-            return response.getBody();
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<Map<String, String>> responseList = objectMapper.readValue(response, List.class);
+
+            // Extract the "summary_text" value from the first item in the list
+            String summary = responseList.get(0).get("summary_text");
+
+            return summary;
+
         }
         return null;
     }
