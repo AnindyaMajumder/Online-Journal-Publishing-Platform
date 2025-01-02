@@ -57,6 +57,14 @@ public class PublicController {
         } else {
             return ResponseEntity.ok(journalEntity);
         }
+    }
 
+    @PostMapping("/summary")
+    public ResponseEntity<?> GenerateSummary(@RequestBody String objectId) {
+        try {
+            return ResponseEntity.ok(publicService.summarizer(new ObjectId(objectId)));
+        } catch (Exception e) {
+            return ResponseEntity.unprocessableEntity().build();
+        }
     }
 }
