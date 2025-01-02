@@ -14,7 +14,7 @@ http://localhost:8000
 
 ## **Endpoints Overview**
 
-### **6. Hello Endpoint**
+### **0. Hello Endpoint**
 
 #### Hello Message
 **GET** `/hello`
