@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
-import Navbar from "./navbar";
 
 const ProfilePage = () => {
   const [userInfo, setUserInfo] = useState({
@@ -17,7 +16,6 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-            <div><Navbar/></div>
       <div className="max-w-4xl mx-auto py-8">
         <h1 className="text-3xl font-bold text-center mb-8">My Profile</h1>
 
@@ -26,7 +24,7 @@ const ProfilePage = () => {
             <ul className="space-y-4">
               <li>
                 <button
-                  className={`w-full text-left p-2 rounded ${section === "myPosts" && "bg-blue-500 text-white"}`}
+                  className={`w-full text-left p-2 rounded ${section === "myPosts" && "bg-gray-600 text-white"}`}
                   onClick={() => setSection("myPosts")}
                 >
                   My Posts
@@ -34,7 +32,7 @@ const ProfilePage = () => {
               </li>
               <li>
                 <button
-                  className={`w-full text-left p-2 rounded ${section === "editInfo" && "bg-blue-500 text-white"}`}
+                  className={`w-full text-left p-2 rounded ${section === "editInfo" && "bg-gray-600 text-white"}`}
                   onClick={() => setSection("editInfo")}
                 >
                   Edit Information
@@ -42,7 +40,7 @@ const ProfilePage = () => {
               </li>
               <li>
                 <button
-                  className={`w-full text-left p-2 rounded ${section === "savedPosts" && "bg-blue-500 text-white"}`}
+                  className={`w-full text-left p-2 rounded ${section === "savedPosts" && "bg-gray-600 text-white"}`}
                   onClick={() => setSection("savedPosts")}
                 >
                   Saved Posts
@@ -50,7 +48,7 @@ const ProfilePage = () => {
               </li>
               <li>
                 <button
-                  className={`w-full text-left p-2 rounded ${section === "likedPosts" && "bg-blue-500 text-white"}`}
+                  className={`w-full text-left p-2 rounded ${section === "likedPosts" && "bg-gray-600 text-white"}`}
                   onClick={() => setSection("likedPosts")}
                 >
                   Liked Posts
@@ -58,7 +56,7 @@ const ProfilePage = () => {
               </li>
               <li>
                 <button
-                  className={`w-full text-left p-2 rounded ${section === "warnings" && "bg-blue-500 text-white"}`}
+                  className={`w-full text-left p-2 rounded ${section === "warnings" && "bg-gray-600 text-white"}`}
                   onClick={() => setSection("warnings")}
                 >
                   Warnings
@@ -135,7 +133,7 @@ const EditInformation = ({ userInfo, onEdit }) => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          className="bg-black text-white p-2 rounded hover:bg-gray-600"
         >
           Save Changes
         </button>
