@@ -1,7 +1,7 @@
 # NAIS Journal API Documentation
 
 ## Introduction
-This documentation provides an overview of all endpoints available in the NAIS Journal application. It includes details of the requests, headers, payloads, and expected responses for each endpoint. This guide will help the frontend team integrate seamlessly with the backend.
+Welcome to the NAIS Journal API Documentation! This guide provides a comprehensive overview of all available endpoints, their functionalities, and integration details to help the frontend team seamlessly interact with the backend services.
 
 ---
 
@@ -14,17 +14,19 @@ http://localhost:8000
 
 ## **Endpoints Overview**
 
-### 0. Hello Endpoint
+### **6. Hello Endpoint**
 
-#### **Hello Message**
+#### Hello Message
 **GET** `/hello`
+- **Headers:**
+  - `Authorization: Bearer <JWT_TOKEN>`
 - **Response:**
   - `200 OK`: "WELCOME TO NAIS JOURNAL"
- 
 ---
-### 1. Authentication
 
-#### **Register**
+### **1. Authentication**
+
+#### Register
 **POST** `/register`
 - **Headers:** None
 - **Body:**
@@ -42,7 +44,7 @@ http://localhost:8000
   - `200 OK`: "User registered successfully"
   - `400 Bad Request`: "User already exists"
 
-#### **Login**
+#### Login
 **POST** `/login`
 - **Headers:** None
 - **Body:**
@@ -56,7 +58,21 @@ http://localhost:8000
   - `200 OK`: JWT Token
   - `400 Bad Request`: "Invalid username or password"
 
-#### **Logout**
+#### Admin Login
+**POST** `/admin-login`
+- **Headers:** None
+- **Body:**
+```json
+{
+    "username": "admin",
+    "password": "admin"
+}
+```
+- **Response:**
+  - `200 OK`: JWT Token
+  - `400 Bad Request`: "Invalid username or password"
+
+#### Logout
 **POST** `/logout`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -64,7 +80,7 @@ http://localhost:8000
   - `200 OK`: "User logged out successfully"
   - `400 Bad Request`: "Invalid token"
 
-#### **Forget Password**
+#### Forget Password
 **POST** `/forget-password`
 - **Headers:** None
 - **Body:**
@@ -77,7 +93,7 @@ http://localhost:8000
   - `200 OK`: "Mail with reset-code has been sent"
   - `422 Unprocessable Entity`: Error message
 
-#### **Reset Password**
+#### Reset Password
 **POST** `/reset-password`
 - **Headers:** None
 - **Body:**
@@ -95,9 +111,9 @@ http://localhost:8000
 
 ---
 
-### 2. User
+### **2. User**
 
-#### **Get My Info**
+#### Get My Info
 **GET** `/user/my-info`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -105,7 +121,7 @@ http://localhost:8000
   - `200 OK`: User details
   - `404 Not Found`: User not found
 
-#### **Get My Posts**
+#### Get My Posts
 **GET** `/user/my-posts`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -113,7 +129,23 @@ http://localhost:8000
   - `200 OK`: List of user's journal entries
   - `204 No Content`: No posts available
 
-#### **Update User Details**
+#### Get Liked Posts
+**GET** `/user/liked`
+- **Headers:**
+  - `Authorization: Bearer <JWT_TOKEN>`
+- **Response:**
+  - `200 OK`: List of liked journals
+  - `204 No Content`: No liked journals available
+
+#### Get Reposted Journals
+**GET** `/user/reposted`
+- **Headers:**
+  - `Authorization: Bearer <JWT_TOKEN>`
+- **Response:**
+  - `200 OK`: List of reposted journals
+  - `204 No Content`: No reposted journals available
+
+#### Update User Details
 **PUT** `/user/edit-details`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -131,7 +163,7 @@ http://localhost:8000
   - `200 OK`: "User updated successfully"
   - `400 Bad Request`: "User update failed"
 
-#### **Delete User**
+#### Delete User
 **DELETE** `/user/delete`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -149,9 +181,9 @@ http://localhost:8000
 
 ---
 
-### 3. Journal
+### **3. Journal**
 
-#### **Add Journal**
+#### Add Journal
 **POST** `/journal/add-journal`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -168,7 +200,7 @@ http://localhost:8000
   - `200 OK`: "Journal added successfully"
   - `400 Bad Request`: "Journal add failed"
 
-#### **Edit Journal**
+#### Edit Journal
 **PUT** `/journal/edit-details`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -185,7 +217,19 @@ http://localhost:8000
   - `200 OK`: "Journal updated successfully"
   - `400 Bad Request`: "Journal update failed"
 
-#### **Like Journal**
+#### Delete Journal
+**DELETE** `/journal/delete-journal`
+- **Headers:**
+  - `Authorization: Bearer <JWT_TOKEN>`
+- **Body:**
+```
+"67760c7be2ce0e09923e3877"
+```
+- **Response:**
+  - `200 OK`: "Journal deleted successfully"
+  - `400 Bad Request`: "Journal delete failed"
+
+#### Like Journal
 **POST** `/journal/like`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -197,25 +241,49 @@ http://localhost:8000
   - `200 OK`: "Journal liked successfully"
   - `400 Bad Request`: "Failed to like journal"
 
+#### Unlike Journal
+**POST** `/journal/unlike`
+- **Headers:**
+  - `Authorization: Bearer <JWT_TOKEN>`
+- **Body:**
+```
+"67760c7be2ce0e09923e3877"
+```
+- **Response:**
+  - `200 OK`: "Journal unliked successfully"
+  - `400 Bad Request`: "Failed to unlike journal"
+
+#### Repost Journal
+**POST** `/journal/repost`
+- **Headers:**
+  - `Authorization: Bearer <JWT_TOKEN>`
+- **Body:**
+```
+"67760c7be2ce0e09923e3877"
+```
+- **Response:**
+  - `200 OK`: "Journal reposted successfully"
+  - `400 Bad Request`: "Failed to repost journal"
+
 ---
 
-### 4. Public Access
+### **4. Public Access**
 
-#### **Popular Journals**
+#### Popular Journals
 **GET** `/`
 - **Headers:** None
 - **Response:**
   - `200 OK`: List of popular journal entries
   - `404 Not Found`: No journals found
 
-#### **Recent Journals**
+#### Recent Journals
 **GET** `/recent`
 - **Headers:** None
 - **Response:**
   - `200 OK`: List of recent journal entries
   - `404 Not Found`: No journals found
 
-#### **Search Journals**
+#### Search Journals
 **GET** `/search`
 - **Headers:** None
 - **Query Parameters:**
@@ -224,7 +292,7 @@ http://localhost:8000
   - `200 OK`: List of matching journals
   - `404 Not Found`: No matching journals found
 
-#### **Access Journal**
+#### Access Journal
 **POST** `/article`
 - **Headers:** None
 - **Body:**
@@ -237,23 +305,9 @@ http://localhost:8000
 
 ---
 
-### 5. Admin
+### **5. Admin**
 
-#### **Admin Login**
-**POST** `/admin-login`
-- **Headers:** None
-- **Body:**
-```json
-{
-    "username": "admin",
-    "password": "admin"
-}
-```
-- **Response:**
-  - `200 OK`: JWT Token
-  - `400 Bad Request`: "Invalid username or password"
-
-#### **Get All Users**
+#### Get All Users
 **GET** `/admin/users`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -261,7 +315,7 @@ http://localhost:8000
   - `200 OK`: List of users
   - `204 No Content`: No users available
 
-#### **Get All Journals**
+#### Get All Journals
 **GET** `/admin/journals`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -269,7 +323,7 @@ http://localhost:8000
   - `200 OK`: List of journals
   - `204 No Content`: No journals available
 
-#### **Remove User**
+#### Remove User
 **POST** `/admin/remove-user`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
@@ -281,7 +335,7 @@ http://localhost:8000
   - `200 OK`: "User deleted successfully"
   - `204 No Content`: "User not found"
 
-#### **Remove Journal**
+#### Remove Journal
 **POST** `/admin/remove-journal`
 - **Headers:**
   - `Authorization: Bearer <JWT_TOKEN>`
