@@ -18,8 +18,6 @@ http://localhost:8000
 
 #### **Hello Message**
 **GET** `/hello`
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
 - **Response:**
   - `200 OK`: "WELCOME TO NAIS JOURNAL"
  
