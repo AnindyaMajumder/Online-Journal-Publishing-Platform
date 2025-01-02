@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\",\r\n    \"email\" : \"anindya.majumder@g.bracu.ac.bd\",\r\n    \"ROLE\" : \"ADMIN\"\r\n}",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Lionel\",\r\n    \"lastName\": \"Messi\",\r\n    \"bio\": \"Footballer\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,37 +72,6 @@
 					"response": []
 				},
 				{
-					"name": "admin-login",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/admin-login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"admin-login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "logout",
 					"request": {
 						"auth": {
@@ -110,7 +79,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTY3NTY3NiwiZXhwIjoxNzM1NzYyMDc2fQ.OdqRT8pNB84nAUqWgFmGnCzkn_phqvlcKXRGTWwe6W4",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MzM1MiwiZXhwIjoxNzM1ODc5NzUyfQ.VvKwMBX28gOsOq1e43tZ7yYqb4vvslL7UBjw9AfOiaI",
 									"type": "string"
 								}
 							]
@@ -148,7 +117,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"ron\"\r\n}\r\n",
+							"raw": "{\r\n    \"username\": \"alan\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -179,7 +148,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"resetCode\" : \"38503f\",\r\n    \"username\" : \"ron\",\r\n    \"password\" : \"nor\"\r\n}",
+							"raw": "{\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"resetCode\" : \"17acfe\",\r\n    \"username\" : \"alan\",\r\n    \"password\" : \"ALAN\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -213,7 +182,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc0NzQzOCwiZXhwIjoxNzM1ODMzODM4fQ.SEC1Q8a4mWoV3E21TGIvEFGaI0SzIlbvpyxy1IhzDHU",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5Mzc1NiwiZXhwIjoxNzM1ODgwMTU2fQ.kbKMmoacLV-4ldG0eSEWNJOAiR-Fu1AmGmSoE4oxl8g",
 									"type": "string"
 								}
 							]
@@ -250,7 +219,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc0NzQzOCwiZXhwIjoxNzM1ODMzODM4fQ.SEC1Q8a4mWoV3E21TGIvEFGaI0SzIlbvpyxy1IhzDHU",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
 									"type": "string"
 								}
 							]
@@ -280,6 +249,80 @@
 					"response": []
 				},
 				{
+					"name": "LikedPosts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/liked",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"liked"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reposted",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/reposted",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"reposted"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "UpdateUser",
 					"request": {
 						"auth": {
@@ -287,7 +330,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG9uIiwiaWF0IjoxNzM1Njc3NTgwLCJleHAiOjE3MzU3NjM5ODB9.NIgamV3d-u-tjGy0-1beDguXnEOAXgPtZ60bvdCNVZQ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5Mzc1NiwiZXhwIjoxNzM1ODgwMTU2fQ.kbKMmoacLV-4ldG0eSEWNJOAiR-Fu1AmGmSoE4oxl8g",
 									"type": "string"
 								}
 							]
@@ -296,7 +339,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"elon\",\r\n    \"firstname\": \"Elon\",\r\n    \"lastname\": \"Mask\",\r\n    \"bio\": \"entrepreneur\",\r\n\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"password\": \"elon\"\r\n}",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"firstName\": \"Lio\",\r\n    \"lastName\": \"Messi\",\r\n\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"password\": \"messi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -326,7 +369,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG9uIiwiaWF0IjoxNzM1Njc3NTgwLCJleHAiOjE3MzU3NjM5ODB9.NIgamV3d-u-tjGy0-1beDguXnEOAXgPtZ60bvdCNVZQ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5Mzc1NiwiZXhwIjoxNzM1ODgwMTU2fQ.kbKMmoacLV-4ldG0eSEWNJOAiR-Fu1AmGmSoE4oxl8g",
 									"type": "string"
 								}
 							]
@@ -335,7 +378,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"elon\",\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"password\": \"elon\"\r\n}",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"password\": \"messi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -363,45 +406,6 @@
 			"name": "Journal",
 			"item": [
 				{
-					"name": "Edit Journal",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG9uIiwiaWF0IjoxNzM1Njc3NTgwLCJleHAiOjE3MzU3NjM5ODB9.NIgamV3d-u-tjGy0-1beDguXnEOAXgPtZ60bvdCNVZQ",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\" : \"677457b63099f120b683fe93\",\r\n    \"title\": \"SpaceX\",\r\n    \"body\": \"Falcon 50 will touch the mars\",\r\n    \"tags\": [\"Rocket\", \"Space\", \"Mars\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/journal/edit-details",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"journal",
-								"edit-details"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Add Journal",
 					"request": {
 						"auth": {
@@ -409,7 +413,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTczNzUxNywiZXhwIjoxNzM1ODIzOTE3fQ.2w8BcghabcUAC5fmO6Wg_BexcHr6vFeT1SIl2BFzzsY",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
 									"type": "string"
 								}
 							]
@@ -418,7 +422,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"WorldCup\",\r\n    \"body\": \"GOAT\",\r\n    \"author\": \"messi\",\r\n    \"tags\": [\"WC\",\"Qatar\"]\r\n}",
+							"raw": "{\r\n    \"title\": \"The Hidden World of Deep-Sea Bioluminescence\",\r\n    \"body\": \"In the ocean's darkest depths, an extraordinary light show unfolds as countless creatures produce their own biological light. This phenomenon, known as bioluminescence, serves various purposes: attracting prey, deterring predators, and finding mates. Recent deep-sea expeditions have discovered new species with unprecedented light-producing capabilities, challenging our understanding of marine biology. These discoveries not only expand our knowledge of ocean ecosystems but also inspire innovations in biotechnology and sustainable lighting solutions.\",\r\n    \"author\": \"messi\",\r\n    \"tags\": [\"marine biology\", \"science\", \"nature\", \"discovery\", \"innovation\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -441,6 +445,45 @@
 					"response": []
 				},
 				{
+					"name": "Edit Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGFuIiwiaWF0IjoxNzM1NzkwMTQzLCJleHAiOjE3MzU4NzY1NDN9.uy78t1VOiw8ERfJedBcRnVubUeUN14m7nKrfiNKfinA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"67760c7be2ce0e09923e3877\",\r\n    \"title\": \"What's the behind of music memory!!\",\r\n    \"body\": \"Why do certain songs stick in our heads while others fade away? Scientists have discovered that music memory involves complex neural networks that connect emotion, memory, and sensory processing. Catchy tunes, known as \\\"earworms,\\\" often feature simple, repetitive patterns and unexpected variations that capture our brain's attention. Additionally, songs associated with significant life events become deeply embedded in our long-term memory through emotional connections. This explains why hearing an old favorite can instantly transport us back to specific moments in time.\",\r\n    \"tags\": [\"neuroscience\", \"psychology\", \"music\", \"memory\", \"research\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/edit-details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"edit-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "LikeJournal",
 					"request": {
 						"auth": {
@@ -448,7 +491,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTczNzY5MywiZXhwIjoxNzM1ODI0MDkzfQ.Ket_tbrhPuzXK0H1OllHLgVTE03WxorzfBrC8C4yui4",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MjIxMiwiZXhwIjoxNzM1ODc4NjEyfQ.4cYruJ8Ajq1r2jPYcBUk5SLejVgLTUoioXd42tlKRFU",
 									"type": "string"
 								}
 							]
@@ -457,7 +500,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677540c05d01fe3d02e4c3f7",
+							"raw": "67760c7be2ce0e09923e3877",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -480,6 +523,84 @@
 					"response": []
 				},
 				{
+					"name": "UnlikeJournal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGFuIiwiaWF0IjoxNzM1NzkxMjQyLCJleHAiOjE3MzU4Nzc2NDJ9.o9jgzCF0rm62ylooAycWi5Lc2ri94pdZK10V3z9FtgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "67760c7be2ce0e09923e3877",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/unlike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"unlike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repost",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MjU5MywiZXhwIjoxNzM1ODc4OTkzfQ.lR_-EU7IEoSA1y1lmNRvBUUkiQ4SdG-sEcyFNNOwREk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "67760c7be2ce0e09923e3877",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/repost",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"repost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Delete Journal",
 					"request": {
 						"auth": {
@@ -487,7 +608,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG9uIiwiaWF0IjoxNzM1Njc3NTgwLCJleHAiOjE3MzU3NjM5ODB9.NIgamV3d-u-tjGy0-1beDguXnEOAXgPtZ60bvdCNVZQ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MjU5MywiZXhwIjoxNzM1ODc4OTkzfQ.lR_-EU7IEoSA1y1lmNRvBUUkiQ4SdG-sEcyFNNOwREk",
 									"type": "string"
 								}
 							]
@@ -496,10 +617,10 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\" : \"677457b63099f120b683fe93\"\r\n}",
+							"raw": "67760c7be2ce0e09923e3877",
 							"options": {
 								"raw": {
-									"language": "json"
+									"language": "text"
 								}
 							}
 						},
@@ -521,30 +642,294 @@
 			]
 		},
 		{
-			"name": "EntryCheck",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8000",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000"
+			"name": "Admin",
+			"item": [
+				{
+					"name": "admin-login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin-login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MjgzMSwiZXhwIjoxNzM1ODc5MjMxfQ.bjvZ5Sajnlv7VqzyO-RQ4gl3O7n1XXJXzDu9g5mXZ9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Journals",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MzM4NiwiZXhwIjoxNzM1ODc5Nzg2fQ.ng2Rd-LpE4U52Qc2t1DyzfymE1vrMtQ764NNT_gYihI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/journals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"journals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove-User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MjgzMSwiZXhwIjoxNzM1ODc5MjMxfQ.bjvZ5Sajnlv7VqzyO-RQ4gl3O7n1XXJXzDu9g5mXZ9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "messi",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin/remove-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"remove-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove-Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTc5MzQ5MiwiZXhwIjoxNzM1ODc5ODkyfQ.0q4uRfXn0wtl2zwYkHEKX3sUNLiSaeOkoWHVuY1QNio",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "67761ad8c7c58e24ec34187b",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin/remove-journal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"remove-journal"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "home",
+			"name": "PublicAccess",
+			"item": [
+				{
+					"name": "Popular",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recent",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"recent"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/search?query=h",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "h"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JournalAccess",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "67761d74784559016c8d97b4",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/article",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"article"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hello",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG9uIiwiaWF0IjoxNzM1Njc3NTgwLCJleHAiOjE3MzU3NjM5ODB9.NIgamV3d-u-tjGy0-1beDguXnEOAXgPtZ60bvdCNVZQ",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
 							"type": "string"
 						}
 					]
@@ -552,14 +937,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8000/home",
+					"raw": "http://localhost:8000/hello",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8000",
 					"path": [
-						"home"
+						"hello"
 					]
 				}
 			},
