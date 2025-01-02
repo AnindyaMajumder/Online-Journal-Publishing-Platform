@@ -348,3 +348,78 @@ http://localhost:8000
   - `204 No Content`: "Journal not found"
 
 ---
+# JWT and How It Works 
+
+## How JWT Works
+
+<details>
+  <summary>1. User Logs In</summary>
+  The React app sends the user's credentials (like username and password) to the Spring Boot backend using Axios.
+</details>
+
+<details>
+  <summary>2. Token Created</summary>
+  The Spring Boot backend verifies the credentials. If correct, it creates a JWT, which includes user information (e.g., user ID, roles).  
+  The token is signed using a secret key, ensuring it cannot be tampered with.
+</details>
+
+<details>
+  <summary>3. Token Sent to React</summary>
+  The backend sends the JWT back to the React app, which stores it securely, typically in **localStorage** or **sessionStorage** (or in a cookie for added security).
+</details>
+
+<details>
+  <summary>4. Token Used for Requests</summary>
+  For every subsequent API call from React to the Spring Boot backend, the React app includes the JWT in the request header using Axios.
+</details>
+
+<details>
+  <summary>5. Token Verified by Spring Boot</summary>
+  The backend checks the token’s validity and signature. If valid, it processes the request and sends the appropriate response.
+</details>
+
+<details>
+  <summary>6. Token Expiry</summary>
+  JWTs often have an expiration time (e.g., 24 hours). After expiration, the React app must prompt the user to log in again to get a new token.
+</details>
+
+---
+
+## Passing JWT Using `Authorization: Bearer` with Axios
+
+  Header Format
+  When making requests from React, include the JWT in the `Authorization` header.
+
+  ```javascript
+  import axios from 'axios';
+
+  const token = localStorage.getItem('jwtToken'); // Retrieve the token
+
+  axios.get('/api/resource', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  ```
+
+
+  Set a Global Header
+  You can configure Axios to include the JWT in all requests automatically:
+
+  ```javascript
+  import axios from 'axios';
+
+  const token = localStorage.getItem('jwtToken');
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  }
+  ```
+
+
+---
