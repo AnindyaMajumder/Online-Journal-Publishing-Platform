@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -36,10 +35,12 @@ public class PublicService {
         return journalRepo.findAll(Sort.by(Sort.Direction.DESC, "likeCount"));
     }
 
+    // sorted by publishedDate in descending order
     public List<JournalEntity> getRecentPosts() {
         return journalRepo.findAll(Sort.by(Sort.Direction.DESC, "publishedDate"));
     }
 
+    // case-insensitive partial search
     public List<JournalEntity> searchJournalsByTitle(String query) {
         return journalRepo.findByTitleRegex("(?i).*" + query + ".*");
     }
@@ -56,13 +57,16 @@ public class PublicService {
             HttpHeaders headers = new HttpHeaders();
 
             headers.set("Content-Type", "application/json");
-            String jsonpayload = "{ \"inputs\": \"" + journal.getBody() + "\" }";
-            HttpEntity<String> entity = new HttpEntity<>(jsonpayload, headers);
+            headers.set("Authorization", "Bearer " + apiKey);
 
-            ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.POST, entity, String.class);
+            String payload = "{ \"inputs\": \"" + journal.getBody() + "\" }";
+            HttpEntity<String> entity = new HttpEntity<>(payload, headers);
+
+            ResponseEntity<String> response = restTemplate.postForEntity(apiUrl, entity, String.class);
 
             return response.getBody();
         }
         return null;
     }
+
 }
