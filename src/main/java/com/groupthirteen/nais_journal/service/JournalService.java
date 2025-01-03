@@ -6,11 +6,9 @@ import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.model.UserEntity;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,13 +57,13 @@ public class JournalService {
                         return false; // Journal not in the user's list
                     }
                 } else {
-                    return false; // User not found
+                    return false;
                 }
             } else {
-                return false; // Journal not found
+                return false;
             }
         } catch (Exception e) {
-            return false; // Exception occurred
+            return false;
         }
     }
 
@@ -92,24 +90,54 @@ public class JournalService {
         }
     }
 
-    public boolean deleteJournal(String username, ObjectId journal) {
+    public boolean deleteJournal(String username, ObjectId journalId) {
         try {
-            Optional<JournalEntity> journalEntity = journalRepo.findById(journal);
-            if (journalEntity.isPresent()) {
-                UserEntity user = userEntryRepo.findByUsername(username);
-                if (user.getLikedJournals().stream().anyMatch(j -> j.getId().equals(journal))) {
-                    journalRepo.delete(journalEntity.get());
-                    user.getLikedJournals().removeIf(j -> j.getId().equals(journal));
-                    userEntryRepo.save(user); // Save updated user
-                    return true;
+            // Find the journal by its ID
+            Optional<JournalEntity> journalEntityOptional = journalRepo.findById(journalId);
+            if (journalEntityOptional.isEmpty()) {
+                return false; // Journal not found
+            }
+
+            JournalEntity journalEntity = journalEntityOptional.get();
+
+            // Remove the journal from the owner's journal entries
+            UserEntity owner = userEntryRepo.findByUsername(username);
+            if (owner == null ||
+                    owner.getJournalEntries().stream().noneMatch(j -> j.getId().equals(journalId))) {
+                return false; // Owner doesn't own this journal
+            }
+
+            owner.getJournalEntries().removeIf(j -> j.getId().equals(journalId));
+            userEntryRepo.save(owner); // Save updated owner
+
+            // Remove the journal from all users' liked and reposted journals
+            List<UserEntity> allUsers = userEntryRepo.findAll(); // Fetch all users
+            for (UserEntity user : allUsers) {
+                boolean updated = false;
+
+                // Remove from liked journals
+                if (user.getLikedJournals().removeIf(j -> j.getId().equals(journalId))) {
+                    updated = true;
+                }
+
+                // Remove from reposted journals
+                if (user.getRepostedJournals().removeIf(j -> j.getId().equals(journalId))) {
+                    updated = true;
+                }
+                if (updated) {
+                    userEntryRepo.save(user);
                 }
             }
-            return false; // Journal not found or not liked by user
+
+            journalRepo.delete(journalEntity);
+
+            return true;
         } catch (Exception e) {
             System.err.println("Error deleting journal: " + e.getMessage());
             return false;
         }
     }
+
 
     public boolean likeJournal(String username, ObjectId journalId) {
         try {
@@ -169,16 +197,11 @@ public class JournalService {
 
                 userEntryRepo.save(user);
 
-                return true; // Successfully reposted
+                return true;
             }
 
-            // Return false if either the journal or user is not found
             return false;
         } catch (Exception e) {
-            // Log the exception for debugging purposes
-            e.printStackTrace();
-
-            // Return false in case of any exceptions
             return false;
         }
     }
