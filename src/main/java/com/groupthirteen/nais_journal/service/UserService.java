@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -132,16 +131,4 @@ public class UserService {
         }
     }
 
-    public List<JournalEntity> repostJournals(String username) {
-        try {
-            UserEntity userEntity = userEntryRepo.findByUsername(username);
-            if (userEntity == null) {
-                return null;
-            } else {
-                return userEntity.getRepostedJournals();
-            }
-        } catch (Exception e) {
-            return null;
-        }
-    }
 }
