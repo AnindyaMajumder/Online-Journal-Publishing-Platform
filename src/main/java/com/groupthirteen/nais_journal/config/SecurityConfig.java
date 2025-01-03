@@ -30,6 +30,7 @@ public class SecurityConfig {
                     // Frontend port
                     corsConfiguration.addAllowedOriginPattern("*");
                     corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+                    corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
                     corsConfiguration.setAllowCredentials(false);
                     return corsConfiguration;
                 }))
