@@ -8,7 +8,7 @@ export default function Login() {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white p-6 rounded shadow-lg w-96">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Login</h2>
-        <form>
+        <form method="POST">
           <div className="mb-4">
             <label
               htmlFor="username"

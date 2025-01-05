@@ -4,7 +4,7 @@ import Header from "./Header";
 
 export default function LoginBackground({ children }) {
   return (
-    <div className="bg-yellow-20 min-h-screen">
+    <div className="bg-yellow-20 min-h-center">
       <Header /> {/* Use Header here */}
       <hr className="mt-4 border-gray-900" />
       <div className="relative h-[calc(100vh-100px)]">
