@@ -1,15 +1,55 @@
 # NAIS Journal App API Documentation
 
+## Overview
+
+Welcome to the NAIS Journal App API! This documentation provides a comprehensive guide to the endpoints available for public, user, journal, and admin interactions within the application. Each section includes details about the endpoint, request format, and expected responses.
+
 ## General Information
+
 - **Base URL**: `http://localhost:8000`
 - **Authorization**: Most endpoints require a Bearer Token passed in the `Authorization` header.
 
 ---
 
-## Authentication APIs
+## **Public APIs**
 
-### 1. **Register User**
-- **Endpoint**: `POST /register`
+### **1. Hello**
+- **Endpoint**: `GET http://localhost:8000/hello`
+- **Description**: A simple endpoint to test connectivity.
+- **Response**: **HTTP 200 OK**
+
+### **2. Get Popular Posts**
+- **Endpoint**: `GET http://localhost:8000/`
+- **Description**: Fetches a list of the most popular posts.
+- **Response**: **HTTP 200 OK**
+
+### **3. Get Recent Posts**
+- **Endpoint**: `GET http://localhost:8000/recent`
+- **Description**: Fetches a list of the most recent posts.
+- **Response**: **HTTP 200 OK**
+
+### **4. Search Journals**
+- **Endpoint**: `GET http://localhost:8000/search`
+- **Query Parameter**: `query` - Search term.
+- **Response**: **HTTP 200 OK** - A list of journals matching the search query.
+
+### **5. Journal Access**
+- **Endpoint**: `POST http://localhost:8000/article`
+- **Request Body**: Journal ID as a string.
+- **Response**: **HTTP 200 OK** - Returns the details of a journal.
+
+### **6. Summarizer**
+- **Endpoint**: `POST http://localhost:8000/summary`
+- **Description**: Generates a summary of a journal.
+- **Request Body**: Journal ID as a string.
+- **Response**: **HTTP 200 OK** - Journal summary.
+
+---
+
+## **Authentication APIs**
+
+### **1. Register User**
+- **Endpoint**: `POST http://localhost:8000/register`
 - **Description**: Registers a new user.
 - **Request Body**:
   ```json
@@ -22,10 +62,12 @@
     "bio": "string"
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 201 Created** - User registered successfully.
+  - **HTTP 400 Bad Request** - User already exists.
 
-### 2. **Login User**
-- **Endpoint**: `POST /login`
+### **2. Login User**
+- **Endpoint**: `POST http://localhost:8000/login`
 - **Description**: Authenticates a user and returns a JWT token.
 - **Request Body**:
   ```json
@@ -34,10 +76,12 @@
     "password": "string"
   }
   ```
-- **Response**: JWT Token.
+- **Response**:
+  - **HTTP 200 OK** - JWT Token.
+  - **HTTP 400 Bad Request** - Invalid username or password.
 
-### 3. **Admin Login**
-- **Endpoint**: `POST /admin-login`
+### **3. Admin Login**
+- **Endpoint**: `POST http://localhost:8000/admin-login`
 - **Description**: Authenticates an admin and returns a JWT token.
 - **Request Body**:
   ```json
@@ -46,17 +90,21 @@
     "password": "string"
   }
   ```
-- **Response**: JWT Token.
+- **Response**:
+  - **HTTP 200 OK** - JWT Token.
+  - **HTTP 400 Bad Request** - Invalid username or password.
 
-### 4. **Logout**
-- **Endpoint**: `POST /logout`
+### **4. Logout**
+- **Endpoint**: `POST http://localhost:8000/logout`
 - **Description**: Logs out a user by invalidating their token.
 - **Headers**:
   - `Authorization: Bearer <token>`
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - User logged out successfully.
+  - **HTTP 400 Bad Request** - Invalid token.
 
-### 5. **Forget Password**
-- **Endpoint**: `POST /forget-password`
+### **5. Forget Password**
+- **Endpoint**: `POST http://localhost:8000/forget-password`
 - **Description**: Sends a reset code to the user’s email.
 - **Request Body**:
   ```json
@@ -64,10 +112,12 @@
     "username": "string"
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Reset code sent successfully.
+  - **HTTP 422 Unprocessable Entity** - Failed to send reset email.
 
-### 6. **Reset Password**
-- **Endpoint**: `POST /reset-password`
+### **6. Reset Password**
+- **Endpoint**: `POST http://localhost:8000/reset-password`
 - **Description**: Resets a user's password using a reset code.
 - **Request Body**:
   ```json
@@ -77,21 +127,25 @@
     "password": "string"
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Password reset successfully.
+  - **HTTP 400 Bad Request** - Invalid or expired reset code.
 
 ---
 
-## User APIs
+## **User APIs**
 
-### 1. **Get My Info**
-- **Endpoint**: `GET /user/my-info`
+### **1. Get My Info**
+- **Endpoint**: `GET http://localhost:8000/user/my-info`
 - **Description**: Retrieves information about the logged-in user.
 - **Headers**:
   - `Authorization: Bearer <token>`
-- **Response**: User details.
+- **Response**:
+  - **HTTP 200 OK** - User details.
+  - **HTTP 404 Not Found** - User not found.
 
-### 2. **Edit User Details**
-- **Endpoint**: `PUT /user/edit-details`
+### **2. Edit User Details**
+- **Endpoint**: `PUT http://localhost:8000/user/edit-details`
 - **Description**: Updates user details.
 - **Headers**:
   - `Authorization: Bearer <token>`
@@ -104,10 +158,12 @@
     "email": "string"
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - User updated successfully.
+  - **HTTP 400 Bad Request** - Update failed.
 
-### 3. **Delete User**
-- **Endpoint**: `DELETE /user/delete`
+### **3. Delete User**
+- **Endpoint**: `DELETE http://localhost:8000/user/delete`
 - **Description**: Deletes the logged-in user.
 - **Headers**:
   - `Authorization: Bearer <token>`
@@ -117,35 +173,43 @@
     "password": "string"
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - User deleted successfully.
+  - **HTTP 400 Bad Request** - Invalid password.
 
-### 4. **Get My Posts**
-- **Endpoint**: `GET /user/my-posts`
+### **4. Get My Posts**
+- **Endpoint**: `GET http://localhost:8000/user/my-posts`
 - **Description**: Retrieves posts created by the logged-in user.
 - **Headers**:
   - `Authorization: Bearer <token>`
-- **Response**: List of posts.
+- **Response**:
+  - **HTTP 200 OK** - List of posts.
+  - **HTTP 204 No Content** - No posts found.
 
-### 5. **Get Liked Posts**
-- **Endpoint**: `GET /user/liked`
+### **5. Get Liked Posts**
+- **Endpoint**: `GET http://localhost:8000/user/liked`
 - **Description**: Retrieves journals liked by the user.
 - **Headers**:
   - `Authorization: Bearer <token>`
-- **Response**: List of liked journals.
+- **Response**:
+  - **HTTP 200 OK** - List of liked journals.
+  - **HTTP 204 No Content** - No liked journals found.
 
-### 6. **Get Saved Posts**
-- **Endpoint**: `GET /user/saved`
+### **6. Get Saved Posts**
+- **Endpoint**: `GET http://localhost:8000/user/saved`
 - **Description**: Retrieves journals saved by the user.
 - **Headers**:
   - `Authorization: Bearer <token>`
-- **Response**: List of saved journals.
+- **Response**:
+  - **HTTP 200 OK** - List of saved journals.
+  - **HTTP 204 No Content** - No saved journals found.
 
 ---
 
-## Journal APIs
+## **Journal APIs**
 
-### 1. **Add Journal**
-- **Endpoint**: `POST /journal/add-journal`
+### **1. Add Journal**
+- **Endpoint**: `POST http://localhost:8000/journal/add-journal`
 - **Description**: Adds a new journal.
 - **Headers**:
   - `Authorization: Bearer <token>`
@@ -157,10 +221,12 @@
     "tags": ["string"]
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 201 Created** - Journal added successfully.
+  - **HTTP 400 Bad Request** - Add failed.
 
-### 2. **Edit Journal**
-- **Endpoint**: `PUT /journal/edit-details`
+### **2. Edit Journal**
+- **Endpoint**: `PUT http://localhost:8000/journal/edit-details`
 - **Description**: Updates journal details.
 - **Headers**:
   - `Authorization: Bearer <token>`
@@ -172,10 +238,12 @@
     "body": "string"
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Journal updated successfully.
+  - **HTTP 400 Bad Request** - Update failed.
 
-### 3. **Delete Journal**
-- **Endpoint**: `DELETE /journal/delete-journal`
+### **3. Delete Journal**
+- **Endpoint**: `DELETE http://localhost:8000/journal/delete-journal`
 - **Description**: Deletes a journal.
 - **Headers**:
   - `Authorization: Bearer <token>`
@@ -185,97 +253,75 @@
     "journalId": "string"
   }
   ```
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Journal deleted successfully.
+  - **HTTP 400 Bad Request** - Delete failed.
 
-### 4. **Like Journal**
-- **Endpoint**: `POST /journal/like`
+### **4. Like Journal**
+- **Endpoint**: `POST http://localhost:8000/journal/like`
 - **Description**: Likes a journal.
 - **Headers**:
   - `Authorization: Bearer <token>`
 - **Request Body**: Journal ID as a string.
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Journal liked successfully.
+  - **HTTP 400 Bad Request** - Like failed.
 
-### 5. **Unlike Journal**
-- **Endpoint**: `POST /journal/unlike`
+### **5. Unlike Journal**
+- **Endpoint**: `POST http://localhost:8000/journal/unlike`
 - **Description**: Removes a like from a journal.
 - **Headers**:
   - `Authorization: Bearer <token>`
 - **Request Body**: Journal ID as a string.
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Journal unliked successfully.
+  - **HTTP 400 Bad Request** - Unlike failed.
 
-### 6. **Save Journal**
-- **Endpoint**: `POST /journal/save-journal`
+### **6. Save Journal**
+- **Endpoint**: `POST http://localhost:8000/journal/save-journal`
 - **Description**: Saves a journal for later reference.
 - **Headers**:
   - `Authorization: Bearer <token>`
 - **Request Body**: Journal ID as a string.
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Journal saved successfully.
+  - **HTTP 400 Bad Request** - Save failed.
 
 ---
 
-## Admin APIs
+## **Admin APIs**
 
-### 1. **Get All Users**
-- **Endpoint**: `GET /admin/users`
+### **1. Get All Users**
+- **Endpoint**: `GET http://localhost:8000/admin/users`
 - **Headers**:
   - `Authorization: Bearer <admin_token>`
-- **Response**: List of users.
+- **Response**: **HTTP 200 OK** - List of users.
 
-### 2. **Get All Journals**
-- **Endpoint**: `GET /admin/journals`
+### **2. Get All Journals**
+- **Endpoint**: `GET http://localhost:8000/admin/journals`
 - **Headers**:
   - `Authorization: Bearer <admin_token>`
-- **Response**: List of journals.
+- **Response**: **HTTP 200 OK** - List of journals.
 
-### 3. **Remove User**
-- **Endpoint**: `POST /admin/remove-user`
+### **3. Remove User**
+- **Endpoint**: `POST http://localhost:8000/admin/remove-user`
 - **Headers**:
   - `Authorization: Bearer <admin_token>`
 - **Request Body**: Username as a string.
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - User removed successfully.
+  - **HTTP 400 Bad Request** - Remove failed.
 
-### 4. **Remove Journal**
-- **Endpoint**: `POST /admin/remove-journal`
+### **4. Remove Journal**
+- **Endpoint**: `POST http://localhost:8000/admin/remove-journal`
 - **Headers**:
   - `Authorization: Bearer <admin_token>`
 - **Request Body**: Journal ID as a string.
-- **Response**: Success or error message.
+- **Response**:
+  - **HTTP 200 OK** - Journal removed successfully.
+  - **HTTP 400 Bad Request** - Remove failed.
 
 ---
-
-## Public APIs
-
-### 1. **Hello**
-- **Endpoint**: `GET /hello`
-- **Description**: A simple endpoint to test connectivity.
-
-### 2. **Get Popular Posts**
-- **Endpoint**: `GET /`
-- **Response**: List of popular posts.
-
-### 3. **Get Recent Posts**
-- **Endpoint**: `GET /recent`
-- **Response**: List of recent posts.
-
-### 4. **Search Journals**
-- **Endpoint**: `GET /search`
-- **Query Parameter**:
-  - `query`: Search term.
-- **Response**: List of journals matching the search query.
-
-### 5. **Journal Access**
-- **Endpoint**: `POST /article`
-- **Request Body**: Journal ID as a string.
-- **Response**: Journal details.
-
-### 6. **Summarizer**
-- **Endpoint**: `POST /summary`
-- **Description**: Generates a summary of a journal.
-- **Request Body**: Journal ID as a string.
-- **Response**: Journal summary.
-
----
-
 
 
 
