@@ -1,393 +1,282 @@
-# NAIS Journal API Documentation
+# NAIS Journal App API Documentation
 
-## Base URL
-
-```
-http://localhost:8000
-```
+## General Information
+- **Base URL**: `http://localhost:8000`
+- **Authorization**: Most endpoints require a Bearer Token passed in the `Authorization` header.
 
 ---
 
-## Table of Contents
+## Authentication APIs
 
-1. **Hello Endpoint**
-2. **Authentication**
-3. **User Management**
-4. **Journal Management**
-5. **Public Access**
-6. **Admin Management**
+### 1. **Register User**
+- **Endpoint**: `POST /register`
+- **Description**: Registers a new user.
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "password": "string",
+    "email": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "bio": "string"
+  }
+  ```
+- **Response**: Success or error message.
 
----
+### 2. **Login User**
+- **Endpoint**: `POST /login`
+- **Description**: Authenticates a user and returns a JWT token.
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "password": "string"
+  }
+  ```
+- **Response**: JWT Token.
 
-## 1. Hello Endpoint
+### 3. **Admin Login**
+- **Endpoint**: `POST /admin-login`
+- **Description**: Authenticates an admin and returns a JWT token.
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "password": "string"
+  }
+  ```
+- **Response**: JWT Token.
 
-### Hello Message
-**GET** `/hello`
+### 4. **Logout**
+- **Endpoint**: `POST /logout`
+- **Description**: Logs out a user by invalidating their token.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Response**: Success or error message.
 
-- **Headers:** None
-- **Response:**
-  - `200 OK`: "WELCOME TO NAIS JOURNAL"
+### 5. **Forget Password**
+- **Endpoint**: `POST /forget-password`
+- **Description**: Sends a reset code to the user’s email.
+- **Request Body**:
+  ```json
+  {
+    "username": "string"
+  }
+  ```
+- **Response**: Success or error message.
 
----
-
-## 2. Authentication
-
-### Register
-**POST** `/register`
-
-- **Headers:** None
-- **Body:**
-```json
-{
-    "username": "lamo",
-    "password": "lamo",
-    "email": "anindyamajumder.54@gmail.com",
-    "firstName": "mola",
-    "lastName": "lamo",
-    "bio": "Sportsman"
-}
-```
-- **Response:**
-  - `200 OK`: "User registered successfully"
-  - `400 Bad Request`: "User already exists"
-
-### Login
-**POST** `/login`
-
-- **Headers:** None
-- **Body:**
-```json
-{
-    "username": "adnan",
-    "password": "adnan"
-}
-```
-- **Response:**
-  - `200 OK`: JWT Token
-  - `400 Bad Request`: "Invalid username or password"
-
-### Admin Login
-**POST** `/admin-login`
-
-- **Headers:** None
-- **Body:**
-```json
-{
-    "username": "admin",
-    "password": "admin"
-}
-```
-- **Response:**
-  - `200 OK`: JWT Token
-  - `400 Bad Request`: "Invalid username or password"
-
-### Logout
-**POST** `/logout`
-
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: "User logged out successfully"
-  - `400 Bad Request`: "Invalid token"
-
-### Forget Password
-**POST** `/forget-password`
-
-- **Headers:** None
-- **Body:**
-```json
-{
-    "username": "alan"
-}
-```
-- **Response:**
-  - `200 OK`: "Mail with reset-code has been sent"
-  - `422 Unprocessable Entity`: Error message
-
-### Reset Password
-**POST** `/reset-password`
-
-- **Headers:** None
-- **Body:**
-```json
-{
-    "email": "anindyamajumder.54@gmail.com",
-    "resetCode": "17acfe",
-    "username": "alan",
-    "password": "ALAN"
-}
-```
-- **Response:**
-  - `200 OK`: "Reset password successfully"
-  - `422 Unprocessable Entity`: Error message
+### 6. **Reset Password**
+- **Endpoint**: `POST /reset-password`
+- **Description**: Resets a user's password using a reset code.
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "resetCode": "string",
+    "password": "string"
+  }
+  ```
+- **Response**: Success or error message.
 
 ---
 
-## 3. User Management
+## User APIs
 
-### Get My Info
-**GET** `/user/my-info`
+### 1. **Get My Info**
+- **Endpoint**: `GET /user/my-info`
+- **Description**: Retrieves information about the logged-in user.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Response**: User details.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: User details
-  - `404 Not Found`: User not found
+### 2. **Edit User Details**
+- **Endpoint**: `PUT /user/edit-details`
+- **Description**: Updates user details.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**:
+  ```json
+  {
+    "firstName": "string",
+    "lastName": "string",
+    "bio": "string",
+    "email": "string"
+  }
+  ```
+- **Response**: Success or error message.
 
-### Get My Posts
-**GET** `/user/my-posts`
+### 3. **Delete User**
+- **Endpoint**: `DELETE /user/delete`
+- **Description**: Deletes the logged-in user.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**:
+  ```json
+  {
+    "password": "string"
+  }
+  ```
+- **Response**: Success or error message.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: List of user's journal entries
-  - `204 No Content`: No posts available
+### 4. **Get My Posts**
+- **Endpoint**: `GET /user/my-posts`
+- **Description**: Retrieves posts created by the logged-in user.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Response**: List of posts.
 
-### Get Liked Posts
-**GET** `/user/liked`
+### 5. **Get Liked Posts**
+- **Endpoint**: `GET /user/liked`
+- **Description**: Retrieves journals liked by the user.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Response**: List of liked journals.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: List of liked journals
-  - `204 No Content`: No liked journals available
-
-### Get Reposted Journals
-**GET** `/user/reposted`
-
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: List of reposted journals
-  - `204 No Content`: No reposted journals available
-
-### Update User Details
-**PUT** `/user/edit-details`
-
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```json
-{
-    "username": "messi",
-    "firstName": "Lio",
-    "lastName": "Messi",
-    "email": "anindyamajumder.54@gmail.com",
-    "password": "messi"
-}
-```
-- **Response:**
-  - `200 OK`: "User updated successfully"
-  - `400 Bad Request`: "User update failed"
-
-### Delete User
-**DELETE** `/user/delete`
-
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```json
-{
-    "username": "messi",
-    "email": "anindyamajumder.54@gmail.com",
-    "password": "messi"
-}
-```
-- **Response:**
-  - `200 OK`: "User deleted successfully"
-  - `400 Bad Request`: "User delete failed"
+### 6. **Get Saved Posts**
+- **Endpoint**: `GET /user/saved`
+- **Description**: Retrieves journals saved by the user.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Response**: List of saved journals.
 
 ---
 
-## 4. Journal Management
+## Journal APIs
 
-### Add Journal
-**POST** `/journal/add-journal`
+### 1. **Add Journal**
+- **Endpoint**: `POST /journal/add-journal`
+- **Description**: Adds a new journal.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**:
+  ```json
+  {
+    "title": "string",
+    "body": "string",
+    "tags": ["string"]
+  }
+  ```
+- **Response**: Success or error message.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```json
-{
-    "title": "The Art of Traditional Tea Ceremonies",
-    "body": "[Journal Content]",
-    "tags": ["culture", "tradition", "mindfulness", "beverages", "history"]
-}
-```
-- **Response:**
-  - `200 OK`: "Journal added successfully"
-  - `400 Bad Request`: "Journal add failed"
+### 2. **Edit Journal**
+- **Endpoint**: `PUT /journal/edit-details`
+- **Description**: Updates journal details.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**:
+  ```json
+  {
+    "id": "string",
+    "title": "string",
+    "body": "string"
+  }
+  ```
+- **Response**: Success or error message.
 
-### Edit Journal
-**PUT** `/journal/edit-details`
+### 3. **Delete Journal**
+- **Endpoint**: `DELETE /journal/delete-journal`
+- **Description**: Deletes a journal.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**:
+  ```json
+  {
+    "journalId": "string"
+  }
+  ```
+- **Response**: Success or error message.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```json
-{
-    "id": "67760c7be2ce0e09923e3877",
-    "title": "What's the behind of music memory!!",
-    "body": "[Updated Journal Content]",
-    "tags": ["neuroscience", "psychology", "music", "memory", "research"]
-}
-```
-- **Response:**
-  - `200 OK`: "Journal updated successfully"
-  - `400 Bad Request`: "Journal update failed"
+### 4. **Like Journal**
+- **Endpoint**: `POST /journal/like`
+- **Description**: Likes a journal.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**: Journal ID as a string.
+- **Response**: Success or error message.
 
-### Delete Journal
-**DELETE** `/journal/delete-journal`
+### 5. **Unlike Journal**
+- **Endpoint**: `POST /journal/unlike`
+- **Description**: Removes a like from a journal.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**: Journal ID as a string.
+- **Response**: Success or error message.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```
-"67760c7be2ce0e09923e3877"
-```
-- **Response:**
-  - `200 OK`: "Journal deleted successfully"
-  - `400 Bad Request`: "Journal delete failed"
-
-### Like Journal
-**POST** `/journal/like`
-
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```
-"677702f1ae9be405a9ed4e71"
-```
-- **Response:**
-  - `200 OK`: "Journal liked successfully"
-  - `400 Bad Request`: "Failed to like journal"
-
-### Unlike Journal
-**POST** `/journal/unlike`
-
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```
-"67760c7be2ce0e09923e3877"
-```
-- **Response:**
-  - `200 OK`: "Journal unliked successfully"
-  - `400 Bad Request`: "Failed to unlike journal"
-
-### Repost Journal
-**POST** `/journal/repost`
-
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```
-"67761d74784559016c8d97b4"
-```
-- **Response:**
-  - `200 OK`: "Journal reposted successfully"
-  - `400 Bad Request`: "Failed to repost journal"
+### 6. **Save Journal**
+- **Endpoint**: `POST /journal/save-journal`
+- **Description**: Saves a journal for later reference.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**: Journal ID as a string.
+- **Response**: Success or error message.
 
 ---
 
-## 5. Public Access
+## Admin APIs
 
-### Popular Journals
-**GET** `/`
+### 1. **Get All Users**
+- **Endpoint**: `GET /admin/users`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Response**: List of users.
 
-- **Headers:** None
-- **Response:**
-  - `200 OK`: List of popular journal entries
-  - `404 Not Found`: No journals found
+### 2. **Get All Journals**
+- **Endpoint**: `GET /admin/journals`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Response**: List of journals.
 
-### Recent Journals
-**GET** `/recent`
+### 3. **Remove User**
+- **Endpoint**: `POST /admin/remove-user`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Request Body**: Username as a string.
+- **Response**: Success or error message.
 
-- **Headers:** None
-- **Response:**
-  - `200 OK`: List of recent journal entries
-  - `404 Not Found`: No journals found
-
-### Search Journals
-**GET** `/search`
-
-- **Headers:** None
-- **Query Parameters:**
-  - `query`: Search term
-- **Response:**
-  - `200 OK`: List of matching journals
-  - `404 Not Found`: No matching journals found
-
-### Access Journal
-**POST** `/article`
-
-- **Headers:** None
-- **Body:**
-```
-"67761d74784559016c8d97b4"
-```
-- **Response:**
-  - `200 OK`: Journal details
-  - `404 Not Found`: Journal not found
-
-### Summarize Journal
-**POST** `/summary`
-
-- **Headers:** None
-- **Body:**
-```
-"677702aaae9be405a9ed4e70"
-```
-- **Response:**
-  - `200 OK`: Summary of the journal
+### 4. **Remove Journal**
+- **Endpoint**: `POST /admin/remove-journal`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Request Body**: Journal ID as a string.
+- **Response**: Success or error message.
 
 ---
 
-## 6. Admin Management
+## Public APIs
 
-### Get All Users
-**GET** `/admin/users`
+### 1. **Hello**
+- **Endpoint**: `GET /hello`
+- **Description**: A simple endpoint to test connectivity.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: List of users
-  - `204 No Content`: No users available
+### 2. **Get Popular Posts**
+- **Endpoint**: `GET /`
+- **Response**: List of popular posts.
 
-### Get All Journals
-**GET** `/admin/journals`
+### 3. **Get Recent Posts**
+- **Endpoint**: `GET /recent`
+- **Response**: List of recent posts.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Response:**
-  - `200 OK`: List of journals
-  - `204 No Content`: No journals available
+### 4. **Search Journals**
+- **Endpoint**: `GET /search`
+- **Query Parameter**:
+  - `query`: Search term.
+- **Response**: List of journals matching the search query.
 
-### Remove User
-**POST** `/admin/remove-user`
+### 5. **Journal Access**
+- **Endpoint**: `POST /article`
+- **Request Body**: Journal ID as a string.
+- **Response**: Journal details.
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```
-"adnan"
-```
-- **Response:**
-  - `200 OK`: "User deleted successfully"
-  - `204 No Content`: "User not found"
+### 6. **Summarizer**
+- **Endpoint**: `POST /summary`
+- **Description**: Generates a summary of a journal.
+- **Request Body**: Journal ID as a string.
+- **Response**: Journal summary.
 
-### Remove Journal
-**POST** `/admin/remove-journal`
+---
 
-- **Headers:**
-  - `Authorization: Bearer <JWT_TOKEN>`
-- **Body:**
-```
-"67761ad8c7c58e24ec34187b"
-```
-- **Response:**
-  - `200 OK`: "Journal deleted successfully"
-  - `204 No Content": "Journal not found"
+
 
 
 # JWT and How It Works 
