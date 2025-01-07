@@ -46,9 +46,9 @@ public class UserService {
                 if (user.getFirstName() != null) userEntity.setFirstName(user.getFirstName());
                 if (user.getLastName() != null) userEntity.setLastName(user.getLastName());
                 if (user.getBio() != null) userEntity.setBio(user.getBio());
-                if (user.getPassword() != null) userEntity.setPassword(user.getPassword());
+                if (user.getPassword() != null) userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
                 if (user.getEmail() != null) userEntity.setEmail(user.getEmail());
-                
+
                 userEntryRepo.save(userEntity);
                 return true;
 
