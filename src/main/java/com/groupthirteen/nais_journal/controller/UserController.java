@@ -77,16 +77,16 @@ public class UserController {
         }
         return ResponseEntity.ok(liked);
     }
-    @GetMapping("reposted")
+    @GetMapping("saved")
     public ResponseEntity<?> reposted(@RequestHeader("Authorization") String token) {
         String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
         String username = jwtUtils.getUsername(jwtToken);
 
-        List<JournalEntity> reposted = userService.listJournals(username);
-        if (reposted.isEmpty()) {
+        List<JournalEntity> saved = userService.savedJournals(username);
+        if (saved.isEmpty()) {
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.ok(reposted);
+            return ResponseEntity.ok(saved);
         }
     }
 }

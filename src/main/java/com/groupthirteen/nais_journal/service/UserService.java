@@ -47,8 +47,8 @@ public class UserService {
                 if (user.getLastName() != null) userEntity.setLastName(user.getLastName());
                 if (user.getBio() != null) userEntity.setBio(user.getBio());
                 if (user.getPassword() != null) userEntity.setPassword(user.getPassword());
-
-                userEntity.setEmail(user.getEmail());
+                if (user.getEmail() != null) userEntity.setEmail(user.getEmail());
+                
                 userEntryRepo.save(userEntity);
                 return true;
 
@@ -124,6 +124,18 @@ public class UserService {
             } else {
                 return userEntity.getLikedJournals();
 
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public List<JournalEntity> savedJournals(String username) {
+        try {
+            UserEntity userEntity = userEntryRepo.findByUsername(username);
+            if (userEntity == null) {
+                return null;
+            } else{
+                return userEntity.getSavedJournals();
             }
         } catch (Exception e) {
             return null;

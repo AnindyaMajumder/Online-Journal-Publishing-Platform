@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"lamo\",\r\n    \"password\": \"lamo\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"mola\",\r\n    \"lastName\": \"lamo\",\r\n    \"bio\": \"Sportsman\"\r\n}",
+							"raw": "{\r\n    \"username\": \"beast\",\r\n    \"password\": \"beast\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Mr.\",\r\n    \"lastName\": \"Beast\",\r\n    \"bio\": \"Youtuber\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"adnan\",\r\n    \"password\": \"adnan\"\r\n}",
+							"raw": "{\r\n    \"username\": \"beast\",\r\n    \"password\": \"beast\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,7 +79,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbiIsImlhdCI6MTczNTg1MzgyNywiZXhwIjoxNzM1OTQwMjI3fQ.tlFywUVSdM7NiKwz2NUGNJGuos2fkVYhsu2dB8ANNCM",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -108,7 +108,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4dXh1IiwiaWF0IjoxNzM0NTQ5NDkzLCJleHAiOjE3MzQ2MzU4OTN9.5clAcFLGCqRXMU-cykUmvm54lXcFEh2G8CzxvS-jSw8",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MDc2NCwiZXhwIjoxNzM2MzU3MTY0fQ.6J75QZZw3Bt6RIJY1OVtJLqy2I3duRrAxIBjg8QaMUk",
 									"type": "string"
 								}
 							]
@@ -117,7 +117,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"alan\"\r\n}\r\n",
+							"raw": "{\r\n    \"username\": \"beast\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,7 +148,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"resetCode\" : \"17acfe\",\r\n    \"username\" : \"alan\",\r\n    \"password\" : \"ALAN\"\r\n}",
+							"raw": "{\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"resetCode\" : \"1c930b\",\r\n    \"username\" : \"beast\",\r\n    \"password\" : \"beast\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -182,7 +182,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbiIsImlhdCI6MTczNTg1MzM4MSwiZXhwIjoxNzM1OTM5NzgxfQ.vVDy__Df_ezpcuBVL63Iecd8N5FEfsjHOrCcv8eCbIk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MDc2NCwiZXhwIjoxNzM2MzU3MTY0fQ.6J75QZZw3Bt6RIJY1OVtJLqy2I3duRrAxIBjg8QaMUk",
 									"type": "string"
 								}
 							]
@@ -219,7 +219,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -256,7 +256,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -286,14 +286,14 @@
 					"response": []
 				},
 				{
-					"name": "Reposted",
+					"name": "Saved",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5NDAyMSwiZXhwIjoxNzM1ODgwNDIxfQ.94-WEe9vkpyI82mACt73tGqNc4nr4foFAQ8qvWnkOEY",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -301,7 +301,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/user/reposted",
+							"raw": "http://localhost:8000/user/saved",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -309,7 +309,7 @@
 							"port": "8000",
 							"path": [
 								"user",
-								"reposted"
+								"saved"
 							],
 							"query": [
 								{
@@ -330,7 +330,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5Mzc1NiwiZXhwIjoxNzM1ODgwMTU2fQ.kbKMmoacLV-4ldG0eSEWNJOAiR-Fu1AmGmSoE4oxl8g",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -339,7 +339,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"firstName\": \"Lio\",\r\n    \"lastName\": \"Messi\",\r\n\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"password\": \"messi\"\r\n}",
+							"raw": "{\r\n    \"firstName\": \"Lionel.\",\r\n    \"lastName\": \"Messi\",\r\n    \"bio\" : \"Footballer\",\r\n    \"email\" : \"anindyamajumder.54@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -369,7 +369,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5Mzc1NiwiZXhwIjoxNzM1ODgwMTU2fQ.kbKMmoacLV-4ldG0eSEWNJOAiR-Fu1AmGmSoE4oxl8g",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4dXh1IiwiaWF0IjoxNzM2MjcwNjg5LCJleHAiOjE3MzYzNTcwODl9.Cryq6W2gbn48dT0IUa1RL6n8BouggoO2i7hSXmOhepw",
 									"type": "string"
 								}
 							]
@@ -378,7 +378,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"password\": \"messi\"\r\n}",
+							"raw": "{\r\n    \"password\": \"xuxu\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -413,7 +413,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFzdCIsImlhdCI6MTczNTg1MjY1MywiZXhwIjoxNzM1OTM5MDUzfQ.QBruOdCItcK2LNwurBdD8O0otDd4NvOoooj0Sigpico",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -422,7 +422,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"The Art of Traditional Tea Ceremonies\",\r\n    \"body\": \"Tea ceremonies represent more than just drinking tea—they embody cultural heritage, mindfulness, and social connection. From Japanese chanoyu to Chinese gongfu cha, these ritualized practices emphasize presence, respect, and attention to detail. Each movement and utensil carries symbolic meaning, creating a meditative experience that transcends mere refreshment. As modern life grows increasingly fast-paced, these ancient traditions offer valuable lessons in slowing down and finding beauty in simplicity.\",\r\n    \"tags\": [ \"culture\", \"tradition\", \"mindfulness\", \"beverages\", \"history\"]\r\n}",
+							"raw": "{\r\n    \"title\": \"Test-title\",\r\n    \"body\": \"test-body\",\r\n    \"tags\": [ \"culture\", \"tradition\", \"mindfulness\", \"beverages\", \"history\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -452,7 +452,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGFuIiwiaWF0IjoxNzM1NzkwMTQzLCJleHAiOjE3MzU4NzY1NDN9.uy78t1VOiw8ERfJedBcRnVubUeUN14m7nKrfiNKfinA",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MDc2NCwiZXhwIjoxNzM2MzU3MTY0fQ.6J75QZZw3Bt6RIJY1OVtJLqy2I3duRrAxIBjg8QaMUk",
 									"type": "string"
 								}
 							]
@@ -461,7 +461,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\" : \"67760c7be2ce0e09923e3877\",\r\n    \"title\": \"What's the behind of music memory!!\",\r\n    \"body\": \"Why do certain songs stick in our heads while others fade away? Scientists have discovered that music memory involves complex neural networks that connect emotion, memory, and sensory processing. Catchy tunes, known as \\\"earworms,\\\" often feature simple, repetitive patterns and unexpected variations that capture our brain's attention. Additionally, songs associated with significant life events become deeply embedded in our long-term memory through emotional connections. This explains why hearing an old favorite can instantly transport us back to specific moments in time.\",\r\n    \"tags\": [\"neuroscience\", \"psychology\", \"music\", \"memory\", \"research\"]\r\n}",
+							"raw": "{\r\n    \"id\" : \"677d6453707e8664faafc2fb\",\r\n    \"title\": \"World Cup\",\r\n    \"body\": \"RIGGED\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -491,7 +491,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZWFzdCIsImlhdCI6MTczNTg1MjY1MywiZXhwIjoxNzM1OTM5MDUzfQ.QBruOdCItcK2LNwurBdD8O0otDd4NvOoooj0Sigpico",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -500,7 +500,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677702f1ae9be405a9ed4e71",
+							"raw": "677d653b5b21862be1bc83e8",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -562,14 +562,14 @@
 					"response": []
 				},
 				{
-					"name": "Repost",
+					"name": "Save Journal",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbiIsImlhdCI6MTczNTg1MzM4MSwiZXhwIjoxNzM1OTM5NzgxfQ.vVDy__Df_ezpcuBVL63Iecd8N5FEfsjHOrCcv8eCbIk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -578,7 +578,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "67761d74784559016c8d97b4",
+							"raw": "677d653b5b21862be1bc83e8",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -586,7 +586,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/journal/repost",
+							"raw": "http://localhost:8000/journal/save-journal",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -594,7 +594,7 @@
 							"port": "8000",
 							"path": [
 								"journal",
-								"repost"
+								"save-journal"
 							]
 						}
 					},
@@ -608,7 +608,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNTc5MjU5MywiZXhwIjoxNzM1ODc4OTkzfQ.lR_-EU7IEoSA1y1lmNRvBUUkiQ4SdG-sEcyFNNOwREk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
 									"type": "string"
 								}
 							]
@@ -617,7 +617,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "67760c7be2ce0e09923e3877",
+							"raw": "677d653b5b21862be1bc83e8",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -683,7 +683,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjI3MTM5OCwiZXhwIjoxNzM2MzU3Nzk4fQ.hPjAjwC-DTVaL5uc8xWvL7gqREYmRadTz2xdb9k2Z4w",
 									"type": "string"
 								}
 							]
@@ -713,7 +713,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjI3MTM5OCwiZXhwIjoxNzM2MzU3Nzk4fQ.hPjAjwC-DTVaL5uc8xWvL7gqREYmRadTz2xdb9k2Z4w",
 									"type": "string"
 								}
 							]
@@ -743,7 +743,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjI3MTM5OCwiZXhwIjoxNzM2MzU3Nzk4fQ.hPjAjwC-DTVaL5uc8xWvL7gqREYmRadTz2xdb9k2Z4w",
 									"type": "string"
 								}
 							]
@@ -752,7 +752,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "adnan",
+							"raw": "anin",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -872,7 +872,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/search?query=h",
+							"raw": "http://localhost:8000/search?query=art",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -884,7 +884,7 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "h"
+									"value": "art"
 								}
 							]
 						}
@@ -898,7 +898,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "67761d74784559016c8d97b4",
+							"raw": "677702aaae9be405a9ed4e70",
 							"options": {
 								"raw": {
 									"language": "text"

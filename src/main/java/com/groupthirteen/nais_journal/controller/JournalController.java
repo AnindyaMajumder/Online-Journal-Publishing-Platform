@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/journal")
 public class JournalController {
@@ -76,13 +74,13 @@ public class JournalController {
         }
     }
 
-    @PostMapping("/repost")
-    public ResponseEntity<String> repostJournal(@RequestHeader("Authorization") String token, @RequestBody String journalId) {
+    @PostMapping("/save-journal")
+    public ResponseEntity<String> savedJournal(@RequestHeader("Authorization") String token, @RequestBody String journalId) {
         String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
         String username = jwtUtils.getUsername(jwtToken);
-        boolean isReposted = journalService.repostJournal(new ObjectId(journalId), username);
+        boolean isReposted = journalService.savedJournal(new ObjectId(journalId), username);
         if (isReposted) {
-            return ResponseEntity.ok("Journal reposted successfully.");
+            return ResponseEntity.ok("Journal saved successfully.");
         } else {
             return ResponseEntity.badRequest().body("Failed to repost journal.");
         }

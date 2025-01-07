@@ -46,6 +46,6 @@ public class UserEntity {
     private List<JournalEntity> likedJournals = new ArrayList<>();
 
     @DBRef
-    private List<JournalEntity> repostedJournals = new ArrayList<>();
+    private List<JournalEntity> savedJournals = new ArrayList<>();
 
 }

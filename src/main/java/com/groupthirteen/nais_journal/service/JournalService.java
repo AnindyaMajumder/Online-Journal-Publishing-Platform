@@ -121,7 +121,7 @@ public class JournalService {
                 }
 
                 // Remove from reposted journals
-                if (user.getRepostedJournals().removeIf(j -> j.getId().equals(journalId))) {
+                if (user.getSavedJournals().removeIf(j -> j.getId().equals(journalId))) {
                     updated = true;
                 }
                 if (updated) {
@@ -182,18 +182,18 @@ public class JournalService {
     }
 
     // Repost a journal
-    public boolean repostJournal(ObjectId journalId, String username) {
+    public boolean savedJournal(ObjectId journalId, String username) {
         try {
             Optional<JournalEntity> journalEntityOpt = journalRepo.findById(journalId);
             UserEntity user = userEntryRepo.findByUsername(username);
 
             if (journalEntityOpt.isPresent() && user != null) {
                 JournalEntity journal = journalEntityOpt.get();
-                if (user.getRepostedJournals().contains(journal)) {
+                if (user.getSavedJournals().contains(journal)) {
                     return false; // Already reposted
                 }
 
-                user.getRepostedJournals().add(journal);
+                user.getSavedJournals().add(journal);
 
                 userEntryRepo.save(user);
 
