@@ -8,6 +8,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +48,12 @@ public class AdminService {
             }
             List<JournalEntity> journals = user.getJournalEntries();
             if (journals != null) {
+                List<JournalEntity> allJournals = journalRepo.findAll();
+                for (JournalEntity journal : allJournals){
+                    if (journal.getAuthor().equals(user.getUsername())){
+                        journalRepo.delete(journal);
+                    }
+                }
                 journalRepo.deleteAll(journals);
             }
             userEntryRepo.delete(user);

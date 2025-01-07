@@ -42,19 +42,16 @@ public class UserService {
         }
         else {
             try {
-                if (passwordEncoder.matches(user.getPassword(), userEntity.getPassword())){
 
-                    if (user.getFirstName() != null) userEntity.setFirstName(user.getFirstName());
-                    if (user.getLastName() != null) userEntity.setLastName(user.getLastName());
-                    if (user.getBio() != null) userEntity.setBio(user.getBio());
+                if (user.getFirstName() != null) userEntity.setFirstName(user.getFirstName());
+                if (user.getLastName() != null) userEntity.setLastName(user.getLastName());
+                if (user.getBio() != null) userEntity.setBio(user.getBio());
+                if (user.getPassword() != null) userEntity.setPassword(user.getPassword());
 
-                    userEntity.setEmail(user.getEmail());
+                userEntity.setEmail(user.getEmail());
+                userEntryRepo.save(userEntity);
+                return true;
 
-                    userEntryRepo.save(userEntity);
-                    return true;
-                } else {
-                    return false;
-                }
             }
             catch(Exception e) {
                 return false;
@@ -70,7 +67,9 @@ public class UserService {
             if(passwordEncoder.matches(user.getPassword(), userEntity.getPassword())) {
                 List<JournalEntity> journalEntities = userEntity.getJournalEntries();
                 if(journalEntities != null) {
-                    journalRepo.deleteAll(journalEntities);
+                    for(JournalEntity journalEntity : journalEntities) {
+                        journalRepo.deleteById(journalEntity.getId());
+                    }
                 }
                 userEntryRepo.delete(userEntity);
                 return true;

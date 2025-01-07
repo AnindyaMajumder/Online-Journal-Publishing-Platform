@@ -33,7 +33,11 @@ public class UserController {
     }
 
     @PutMapping("/edit-details")
-    public ResponseEntity<?> editDetails(@RequestBody UserEntity user) {
+    public ResponseEntity<?> editDetails(@RequestHeader("Authorization") String token, @RequestBody UserEntity user) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+
+        user.setUsername(username);
         boolean isUpdated = userService.updateUser(user);
         if (isUpdated) {
             return ResponseEntity.ok("User updated successfully");
@@ -42,7 +46,10 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestBody UserEntity user) {
+    public ResponseEntity<?> delete(@RequestHeader("Authorization") String token, @RequestBody UserEntity user) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String username = jwtUtils.getUsername(jwtToken);
+        user.setUsername(username);
         boolean isDeleted = userService.deleteUser(user);
         if (isDeleted) {
             return ResponseEntity.ok("User deleted successfully");
