@@ -49,11 +49,13 @@ const Navbar = () => {
           <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-600">Write</button>
             </Link>
 
+          <Link to="/notification" >
           <button className="bg-black text-white p-2 rounded hover:bg-gray-600">Notification</button>
-          <Link to="/profile" >
-          
-          <button className="bg-black text-white p-2 rounded hover:bg-gray-600">Profile</button>
           </Link>
+          
+           <Link to="/profile" >
+          <button className="bg-black text-white p-2 rounded hover:bg-gray-600">Profile</button>
+           </Link>
         </div>
       </div>
     </nav>

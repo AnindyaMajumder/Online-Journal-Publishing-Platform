@@ -7,6 +7,11 @@ import NewsfeedPage from "./components/newsfeed";
 import WritePost from './components/writepost';
 import Navbar from './components/navbar';
 import SearchedItems from './components/search';
+import Notification from './Notification';
+import Interaction from './Interaction';
+import Login from './Login';
+import Register from './Register';
+
 
 function App() {
 //<ProfilePage/>
@@ -16,8 +21,11 @@ function App() {
   <Navbar />
       <Routes>
         {/* Route for the home page */}
+        <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<NewsfeedPage/>} />
-
+        <Route path="/interaction" element={<Interaction/>} />
+        <Route path="/notification" element={<Notification />} />
         <Route path="/search" element={<SearchedItems />} />
         <Route path="/profile" element={<ProfilePage/>} />
         <Route path="/writepost" element={<WritePost/>} />

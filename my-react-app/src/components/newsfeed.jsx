@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import parse from "html-react-parser";
 
 const Newsfeed = () => {
 
+  const navigate = useNavigate();
  // const [announcements, setAnnouncements] = useState([]);
   const [recentPosts, setRecentPosts] = useState([]);
   const [popularPosts, setPopularPosts] = useState([]);
@@ -32,17 +35,11 @@ const Newsfeed = () => {
     { id: 1, message: 'Welcome to the Journals App! Stay updated with the latest journals.' },
     { id: 2, message: 'Maintenance scheduled for this weekend. Expect downtime from 2 AM to 5 AM.' },
   ];
-
-  /*const recentPosts = [
-    { id: 1, title: 'Exploring React Hooks', author: 'John Doe', date: '2024-12-01' },
-    { id: 2, title: 'The Beauty of Functional Programming', author: 'Jane Smith', date: '2024-12-02' },
-  ]; */
-
-  /*const popularPosts = [
-    { id: 3, title: 'Understanding JavaScript Closures', author: 'Alice Brown', likes: 150 },
-    { id: 4, title: 'Mastering TailwindCSS for Web Design', author: 'Bob Johnson', likes: 120 },
-  ]; */
-
+  
+  const handlePostClick = (postId) => {
+    localStorage.setItem('postId', postId);
+    navigate('/interaction');
+  };
   // Tab state: 'recent' or 'popular'
 
   return (
@@ -81,18 +78,26 @@ const Newsfeed = () => {
           {activeTab === 'recent' ? (
             <div>
               {recentPosts.map((post) => (
-                <div key={post.id} className="bg-white p-4 rounded shadow mb-4">
+                <div key={post.id} 
+                className="bg-white p-4 rounded shadow mb-4 cursor-pointer"
+                onClick={() => handlePostClick(post.id)}
+                >
                   <h3 className="text-xl font-bold">{post.title}</h3>
                   <p className="text-gray-600">by {post.author} on {post.publishedDate.split('T')[0]} at {post.publishedDate.split('T')[1].split('.')[0]}</p>
+                  <p className="text-justify">{parse(post.body.slice(0,330))} . . . . . See More</p>
                 </div>
               ))}
             </div>
           ) : (
             <div>
               {popularPosts.map((post) => (
-                <div key={post.id} className="bg-white p-4 rounded shadow mb-4">
+                <div key={post.id} 
+                className="bg-white p-4 rounded shadow mb-4 cursor-pointer"
+                onClick={() => handlePostClick(post.id)}
+                >
                   <h3 className="text-xl font-bold">{post.title}</h3>
                   <p className="text-gray-600">by {post.author} on {post.publishedDate.split('T')[0]} at {post.publishedDate.split('T')[1].split('.')[0]}</p>
+                  <p className="text-justify">{parse(post.body.slice(0,330))} . . . . . See More</p>
                 </div>
               ))}
             </div>
