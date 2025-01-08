@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the NAIS Journal App API! This documentation provides a comprehensive guide to the endpoints available for public, user, journal, and admin interactions within the application. Each section includes details about the endpoint, request format, and expected responses.
+Welcome to the NAIS Journal App API! This documentation provides a comprehensive guide to the endpoints available for public, user, journal, comment, and admin interactions within the application. Each section includes details about the endpoint, request format, and expected responses.
 
 ## General Information
 
@@ -286,6 +286,53 @@ Welcome to the NAIS Journal App API! This documentation provides a comprehensive
 - **Response**:
   - **HTTP 200 OK** - Journal saved successfully.
   - **HTTP 400 Bad Request** - Save failed.
+
+---
+
+## **Comment APIs**
+
+### **1. Add Comment**
+- **Endpoint**: `POST http://localhost:8000/comment/add-comment`
+- **Description**: Adds a new comment to a journal.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**:
+  ```json
+  {
+    "journalId": "string",
+    "comment": "string"
+  }
+  ```
+- **Response**:
+  - **HTTP 201 Created** - Comment added successfully.
+  - **HTTP 400 Bad Request** - Failed to add comment.
+
+### **2. Edit Comment**
+- **Endpoint**: `PUT http://localhost:8000/comment/edit-comment`
+- **Description**: Edits an existing comment.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**:
+  ```json
+  {
+    "id": "commentID string",
+    "journalId": "string",
+    "comment": "string"
+  }
+  ```
+- **Response**:
+  - **HTTP 200 OK** - Comment updated successfully.
+  - **HTTP 400 Bad Request** - Failed to update comment.
+
+### **3. Delete Comment**
+- **Endpoint**: `DELETE http://localhost:8000/comment/delete-comment`
+- **Description**: Deletes a comment.
+- **Headers**:
+  - `Authorization: Bearer <token>`
+- **Request Body**: Comment ID as a string.
+- **Response**:
+  - **HTTP 200 OK** - Comment deleted successfully.
+  - **HTTP 400 Bad Request** - Failed to delete comment.
 
 ---
 
