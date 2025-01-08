@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"beast\",\r\n    \"password\": \"beast\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Mr.\",\r\n    \"lastName\": \"Beast\",\r\n    \"bio\": \"Youtuber\"\r\n}",
+							"raw": "{\r\n    \"username\": \"anin\",\r\n    \"password\": \"anin\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Anindya\",\r\n    \"lastName\": \"Majumder\",\r\n    \"bio\": \"Student\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"beast\",\r\n    \"password\": \"beast\"\r\n}",
+							"raw": "{\r\n    \"username\": \"anin\",\r\n    \"password\": \"anin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -79,7 +79,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHVkZGhhIiwiaWF0IjoxNzM2MzIzMTExLCJleHAiOjE3MzY0MDk1MTF9.uWhFHa63ufk2Axf1g3dONO8WgivnD2IWJIXN5g7cow8",
 									"type": "string"
 								}
 							]
@@ -182,7 +182,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MDc2NCwiZXhwIjoxNzM2MzU3MTY0fQ.6J75QZZw3Bt6RIJY1OVtJLqy2I3duRrAxIBjg8QaMUk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzE5NjkzLCJleHAiOjE3MzY0MDYwOTN9.TyqNT9P2wwAfIzTE2CjEYLdMBc__Gt_In51vTqvCmLM",
 									"type": "string"
 								}
 							]
@@ -413,7 +413,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIxNDcwLCJleHAiOjE3MzY0MDc4NzB9.SUIZ_UwS4bo1hqHj2sydSHlf1UZMorUN0yBCBW84Y04",
 									"type": "string"
 								}
 							]
@@ -422,7 +422,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Test-title\",\r\n    \"body\": \"test-body\",\r\n    \"tags\": [ \"culture\", \"tradition\", \"mindfulness\", \"beverages\", \"history\"]\r\n}",
+							"raw": "{\r\n    \"title\": \"Life Science: Unlocking the Secrets of Life\",\r\n    \"body\": \"<p>Life science encompasses a vast array of disciplines, including biology, genetics, biochemistry, and medicine. By studying the fundamental processes of living organisms, scientists are making groundbreaking discoveries that have the potential to revolutionize healthcare, agriculture, and environmental conservation. From understanding the complexities of the human genome to exploring the biodiversity of our planet, life science plays a vital role in shaping our understanding of the world around us.</p> <p><strong>The advancements in genetic engineering and personalized medicine are particularly exciting.</strong> These breakthroughs offer the potential to develop targeted therapies for diseases like cancer and genetic disorders, paving the way for a future where healthcare is tailored to the individual's unique genetic makeup.</p> <p><em>From developing new treatments for diseases to understanding the complex interactions within ecosystems</em>, life science plays a vital role in shaping our future. Research in this field is also crucial for addressing global challenges such as food security and climate change, by developing sustainable agricultural practices and exploring the potential of biofuels.</p>\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -491,7 +491,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzE5NjkzLCJleHAiOjE3MzY0MDYwOTN9.TyqNT9P2wwAfIzTE2CjEYLdMBc__Gt_In51vTqvCmLM",
 									"type": "string"
 								}
 							]
@@ -500,7 +500,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677d653b5b21862be1bc83e8",
+							"raw": "677e23e9250cac401b301321",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -569,7 +569,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzE5NjkzLCJleHAiOjE3MzY0MDYwOTN9.TyqNT9P2wwAfIzTE2CjEYLdMBc__Gt_In51vTqvCmLM",
 									"type": "string"
 								}
 							]
@@ -578,7 +578,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677d653b5b21862be1bc83e8",
+							"raw": "677e21b2250cac401b30131e",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -634,6 +634,128 @@
 							"path": [
 								"journal",
 								"delete-journal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "AddComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIzMTUxLCJleHAiOjE3MzY0MDk1NTF9.-lhu-jCbe-CuuptUPFXXdm6AY5kWQXvOR61L3xgKB5s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"journalId\":\"677e2203250cac401b30131f\",\r\n    \"comment\": \"Very Intuitive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/comment/add-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comment",
+								"add-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIzMTUxLCJleHAiOjE3MzY0MDk1NTF9.-lhu-jCbe-CuuptUPFXXdm6AY5kWQXvOR61L3xgKB5s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"677e2d8518d2634b9deec5c8\",\r\n    \"journalId\":\"677e2203250cac401b30131f\",\r\n    \"comment\": \"Very intuitive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/comment/edit-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comment",
+								"edit-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIzMTUxLCJleHAiOjE3MzY0MDk1NTF9.-lhu-jCbe-CuuptUPFXXdm6AY5kWQXvOR61L3xgKB5s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677e2d8518d2634b9deec5c8",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/comment/delete-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comment",
+								"delete-comment"
 							]
 						}
 					},
@@ -898,7 +1020,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677702aaae9be405a9ed4e70",
+							"raw": "677e2a0422a9837137b7c698",
 							"options": {
 								"raw": {
 									"language": "text"

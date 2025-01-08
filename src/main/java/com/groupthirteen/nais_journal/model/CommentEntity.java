@@ -7,31 +7,24 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Document (collection = "Journals")
+@Document(collection = "Comments")
 @Data
 @NoArgsConstructor
-public class JournalEntity {
+public class CommentEntity {
     @Id
     @JsonSerialize(using = ObjectIdSerializer.class)
     private ObjectId id;
+    @NonNull
+    @JsonSerialize(using = ObjectIdSerializer.class)
+    private ObjectId journalId;
 
-    private String title;
-    private String body;
+    private String comment;
     private String author;
-    private List<String> tags = new ArrayList<>() ;
     private LocalDateTime publishedDate;
-    private LocalDateTime updatedDate;
-    private int likeCount;
-
-    @DBRef
-    private List<CommentEntity> comments = new ArrayList<>();
 }
