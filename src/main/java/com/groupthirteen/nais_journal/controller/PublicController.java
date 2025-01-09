@@ -1,5 +1,6 @@
 package com.groupthirteen.nais_journal.controller;
 
+import com.groupthirteen.nais_journal.model.AnnouncementEntity;
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.service.PublicService;
 import org.bson.types.ObjectId;
@@ -44,6 +45,16 @@ public class PublicController {
         try{
             List<JournalEntity> searchResult = publicService.searchJournalsByTitle(query);
             return ResponseEntity.ok(searchResult);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/announcement")
+    public ResponseEntity<?> Anouncement() {
+        try {
+            List<AnnouncementEntity> anouncements = publicService.getAnnouncement();
+            return ResponseEntity.ok(anouncements);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }

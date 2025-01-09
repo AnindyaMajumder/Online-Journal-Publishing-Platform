@@ -1,14 +1,16 @@
 package com.groupthirteen.nais_journal.service;
 
+import com.groupthirteen.nais_journal.Repository.AnnouncementRepo;
 import com.groupthirteen.nais_journal.Repository.JournalRepo;
 import com.groupthirteen.nais_journal.Repository.UserEntryRepo;
+import com.groupthirteen.nais_journal.model.AnnouncementEntity;
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.model.UserEntity;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,9 @@ public class AdminService {
 
     @Autowired
     private JournalRepo journalRepo;
+
+    @Autowired
+    private AnnouncementRepo announcementRepo;
 
     public List<UserEntity> users(String username){
         UserEntity admin = userEntryRepo.findByUsername(username);
@@ -76,6 +81,57 @@ public class AdminService {
             }
         }catch (Exception e){
             return false;
+        }
+    }
+
+    // Announcement
+    public List<AnnouncementEntity> announcements(String username){
+        UserEntity admin = userEntryRepo.findByUsername(username);
+        if(admin == null || admin.getROLE().equals("USER")){
+            return null;
+        } else{
+            return announcementRepo.findAll();
+        }
+    }
+    public boolean addAnnouncement(String username, AnnouncementEntity announcement){
+        UserEntity admin = userEntryRepo.findByUsername(username);
+        if(admin == null || admin.getROLE().equals("USER")){
+            return false;
+        } else{
+            announcement.setPublishedDate(LocalDateTime.now());
+            announcementRepo.save(announcement);
+            return true;
+        }
+    }
+    public boolean editAnnouncement(String username, AnnouncementEntity announcement){
+        UserEntity admin = userEntryRepo.findByUsername(username);
+        if(admin == null || admin.getROLE().equals("USER")){
+            return false;
+        } else{
+            Optional<AnnouncementEntity> oldAnnouncement = announcementRepo.findById(announcement.getId());
+            if(oldAnnouncement.isPresent()){
+                if(announcement.getBody() != null){
+                    oldAnnouncement.get().setBody(announcement.getBody());
+                }
+                announcementRepo.save(oldAnnouncement.get());
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    public boolean deleteAnnouncement(String username, ObjectId announcementId){
+        UserEntity admin = userEntryRepo.findByUsername(username);
+        if(admin == null || admin.getROLE().equals("USER")){
+            return false;
+        } else{
+            Optional<AnnouncementEntity> announcement = announcementRepo.findById(announcementId);
+            if(announcement.isPresent()){
+                announcementRepo.delete(announcement.get());
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

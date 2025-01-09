@@ -1,5 +1,6 @@
 package com.groupthirteen.nais_journal.controller;
 
+import com.groupthirteen.nais_journal.model.AnnouncementEntity;
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import com.groupthirteen.nais_journal.model.UserEntity;
 import com.groupthirteen.nais_journal.security.JwtUtils;
@@ -64,6 +65,50 @@ public class AdminController {
         if (isDeleted) {
             return ResponseEntity.ok("Journal deleted successfully");
         } else{
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+    @GetMapping("/announcements")
+    public ResponseEntity<List<AnnouncementEntity>> getAllAnnouncements(@RequestHeader("Authorization") String token) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String admin_username = jwtUtils.getUsername(jwtToken);
+        List<AnnouncementEntity> announcements = adminService.announcements(admin_username);
+        if (announcements == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(announcements);
+    }
+    @PostMapping("/add-announcement")
+    public ResponseEntity<String> addAnnouncement(@RequestHeader("Authorization") String token, @RequestBody AnnouncementEntity announcement) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String admin_username = jwtUtils.getUsername(jwtToken);
+        boolean isAdded = adminService.addAnnouncement(admin_username, announcement);
+        if (isAdded) {
+            return ResponseEntity.ok("Announcement added successfully");
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+    @PutMapping("/edit-announcement")
+    public ResponseEntity<String> editAnnouncement(@RequestHeader("Authorization") String token, @RequestBody AnnouncementEntity announcement) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String admin_username = jwtUtils.getUsername(jwtToken);
+        boolean isEdited = adminService.editAnnouncement(admin_username, announcement);
+        if (isEdited) {
+            return ResponseEntity.ok("Announcement edited successfully");
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+    @DeleteMapping("/remove-announcement")
+    public ResponseEntity<String> removeAnnouncement(@RequestHeader("Authorization") String token, @RequestBody String announcementID) {
+        String jwtToken = token.startsWith("Bearer ") ? token.substring(7) : token;
+        String admin_username = jwtUtils.getUsername(jwtToken);
+        boolean isDeleted = adminService.deleteAnnouncement(admin_username, new ObjectId(announcementID));
+        if (isDeleted) {
+            return ResponseEntity.ok("Announcement deleted successfully");
+        } else {
             return ResponseEntity.noContent().build();
         }
     }

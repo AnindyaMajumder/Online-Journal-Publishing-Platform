@@ -3,7 +3,9 @@ package com.groupthirteen.nais_journal.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.groupthirteen.nais_journal.Repository.AnnouncementRepo;
 import com.groupthirteen.nais_journal.Repository.JournalRepo;
+import com.groupthirteen.nais_journal.model.AnnouncementEntity;
 import com.groupthirteen.nais_journal.model.JournalEntity;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ import java.util.Optional;
 public class PublicService {
     @Autowired
     JournalRepo journalRepo;
+
+    @Autowired
+    private AnnouncementRepo announcementRepo;
 
     @Value("${huggingface.api.url}")
     private String apiUrl;
@@ -47,6 +52,10 @@ public class PublicService {
     public JournalEntity getJournal(ObjectId journalId) {
         Optional<JournalEntity> journal = journalRepo.findById(journalId);
         return journal.orElse(null);
+    }
+
+    public List<AnnouncementEntity> getAnnouncement() {
+        return announcementRepo.findAll();
     }
 
     public String summarizer(ObjectId journalId) throws JsonProcessingException {
