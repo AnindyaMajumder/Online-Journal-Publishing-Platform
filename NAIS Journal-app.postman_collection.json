@@ -63,7 +63,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/search?query=art",
+							"raw": "http://localhost:8000/search?query=life",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -75,7 +75,7 @@
 							"query": [
 								{
 									"key": "query",
-									"value": "art"
+									"value": "life"
 								}
 							]
 						}
@@ -89,7 +89,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677e2a0422a9837137b7c698",
+							"raw": "677ee382a1f0a066f2b2e2d7",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -120,7 +120,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677702aaae9be405a9ed4e70",
+							"raw": "677ee382a1f0a066f2b2e2d7",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -175,7 +175,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"anin\",\r\n    \"password\": \"anin\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Anindya\",\r\n    \"lastName\": \"Majumder\",\r\n    \"bio\": \"Student\"\r\n}",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Lionel\",\r\n    \"lastName\": \"Messi\",\r\n    \"bio\": \"Footballer\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -206,7 +206,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"anin\",\r\n    \"password\": \"anin\"\r\n}",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -235,7 +235,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHVkZGhhIiwiaWF0IjoxNzM2MzIzMTExLCJleHAiOjE3MzY0MDk1MTF9.uWhFHa63ufk2Axf1g3dONO8WgivnD2IWJIXN5g7cow8",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -273,7 +273,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"beast\"\r\n}\r\n",
+							"raw": "{\r\n    \"username\": \"messi\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -304,7 +304,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"resetCode\" : \"1c930b\",\r\n    \"username\" : \"beast\",\r\n    \"password\" : \"beast\"\r\n}",
+							"raw": "{\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"resetCode\" : \"5704fc\",\r\n    \"username\" : \"messi\",\r\n    \"password\" : \"messi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -338,7 +338,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzE5NjkzLCJleHAiOjE3MzY0MDYwOTN9.TyqNT9P2wwAfIzTE2CjEYLdMBc__Gt_In51vTqvCmLM",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -375,7 +375,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -412,7 +412,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzU2MTA1LCJleHAiOjE3MzY0NDI1MDV9.55MFYF3Y0Gwj9Ab4N64jkAfSBeQ2rt59UMxClY9xrRk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -449,7 +449,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -466,13 +466,6 @@
 							"path": [
 								"user",
 								"saved"
-							],
-							"query": [
-								{
-									"key": "username",
-									"value": "wefwefe",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -569,7 +562,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIxNDcwLCJleHAiOjE3MzY0MDc4NzB9.SUIZ_UwS4bo1hqHj2sydSHlf1UZMorUN0yBCBW84Y04",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -578,7 +571,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Life Science: Unlocking the Secrets of Life\",\r\n    \"body\": \"<p>Life science encompasses a vast array of disciplines, including biology, genetics, biochemistry, and medicine. By studying the fundamental processes of living organisms, scientists are making groundbreaking discoveries that have the potential to revolutionize healthcare, agriculture, and environmental conservation. From understanding the complexities of the human genome to exploring the biodiversity of our planet, life science plays a vital role in shaping our understanding of the world around us.</p> <p><strong>The advancements in genetic engineering and personalized medicine are particularly exciting.</strong> These breakthroughs offer the potential to develop targeted therapies for diseases like cancer and genetic disorders, paving the way for a future where healthcare is tailored to the individual's unique genetic makeup.</p> <p><em>From developing new treatments for diseases to understanding the complex interactions within ecosystems</em>, life science plays a vital role in shaping our future. Research in this field is also crucial for addressing global challenges such as food security and climate change, by developing sustainable agricultural practices and exploring the potential of biofuels.</p>\"\r\n}",
+							"raw": "{\r\n    \"title\": \"The Greatest Dream: Winning the World Cup\",\r\n    \"body\": \"<p><strong><em>The Greatest Dream: Winning the World Cup</em></strong> It’s hard to put into words what it feels like to hold that trophy in my hands. The <strong>FIFA World Cup</strong> is more than just a tournament; it’s a lifelong dream, not just for me but for every kid in Argentina who grows up with a ball at their feet. This victory wasn’t just mine—it was for the millions of fans who painted the streets in blue and white, who chanted our names, and who believed, even when the odds seemed against us. I’ve been blessed with many moments in my career, but nothing compares to standing on that stage in <strong>Lusail Stadium</strong>, lifting the <em>golden trophy</em>. I could feel the weight of history, the joy of my teammates, and the roaring support of a nation that lives and breathes football. <em>This was our moment, Argentina’s moment.</em> The journey wasn’t easy. Losing finals in the past, hearing people say we couldn’t do it—it was painful. But those moments shaped us, strengthened us, and brought us closer as a team. This team isn’t just a group of players; it’s a family. From the youngest to the most experienced, every one of us gave everything, fought for every ball, and ran for every inch of the pitch. <strong><em>Then came the final against France</em></strong>. It was the kind of game you dream about as a child, the kind of game that will be remembered for generations. Mbappé gave an incredible performance, pushing us to our limits. When the match went to penalties, all I could think about was staying calm, trusting my team, and believing in Emiliano Martínez. And when the final whistle blew, the tears came. Tears of joy, relief, and fulfilment. For me, this World Cup win is about more than personal glory. It’s about the people. It’s about the fans who never stopped believing in us, the coaches who guided us, and my family, who have been my pillar of strength. It’s about giving back to a country that has given me so much love and support over the years. As I write this, I think about the kids watching us play, dreaming of wearing this jersey someday. To them, I say: <em>Dream big, work hard, and never give up</em>. If a kid from Rosario can stand here as a World Cup champion, so can you. To my beloved Argentina, <strong>this is for you</strong>. Thank you for believing in us, for filling the streets with songs and fireworks, and for making football more than just a game. This is our story, and we wrote it together. <em>Forever grateful,</em> <strong>— Lionel Messi</strong></p>\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -608,7 +601,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MDc2NCwiZXhwIjoxNzM2MzU3MTY0fQ.6J75QZZw3Bt6RIJY1OVtJLqy2I3duRrAxIBjg8QaMUk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -617,7 +610,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\" : \"677d6453707e8664faafc2fb\",\r\n    \"title\": \"World Cup\",\r\n    \"body\": \"RIGGED\"\r\n}",
+							"raw": "{\r\n    \"id\" : \"677fbdc93c783b3b5277cd39\",\r\n    \"title\": \"The Greatest Dream: Winning the World Cup\",\r\n    \"body\": \"<p><strong><em>The Greatest Dream: Winning the World Cup</em></strong> It’s hard to put into words what it feels like to hold that trophy in my hands. The <strong>FIFA World Cup</strong> is more than just a tournament; it’s a lifelong dream, not just for me but for every kid in Argentina who grows up with a ball at their feet. This victory wasn’t just mine—it was for the millions of fans who painted the streets in blue and white, who chanted our names, and who believed, even when the odds seemed against us. I’ve been blessed with many moments in my career, but nothing compares to standing on that stage in <strong>Lusail Stadium</strong>, lifting the <em>golden trophy</em>. I could feel the weight of history, the joy of my teammates, and the roaring support of a nation that lives and breathes football. <em>This was our moment, Argentina’s moment.</em> The journey wasn’t easy. Losing finals in the past, hearing people say we couldn’t do it—it was painful. But those moments shaped us, strengthened us, and brought us closer as a team. This team isn’t just a group of players; it’s a family. From the youngest to the most experienced, every one of us gave everything, fought for every ball, and ran for every inch of the pitch. <strong><em>Then came the final against France</em></strong>. It was the kind of game you dream about as a child, the kind of game that will be remembered for generations. Mbappé gave an incredible performance, pushing us to our limits. When the match went to penalties, all I could think about was staying calm, trusting my team, and believing in Emiliano Martínez. And when the final whistle blew, the tears came. Tears of joy, relief, and fulfilment. For me, this World Cup win is about more than personal glory. It’s about the people. It’s about the fans who never stopped believing in us, the coaches who guided us, and my family, who have been my pillar of strength. It’s about giving back to a country that has given me so much love and support over the years. As I write this, I think about the kids watching us play, dreaming of wearing this jersey someday. To them, I say: <em>Dream big, work hard, and never give up</em>. If a kid from Rosario can stand here as a World Cup champion, so can you. To my beloved Argentina, <strong>this is for you</strong>. Thank you for believing in us, for filling the streets with songs and fireworks, and for making football more than just a game. This is our story, and we wrote it together. <em>Forever grateful,</em> <strong>— Lionel Messi</strong></p>\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -647,7 +640,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzU2MTA1LCJleHAiOjE3MzY0NDI1MDV9.55MFYF3Y0Gwj9Ab4N64jkAfSBeQ2rt59UMxClY9xrRk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -656,7 +649,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677ea4eaea15e9267da3129e",
+							"raw": "677fbe333c783b3b5277cd3a",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -686,7 +679,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzU2MTA1LCJleHAiOjE3MzY0NDI1MDV9.55MFYF3Y0Gwj9Ab4N64jkAfSBeQ2rt59UMxClY9xrRk",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -695,7 +688,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677ea4eaea15e9267da3129e",
+							"raw": "677ee382a1f0a066f2b2e2d7",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -725,7 +718,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzE5NjkzLCJleHAiOjE3MzY0MDYwOTN9.TyqNT9P2wwAfIzTE2CjEYLdMBc__Gt_In51vTqvCmLM",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -734,7 +727,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677e21b2250cac401b30131e",
+							"raw": "677eb28b00d3af20b52ab007",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -764,7 +757,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -773,7 +766,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677d653b5b21862be1bc83e8",
+							"raw": "677fbdc93c783b3b5277cd39",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -808,7 +801,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIzMTUxLCJleHAiOjE3MzY0MDk1NTF9.-lhu-jCbe-CuuptUPFXXdm6AY5kWQXvOR61L3xgKB5s",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
 									"type": "string"
 								}
 							]
@@ -963,7 +956,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQxNzk5NCwiZXhwIjoxNzM2NTA0Mzk0fQ.erXhT8Dl165GRRPx37fKhhwpevfy7bWoxNAY0MZAyJg",
 											"type": "string"
 										}
 									]
@@ -972,7 +965,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"body\": \"Hello Everyone\"\r\n}",
+									"raw": "{\r\n    \"body\": \"Joy Bangla, Joy Bangabondhu\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1125,7 +1118,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjI3MTM5OCwiZXhwIjoxNzM2MzU3Nzk4fQ.hPjAjwC-DTVaL5uc8xWvL7gqREYmRadTz2xdb9k2Z4w",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQyNjk2NSwiZXhwIjoxNzM2NTEzMzY1fQ.kzPHusJBb83SYBKwuF5LAqwXPxddXUuImRlRRX7jkaI",
 									"type": "string"
 								}
 							]
@@ -1155,7 +1148,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjI3MTM5OCwiZXhwIjoxNzM2MzU3Nzk4fQ.hPjAjwC-DTVaL5uc8xWvL7gqREYmRadTz2xdb9k2Z4w",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQyNjk2NSwiZXhwIjoxNzM2NTEzMzY1fQ.kzPHusJBb83SYBKwuF5LAqwXPxddXUuImRlRRX7jkaI",
 									"type": "string"
 								}
 							]
@@ -1224,7 +1217,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNTg1NDExMiwiZXhwIjoxNzM1OTQwNTEyfQ.H_G3OayeEiAMlyy-et5lNKrQ7HhDnzazw-XuWBAwXDA",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQyNjk2NSwiZXhwIjoxNzM2NTEzMzY1fQ.kzPHusJBb83SYBKwuF5LAqwXPxddXUuImRlRRX7jkaI",
 									"type": "string"
 								}
 							]
@@ -1233,7 +1226,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "67761ad8c7c58e24ec34187b",
+							"raw": "677eb28b00d3af20b52ab007",
 							"options": {
 								"raw": {
 									"language": "text"
