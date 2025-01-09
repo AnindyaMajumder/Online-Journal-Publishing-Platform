@@ -2,19 +2,19 @@ import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import 'react-quill/dist/quill.snow.css'; // Quill Snow theme
-import Login from "./Login";
-import Register from "./Register";
-import Admin from "./Admin";
-import LoginBackground from "./LoginBackground";
-import Interaction from "./Interaction";
-import Notification from "./Notification";
+import Login from "./Authentication/Login.jsx";
+import Register from "./Authentication/Register.jsx";
+import Admin from "./Managements/Admin.jsx";
+import LoginBackground from "./Authentication/LoginBackground.jsx";
+import Interaction from "./Interaction/Interaction.jsx";
+import Notification from "./components/Notification.jsx";
 import ProfilePage from "./components/profile";
 import NewsfeedPage from "./components/newsfeed";
 import WritePost from './components/writepost';
 import Navbar from './components/navbar';
 import SearchedItems from './components/search';
-import JournalRemove from "./JournalRemove"; // Import JournalRemove component
-import Forget from "./ForgotPassword.jsx";
+import JournalRemove from "./Managements/JournalRemove.jsx"; // Import JournalRemove component
+import Forget from "./Authentication/ForgotPassword.jsx";
 // ProtectedRoute component to enforce authentication
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("jwtToken");

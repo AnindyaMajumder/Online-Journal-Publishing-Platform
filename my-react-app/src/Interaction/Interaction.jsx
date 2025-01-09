@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Report from "./Interaction/Report";
-import Repost from "./Interaction/Repost";
-import Like from "./Interaction/Like";
-import Comment from "./Interaction/Comment";
-import Summarizer from "./Interaction/Summarizer";
-import EditJournal from "./Interaction/EditJournal";
-import pic1 from "./image/pic1.jpg";
+import Report from "./Report.jsx";
+import Repost from "./Repost.jsx";
+import Like from "./Like.jsx";
+import Comment from "./Comment.jsx";
+import Summarizer from "./Summarizer.jsx";
+import EditJournal from "./EditJournal.jsx";
+import pic1 from "../image/pic1.jpg";
 import parse from "html-react-parser";
 
 export default function Interaction() {

@@ -1,5 +1,5 @@
 import React from "react";
-import adminPanelImage from "./image/pic1.jpg"; // Correct path to your image
+import adminPanelImage from "../image/pic1.jpg"; // Correct path to your image
 
 export default function AdminBack({ children }) {
   return (

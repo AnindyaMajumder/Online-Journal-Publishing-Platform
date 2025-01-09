@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import AdminBack from "./AdminBack";
-import JournalRemove from "./JournalRemove";
-import ReportLog from "./ReportLog";
-import AccountRemove from "./AccountRemove";
-import Announcement from "./Announcement";
-import ManageTags from "./ManageTags";
+import AdminBack from "./AdminBack.jsx";
+import JournalRemove from "./JournalRemove.jsx";
+import ReportLog from "../Authentication/ReportLog.jsx";
+import AccountRemove from "./AccountRemove.jsx";
+import Announcement from "../Interaction/Announcement.jsx";
+import ManageTags from "./ManageTags.jsx";
 
 export default function AdminPanel() {
   const [activeFeature, setActiveFeature] = useState("JournalRemove");

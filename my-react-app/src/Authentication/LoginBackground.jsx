@@ -1,6 +1,6 @@
 import React from "react";
-import Pic1 from "./image/pic1.jpg"; // Import the background image
-import Header from "./Header";
+import Pic1 from "../image/pic1.jpg"; // Import the background image
+import Header from "../components/Header.jsx";
 
 export default function LoginBackground({ children }) {
   return (
