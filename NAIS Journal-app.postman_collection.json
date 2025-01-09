@@ -1,0 +1,1317 @@
+{
+	"info": {
+		"_postman_id": "455d4c06-9e61-4d73-aadd-9e1e418ec520",
+		"name": "NAIS Journal-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37738126"
+	},
+	"item": [
+		{
+			"name": "PublicAccess",
+			"item": [
+				{
+					"name": "Popular",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recent",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"recent"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/search?query=life",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "life"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JournalAccess",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677ee382a1f0a066f2b2e2d7",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/article",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Summarizer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677ee382a1f0a066f2b2e2d7",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/summary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Announcement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/announcement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"announcement"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentications",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\",\r\n    \"email\": \"anindyamajumder.54@gmail.com\",\r\n\r\n    \"firstName\": \"Lionel\",\r\n    \"lastName\": \"Messi\",\r\n    \"bio\": \"Footballer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"messi\",\r\n    \"password\": \"messi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MDc2NCwiZXhwIjoxNzM2MzU3MTY0fQ.6J75QZZw3Bt6RIJY1OVtJLqy2I3duRrAxIBjg8QaMUk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"messi\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/forget-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"anindyamajumder.54@gmail.com\",\r\n    \"resetCode\" : \"5704fc\",\r\n    \"username\" : \"messi\",\r\n    \"password\" : \"messi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "MyInfo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/my-info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"my-info"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MyPosts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/my-posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"my-posts"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LikedPosts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/liked",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"liked"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "wefwefe",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Saved",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/user/saved",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"saved"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Lionel.\",\r\n    \"lastName\": \"Messi\",\r\n    \"bio\" : \"Footballer\",\r\n    \"email\" : \"anindyamajumder.54@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/user/edit-details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"edit-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4dXh1IiwiaWF0IjoxNzM2MjcwNjg5LCJleHAiOjE3MzYzNTcwODl9.Cryq6W2gbn48dT0IUa1RL6n8BouggoO2i7hSXmOhepw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"xuxu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/user/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Journal",
+			"item": [
+				{
+					"name": "Add Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Greatest Dream: Winning the World Cup\",\r\n    \"body\": \"<p><strong><em>The Greatest Dream: Winning the World Cup</em></strong> It’s hard to put into words what it feels like to hold that trophy in my hands. The <strong>FIFA World Cup</strong> is more than just a tournament; it’s a lifelong dream, not just for me but for every kid in Argentina who grows up with a ball at their feet. This victory wasn’t just mine—it was for the millions of fans who painted the streets in blue and white, who chanted our names, and who believed, even when the odds seemed against us. I’ve been blessed with many moments in my career, but nothing compares to standing on that stage in <strong>Lusail Stadium</strong>, lifting the <em>golden trophy</em>. I could feel the weight of history, the joy of my teammates, and the roaring support of a nation that lives and breathes football. <em>This was our moment, Argentina’s moment.</em> The journey wasn’t easy. Losing finals in the past, hearing people say we couldn’t do it—it was painful. But those moments shaped us, strengthened us, and brought us closer as a team. This team isn’t just a group of players; it’s a family. From the youngest to the most experienced, every one of us gave everything, fought for every ball, and ran for every inch of the pitch. <strong><em>Then came the final against France</em></strong>. It was the kind of game you dream about as a child, the kind of game that will be remembered for generations. Mbappé gave an incredible performance, pushing us to our limits. When the match went to penalties, all I could think about was staying calm, trusting my team, and believing in Emiliano Martínez. And when the final whistle blew, the tears came. Tears of joy, relief, and fulfilment. For me, this World Cup win is about more than personal glory. It’s about the people. It’s about the fans who never stopped believing in us, the coaches who guided us, and my family, who have been my pillar of strength. It’s about giving back to a country that has given me so much love and support over the years. As I write this, I think about the kids watching us play, dreaming of wearing this jersey someday. To them, I say: <em>Dream big, work hard, and never give up</em>. If a kid from Rosario can stand here as a World Cup champion, so can you. To my beloved Argentina, <strong>this is for you</strong>. Thank you for believing in us, for filling the streets with songs and fireworks, and for making football more than just a game. This is our story, and we wrote it together. <em>Forever grateful,</em> <strong>— Lionel Messi</strong></p>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/add-journal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"add-journal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"677fbdc93c783b3b5277cd39\",\r\n    \"title\": \"The Greatest Dream: Winning the World Cup\",\r\n    \"body\": \"<p><strong><em>The Greatest Dream: Winning the World Cup</em></strong> It’s hard to put into words what it feels like to hold that trophy in my hands. The <strong>FIFA World Cup</strong> is more than just a tournament; it’s a lifelong dream, not just for me but for every kid in Argentina who grows up with a ball at their feet. This victory wasn’t just mine—it was for the millions of fans who painted the streets in blue and white, who chanted our names, and who believed, even when the odds seemed against us. I’ve been blessed with many moments in my career, but nothing compares to standing on that stage in <strong>Lusail Stadium</strong>, lifting the <em>golden trophy</em>. I could feel the weight of history, the joy of my teammates, and the roaring support of a nation that lives and breathes football. <em>This was our moment, Argentina’s moment.</em> The journey wasn’t easy. Losing finals in the past, hearing people say we couldn’t do it—it was painful. But those moments shaped us, strengthened us, and brought us closer as a team. This team isn’t just a group of players; it’s a family. From the youngest to the most experienced, every one of us gave everything, fought for every ball, and ran for every inch of the pitch. <strong><em>Then came the final against France</em></strong>. It was the kind of game you dream about as a child, the kind of game that will be remembered for generations. Mbappé gave an incredible performance, pushing us to our limits. When the match went to penalties, all I could think about was staying calm, trusting my team, and believing in Emiliano Martínez. And when the final whistle blew, the tears came. Tears of joy, relief, and fulfilment. For me, this World Cup win is about more than personal glory. It’s about the people. It’s about the fans who never stopped believing in us, the coaches who guided us, and my family, who have been my pillar of strength. It’s about giving back to a country that has given me so much love and support over the years. As I write this, I think about the kids watching us play, dreaming of wearing this jersey someday. To them, I say: <em>Dream big, work hard, and never give up</em>. If a kid from Rosario can stand here as a World Cup champion, so can you. To my beloved Argentina, <strong>this is for you</strong>. Thank you for believing in us, for filling the streets with songs and fireworks, and for making football more than just a game. This is our story, and we wrote it together. <em>Forever grateful,</em> <strong>— Lionel Messi</strong></p>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/edit-details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"edit-details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LikeJournal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677fbe333c783b3b5277cd3a",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/like",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UnlikeJournal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677ee382a1f0a066f2b2e2d7",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/unlike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"unlike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677eb28b00d3af20b52ab007",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/save-journal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"save-journal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677fbdc93c783b3b5277cd39",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/journal/delete-journal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"journal",
+								"delete-journal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "AddComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjQyMzUwOCwiZXhwIjoxNzM2NTA5OTA4fQ.TuhIkbGyrGPcY_6l-sTd94zVNFszmqATE-R0sYuyOKg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"journalId\":\"677e2203250cac401b30131f\",\r\n    \"comment\": \"Very Intuitive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/comment/add-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comment",
+								"add-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIzMTUxLCJleHAiOjE3MzY0MDk1NTF9.-lhu-jCbe-CuuptUPFXXdm6AY5kWQXvOR61L3xgKB5s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : \"677e2d8518d2634b9deec5c8\",\r\n    \"journalId\":\"677e2203250cac401b30131f\",\r\n    \"comment\": \"Very intuitive\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/comment/edit-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comment",
+								"edit-comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzIzMTUxLCJleHAiOjE3MzY0MDk1NTF9.-lhu-jCbe-CuuptUPFXXdm6AY5kWQXvOR61L3xgKB5s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677e2d8518d2634b9deec5c8",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/comment/delete-comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comment",
+								"delete-comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Announcements",
+					"item": [
+						{
+							"name": "AllAnnouncements",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/admin/announcements",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"announcements"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddAnnouncement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQxNzk5NCwiZXhwIjoxNzM2NTA0Mzk0fQ.erXhT8Dl165GRRPx37fKhhwpevfy7bWoxNAY0MZAyJg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"body\": \"Joy Bangla, Joy Bangabondhu\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/admin/add-announcement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"add-announcement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EditAnnouncement",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"677f73a93a91ca358e6168a7\",\r\n    \"body\": \"Welcome to the NAIS-Journal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/admin/edit-announcement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"edit-announcement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteAnnouncement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "677f73a93a91ca358e6168a7",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/admin/remove-announcement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"remove-announcement"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "admin-login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin-login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQyNjk2NSwiZXhwIjoxNzM2NTEzMzY1fQ.kzPHusJBb83SYBKwuF5LAqwXPxddXUuImRlRRX7jkaI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Journals",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQyNjk2NSwiZXhwIjoxNzM2NTEzMzY1fQ.kzPHusJBb83SYBKwuF5LAqwXPxddXUuImRlRRX7jkaI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/journals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"journals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove-User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjI3MTM5OCwiZXhwIjoxNzM2MzU3Nzk4fQ.hPjAjwC-DTVaL5uc8xWvL7gqREYmRadTz2xdb9k2Z4w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "anin",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin/remove-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"remove-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove-Journal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQyNjk2NSwiZXhwIjoxNzM2NTEzMzY1fQ.kzPHusJBb83SYBKwuF5LAqwXPxddXUuImRlRRX7jkaI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677eb28b00d3af20b52ab007",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin/remove-journal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"remove-journal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hello",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckOrigin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "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",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputs\": \" Make it within 20 words. - The tower is 324 metres (1,063 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. It was the first structure to reach a height of 300 metres. Due to the addition of a broadcasting aerial at the top of the tower in 1957, it is now taller than the Chrysler Building by 5.2 metres (17 ft). Excluding transmitters, the Eiffel Tower is the second tallest free-standing structure in France after the Millau Viaduct.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
+					"protocol": "https",
+					"host": [
+						"api-inference",
+						"huggingface",
+						"co"
+					],
+					"path": [
+						"models",
+						"facebook",
+						"bart-large-cnn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
