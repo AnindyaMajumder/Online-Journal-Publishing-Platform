@@ -14,9 +14,9 @@ export default function LoginBackground({ children }) {
           className="absolute inset-0 h-full w-full object-cover z-0"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center text-black">
-          <h1 className="text-5xl font-bold">Stories</h1>
-          <h1 className="text-5xl font-bold mt-4"> & </h1>
-          <h1 className="text-5xl font-bold mt-4">Ideas</h1>
+          <h1 className="text-5xl font-bold animate-bounce">Stories</h1>
+          <h1 className="text-5xl font-bold mt-4 animate-bounce"> & </h1>
+          <h1 className="text-5xl font-bold mt-4 animate-bounce">Ideas</h1>
         </div>
       </div>
       {children}

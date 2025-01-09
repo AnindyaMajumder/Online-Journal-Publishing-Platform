@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
-
-const token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvbmUyMyIsImlhdCI6MTczNjI4MDc4MSwiZXhwIjoxNzM2MzY3MTgxfQ.DRfjllaZotwzwTCTgOqDf7XMPVIeG0A0wPlF68o4EHs";
+const token = localStorage.getItem("authToken");
 
 const ProfilePage = () => {
   const [userInfo, setUserInfo] = useState({
@@ -28,7 +26,7 @@ const ProfilePage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
     }
@@ -426,7 +424,7 @@ const DeleteProfile = () => {
 
   const handleContinue = () => {
     setIsModalOpen(false);
-    navigate("/register");
+    navigate("/");
   };
 
   return (

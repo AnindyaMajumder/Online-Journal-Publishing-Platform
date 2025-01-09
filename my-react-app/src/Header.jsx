@@ -9,7 +9,7 @@ export default function Header() {
       {/* Blogger Paradise Title */}
       <div className="flex space-x-1">
         <span className="inline-block mr-1 font-bold">NAIS</span>
-        <span className="inline-block font-bold">BLOGPOST</span>
+        <span className="inline-block font-bold">Journal</span>
       </div>
 
       {/* Left-side links */}

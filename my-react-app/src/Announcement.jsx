@@ -1,22 +1,43 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export default function Announcement() {
-  const [announcements, setAnnouncements] = useState([
-    "Welcome to our platform!",
-    "Scheduled maintenance on Friday at 10 PM.",
-  ]); // Example announcements
-  const [newAnnouncement, setNewAnnouncement] = useState("");
+  const [announcements, setAnnouncements] = useState([]); // Example announcements
+  const [newAnnouncement, setNewAnnouncement] = useState(""); 
+
+  const token = localStorage.getItem("adminAuthToken"); // Retrieve admin token
 
   // Handle adding a new announcement
-  const handleAdd = () => {
-    if (newAnnouncement.trim() !== "") {
-      setAnnouncements((prev) => [...prev, newAnnouncement]);
-      setNewAnnouncement("");
-      alert("Announcement published!");
+  const handleAdd = async () => {
+    if (newAnnouncement.trim() === "") {
+      alert("Announcement cannot be empty.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/admin/add-announcement",
+        { body: newAnnouncement },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        setAnnouncements((prev) => [...prev, newAnnouncement]); // Add locally
+        setNewAnnouncement(""); // Clear input field
+        alert("Announcement published successfully!");
+      }
+    } catch (error) {
+      console.error("Error publishing announcement:", error);
+      alert("Failed to publish announcement. Please try again.");
     }
   };
 
-  // Handle deleting an announcement
+  // Handle deleting an announcement locally
   const handleDelete = (index) => {
     setAnnouncements((prev) => prev.filter((_, i) => i !== index));
     alert("Announcement deleted!");
@@ -27,6 +48,7 @@ export default function Announcement() {
       <div className="w-full max-w-2xl text-center">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Manage Announcements</h2>
 
+        {/* Announcements List */}
         <ul className="space-y-4">
           {announcements.map((announcement, index) => (
             <li
@@ -44,6 +66,7 @@ export default function Announcement() {
           ))}
         </ul>
 
+        {/* Writing Field */}
         <div className="mt-6">
           <input
             type="text"

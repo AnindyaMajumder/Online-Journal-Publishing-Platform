@@ -50,9 +50,7 @@ export default function App() {
         <Route
           path="/admin"
           element={
-            <ProtectedRoute>
               <Admin />
-            </ProtectedRoute>
           }
         />
 
@@ -68,9 +66,8 @@ export default function App() {
                 <Route
                   path="/NewsfeedPage"
                   element={
-                    <ProtectedRoute>
+                    
                       <NewsfeedPage />
-                    </ProtectedRoute>
                   }
                 />
                 {/* Search page */}
@@ -79,9 +76,7 @@ export default function App() {
                 <Route
                   path="/journalremove"
                   element={
-                    <ProtectedRoute>
                       <JournalRemove />
-                    </ProtectedRoute>
                   }
                 />
                 {/* Interaction page */}
