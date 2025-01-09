@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TextEditor from './texteditor';
 import { useNavigate } from 'react-router-dom';
-
+const token = localStorage.getItem("authToken");
 
 const WritePost = () => {
   const [title, setTitle] = useState('');
@@ -22,7 +22,6 @@ const WritePost = () => {
     console.log('Journal Content:', content);
     // Handle the submission logic (e.g., save to state or API)
     try {
-      const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvbmUyMyIsImlhdCI6MTczNjI4MDc4MSwiZXhwIjoxNzM2MzY3MTgxfQ.DRfjllaZotwzwTCTgOqDf7XMPVIeG0A0wPlF68o4EHs'; // Replace with your actual token
       const response = await fetch('http://localhost:8000/journal/add-journal', {
         method: 'POST',
         headers: {
@@ -47,7 +46,7 @@ const WritePost = () => {
 
   const handleContinue = () => {
     setIsModalOpen(false);
-    navigate('/');
+    navigate('/NewsfeedPage');
   };
 
   return (
