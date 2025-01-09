@@ -19,7 +19,7 @@ Welcome to the NAIS Journal App API! This documentation provides a comprehensive
 - **Response**: **HTTP 200 OK**
 
 ### **2. Get Popular Posts**
-- **Endpoint**: `GET http://localhost:8000/`
+- **Endpoint**: `GET http://localhost:8000`
 - **Description**: Fetches a list of the most popular posts.
 - **Response**: **HTTP 200 OK**
 
@@ -43,6 +43,11 @@ Welcome to the NAIS Journal App API! This documentation provides a comprehensive
 - **Description**: Generates a summary of a journal.
 - **Request Body**: Journal ID as a string.
 - **Response**: **HTTP 200 OK** - Journal summary.
+
+### **7. Announcements**
+- **Endpoint**: `GET http://localhost:8000/announcement`
+- **Description**: Retrieves the latest announcements.
+- **Response**: **HTTP 200 OK**
 
 ---
 
@@ -315,7 +320,7 @@ Welcome to the NAIS Journal App API! This documentation provides a comprehensive
 - **Request Body**:
   ```json
   {
-    "id": "commentID string",
+    "id": "string",
     "journalId": "string",
     "comment": "string"
   }
@@ -368,7 +373,49 @@ Welcome to the NAIS Journal App API! This documentation provides a comprehensive
   - **HTTP 200 OK** - Journal removed successfully.
   - **HTTP 400 Bad Request** - Remove failed.
 
----
+### **5. Announcements**
+
+#### a. Get All Announcements
+- **Endpoint**: `GET http://localhost:8000/admin/announcements`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Response**: **HTTP 200 OK** - List of announcements.
+
+#### b. Add Announcement
+- **Endpoint**: `POST http://localhost:8000/admin/add-announcement`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Request Body**:
+  ```json
+  {
+    "body": "string"
+  }
+  ```
+- **Response**:
+  - **HTTP 201 Created** - Announcement added successfully.
+
+#### c. Edit Announcement
+- **Endpoint**: `PUT http://localhost:8000/admin/edit-announcement`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Request Body**:
+  ```json
+  {
+    "id": "string",
+    "body": "string"
+  }
+  ```
+- **Response**:
+  - **HTTP 200 OK** - Announcement updated successfully.
+
+#### d. Remove Announcement
+- **Endpoint**: `DELETE http://localhost:8000/admin/remove-announcement`
+- **Headers**:
+  - `Authorization: Bearer <admin_token>`
+- **Request Body**: Announcement ID as a string.
+- **Response**:
+  - **HTTP 200 OK** - Announcement removed successfully.
+
 
 
 
