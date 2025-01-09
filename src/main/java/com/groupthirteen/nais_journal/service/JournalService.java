@@ -96,35 +96,28 @@ public class JournalService {
 
             JournalEntity journalEntity = journalEntityOptional.get();
             UserEntity owner = userEntryRepo.findByUsername(username);
-            if (owner == null ||
-                    owner.getJournalEntries().stream().noneMatch(j -> j.getId().equals(journalId))) {
+            if (owner == null || owner.getJournalEntries() == null) {
                 return false;
             }
 
-            owner.getJournalEntries().removeIf(j -> j.getId().equals(journalId));
+            boolean removedFromOwner = owner.getJournalEntries().removeIf(j -> journalId.equals(j.getId()));
+            if (!removedFromOwner) {
+                return false;
+            }
             userEntryRepo.save(owner);
 
             List<UserEntity> allUsers = userEntryRepo.findAll();
             for (UserEntity user : allUsers) {
-                boolean updated = false;
-
-                if (user.getLikedJournals().removeIf(j -> j.getId().equals(journalId))) {
-                    updated = true;
-                }
-
-                if (user.getSavedJournals().removeIf(j -> j.getId().equals(journalId))) {
-                    updated = true;
-                }
-                if (updated) {
-                    userEntryRepo.save(user);
+                if (user.getLikedJournals() != null) {
+                    user.getLikedJournals().removeIf(j -> journalId.equals(j.getId()));
                 }
             }
+            userEntryRepo.saveAll(allUsers);
 
             journalRepo.delete(journalEntity);
-
             return true;
         } catch (Exception e) {
-            logger.error("Error deleting journal: {}", e.getMessage(), e);
+            logger.error("Error deleting journal: ", e);
             return false;
         }
     }
