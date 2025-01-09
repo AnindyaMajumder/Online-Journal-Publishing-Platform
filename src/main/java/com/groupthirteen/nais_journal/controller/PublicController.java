@@ -53,8 +53,8 @@ public class PublicController {
     @GetMapping("/announcement")
     public ResponseEntity<?> Anouncement() {
         try {
-            List<AnnouncementEntity> anouncements = publicService.getAnnouncement();
-            return ResponseEntity.ok(anouncements);
+            List<AnnouncementEntity> announcement = publicService.getAnnouncement();
+            return ResponseEntity.ok(announcement);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
