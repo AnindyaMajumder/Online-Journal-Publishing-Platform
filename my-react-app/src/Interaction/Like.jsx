@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Like({ isLiked, handleLike }) {
+export default function Like({ isLiked, likeCount, handleLike }) {
   return (
     <button
       onClick={handleLike}
@@ -8,7 +8,7 @@ export default function Like({ isLiked, handleLike }) {
         isLiked ? "bg-red-900 text-white" : "bg-gray-800 text-white"
       } hover:bg-blue-500`}
     >
-      {isLiked ? "Liked" : "Like"}
+      {isLiked ? "Liked" : "Like"} ({likeCount})
     </button>
   );
 }

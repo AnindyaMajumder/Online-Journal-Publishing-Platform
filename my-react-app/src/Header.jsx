@@ -5,11 +5,11 @@ export default function Header() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-between text-3xl text-red-950 p-4">
+    <div className="flex items-center justify-between text-3xl text-gray-950 p-4">
       {/* Blogger Paradise Title */}
       <div className="flex space-x-1">
-        <span className="inline-block mr-1 font-bold">Blogger</span>
-        <span className="inline-block font-bold">Paradise</span>
+        <span className="inline-block mr-1 font-bold">NAIS</span>
+        <span className="inline-block font-bold">BLOGPOST</span>
       </div>
 
       {/* Left-side links */}

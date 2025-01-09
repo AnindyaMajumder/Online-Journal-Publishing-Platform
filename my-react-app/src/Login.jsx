@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
+  const [isResetPasswordOpen, setResetPasswordOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -13,14 +18,10 @@ export default function Login() {
 
     // Check if the username and password are "admin"
     if (username === "admin" && password === "admin") {
-      // If admin, set an admin token and navigate to the Admin page
       try {
         const response = await axios.post(
           "http://localhost:8000/admin-login",
-          {
-            username: username,
-            password: password
-          },
+          { username, password },
           {
             headers: {
               "Content-Type": "application/json",
@@ -28,19 +29,19 @@ export default function Login() {
           }
         );
 
-        console.log("Admin Login Response:", response); // Log full response
         const token = response.data;
-        console.log("token:", token);
-        // Check if token exists
         if (token) {
-          // Store the admin token in localStorage
           localStorage.setItem("adminAuthToken", token);
           navigate("/admin");
         } else {
           throw new Error("No token returned from the server.");
         }
       } catch (err) {
-        setError(err.response?.data?.message || err.message || "Admin login failed. Please try again.");
+        setError(
+          err.response?.data?.message ||
+            err.message ||
+            "Admin login failed. Please try again."
+        );
       }
       return;
     }
@@ -49,10 +50,7 @@ export default function Login() {
     try {
       const response = await axios.post(
         "http://localhost:8000/login",
-        {
-          username: username,
-          password: password
-        },
+        { username, password },
         {
           headers: {
             "Content-Type": "application/json",
@@ -60,20 +58,19 @@ export default function Login() {
         }
       );
 
-      console.log("User Login Response:", response); // Log full response
-      const token  = response.data;
-      console.log("token:", token);
-
-      // Check if token exists
+      const token = response.data;
       if (token) {
-        // Store the user token in localStorage
         localStorage.setItem("authToken", token);
         navigate("/NewsfeedPage");
       } else {
         throw new Error("No token returned from the server.");
       }
     } catch (err) {
-      setError(err.response?.data?.message || err.message || "Invalid credentials. Please try again.");
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          "Invalid credentials. Please try again."
+      );
     }
   };
 
@@ -133,12 +130,33 @@ export default function Login() {
             </button>
           </div>
         </form>
-        <div className="mt-4">
+        <div className="mt-4 text-center">
           <Link to="/register" className="text-blue-500 hover:underline">
             Don't have an account? Register
           </Link>
         </div>
+        <div className="mt-4 text-center">
+          <button
+            onClick={() => setForgotPasswordOpen(true)}
+            className="text-sm text-gray-700 hover:underline"
+          >
+            Forgot Password?
+          </button>
+        </div>
       </div>
+
+      {/* Forgot Password Modal */}
+      {isForgotPasswordOpen && (
+        <ForgotPassword
+          onClose={() => setForgotPasswordOpen(false)}
+          onNext={() => setResetPasswordOpen(true)}
+        />
+      )}
+
+      {/* Reset Password Modal */}
+      {isResetPasswordOpen && (
+        <ResetPassword onClose={() => setResetPasswordOpen(false)} />
+      )}
     </div>
   );
 }

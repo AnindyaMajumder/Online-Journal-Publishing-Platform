@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Comment({
   comments,
@@ -11,86 +12,127 @@ export default function Comment({
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedComment, setEditedComment] = useState("");
   const [menuIndex, setMenuIndex] = useState(null);
+  const postId = localStorage.getItem("postId");
+  const token = localStorage.getItem("authToken");
 
-  const handleSubmit = () => {
-    if (newComment.trim() === "") return;
+  const [commentDetails, setCommentDetails] = useState([]);
 
-    const updatedComment = {
-      username: "User1", // Placeholder username
-      text: newComment
+  useEffect(() => {
+    const fetchCommentsWithAuthors = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:8000/article",
+          postId,
+          {
+            headers: {
+              "Content-Type": "application/string"
+            }
+          }
+        );
+        const commentData = response.data.comments || [];
+        setCommentDetails(commentData);
+      } catch (error) {
+        console.error("Error fetching comments with authors:", error);
+      }
     };
 
-    // Add the new comment by updating the parent state
-    handleAddComment([...comments, updatedComment]);
-    setNewComment(""); // Clear the input field after adding
-  };
+    if (postId) {
+      fetchCommentsWithAuthors();
+    }
+  }, [postId]);
+
+  const handleSubmit = () => handleAddComment(newComment);
 
   const handleEditComment = (index) => {
     setEditingIndex(index);
-    setEditedComment(comments[index].text);
+    setEditedComment(commentDetails[index].comment);
   };
 
   const handleSaveEditAction = (index) => {
     if (editedComment.trim() === "") return;
-
-    const updatedComment = {
-      username: comments[index].username, // Keep the same username
-      text: editedComment // Updated comment text
-    };
-
-    // Pass the updated comment to the parent component to save it
-    handleSaveComment(index, updatedComment);
-    setEditingIndex(null); // Exit editing mode
-    setEditedComment(""); // Clear the edit input
+    
+    // Save the edited comment
+    handleSaveComment(index, {
+      username: commentDetails[index].author,
+      text: editedComment
+    });
+    
+    // Update the commentDetails state with the updated comment
+    setCommentDetails((prevComments) =>
+      prevComments.map((comment, i) =>
+        i === index ? { ...comment, comment: editedComment } : comment
+      )
+    );
+    
+    // Reset editing state
+    setEditingIndex(null);
+    setEditedComment("");
   };
 
-  const handleDeleteCommentAction = (index) => {
-    // Remove the comment by updating the parent state
-    handleDeleteComment(index);
+  const handleDeleteCommentAction = async (index) => {
+    const commentToDelete = commentDetails[index];
+  
+    if (!commentToDelete || !token) {
+      console.error("Missing comment or authentication token");
+      return;
+    }
+  
+    try {
+      const response = await axios.delete(
+        "http://localhost:8000/comment/delete-comment",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/string",
+          },
+          data: commentToDelete.id, // Pass user ID as the body
+        }
+      );
+  
+      if (response.status === 200) {
+        console.log("Comment deleted successfully");
+  
+        // Refresh the comments list
+        setCommentDetails((prevComments) =>
+          prevComments.filter((_, i) => i !== index)
+        );
+      } else {
+        console.error("Failed to delete comment:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
   };
+  
 
   const handleMenuToggle = (index) => {
-    // If a menu is open, close it, otherwise open the current menu
-    setMenuIndex((prevIndex) => {
-      if (prevIndex === index) {
-        return null; // Close the menu if the same one is clicked
-      } else {
-        return index; // Open the new menu
-      }
-    });
-
-    // Automatically hide the menu after 2 seconds
-    setTimeout(() => {
-      setMenuIndex(null);
-    }, 2000);
+    setMenuIndex((prevIndex) => (prevIndex === index ? null : index));
+    setTimeout(() => setMenuIndex(null), 2000);
   };
+
+  
 
   return (
     <div className="mt-6">
       <h3 className="text-xl font-semibold mb-4">Comments:</h3>
       <div className="space-y-4">
-        {comments.length > 0 ? (
-          comments.map((comment, index) => (
+        {commentDetails.length > 0 ? (
+          commentDetails.map((comment, index) => (
             <div
-              key={index}
+              key={comment.id}
               className="p-4 bg-gray-40 rounded-lg border border-gray-40 relative flex items-start space-x-4"
             >
-              <div className="text-right font-bold text-red-900">{comment.username}:</div> {/* Display Username */}
-
+              <div className="text-right font-bold text-red-900">{comment.author}:</div>
               <div className="flex-1">
-                <p>{comment.text}</p>
-
+                <p>{comment.comment}</p>
                 <button
                   onClick={() => handleMenuToggle(index)}
                   className="absolute top-2 right-2 text-gray-600 hover:text-gray-900 font-bold"
                 >
                   &#x22EE;
                 </button>
-
                 {menuIndex === index && (
-                  <div
-                    className="absolute top-8 right-2 bg-white border border-gray-300 rounded-lg shadow-md z-50"
-                  >
+                  <div className="absolute top-8 right-2 bg-white border border-gray-300 rounded-lg shadow-md z-50">
                     <button
                       onClick={() => handleEditComment(index)}
                       className="block px-4 py-2 text-gray-800 hover:text-blue-700"
@@ -105,7 +147,6 @@ export default function Comment({
                     </button>
                   </div>
                 )}
-
                 {editingIndex === index && (
                   <div className="mt-4">
                     <input
@@ -129,7 +170,6 @@ export default function Comment({
           <p>No comments yet.</p>
         )}
       </div>
-
       <div className="mt-4 flex space-x-4">
         <input
           type="text"

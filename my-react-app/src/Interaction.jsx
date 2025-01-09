@@ -7,38 +7,37 @@ import Comment from "./Interaction/Comment";
 import Summarizer from "./Interaction/Summarizer";
 import EditJournal from "./Interaction/EditJournal";
 import pic1 from "./image/pic1.jpg";
+import parse from "html-react-parser";
 
 export default function Interaction() {
   const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
   const [isReported, setIsReported] = useState(false);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [summary, setSummary] = useState("");
-  const [isEditing, setIsEditing] = useState(false);
   const [journalTitle, setJournalTitle] = useState("");
   const [journalContent, setJournalContent] = useState("");
   const postId = localStorage.getItem("postId");
+  const token = localStorage.getItem("authToken");
 
-  
-  // Fetch journal data on component mount
   useEffect(() => {
     const fetchJournal = async () => {
-      console.log("postID:", postId)
       if (!postId) {
         console.error("No postId found in localStorage");
         return;
       }
       try {
-        const response = await axios.post("http://localhost:8000/article", 
-          postId,
-          {
-            headers: {
-              "Content-Type": "application/string",
-            },
-          });
+        const response = await axios.post("http://localhost:8000/article", postId, {
+          headers: {
+            "Content-Type": "application/string",
+          },
+        });
         setJournalTitle(response.data.title);
-        setJournalContent(response.data.content);
-        console.log("Journal data fetched:", response.data);
+        setJournalContent(response.data.body);
+        setLikeCount(response.data.likeCount || 0);
+        setIsLiked(response.data.isLiked || false);
+        setComments(response.data.comments || []);
       } catch (error) {
         console.error("Error fetching journal data:", error);
       }
@@ -46,13 +45,222 @@ export default function Interaction() {
     fetchJournal();
   }, [postId]);
 
-  const handleToggleEdit = () => {
-    if (isEditing) {
-      console.log("Journal content saved:", journalContent);
+  const handleLike = async () => {
+    if (!postId || !token) {
+      console.error("Missing postId or token");
+      return;
     }
-    setIsEditing(!isEditing);
+    try {
+      const endpoint = isLiked
+        ? "http://localhost:8000/journal/unlike"
+        : "http://localhost:8000/journal/like";
+      const response = await axios.post(endpoint, postId, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/string",
+        },
+      });
+      if (response.status === 200) {
+        setIsLiked(!isLiked);
+        setLikeCount((prevCount) => (isLiked ? prevCount - 1 : prevCount + 1));
+      }
+    } catch (error) {
+      console.error("Error handling like/unlike:", error);
+    }
   };
 
+  const handleAddComment = async (commentText) => {
+    if (!postId || !token || !commentText.trim()) {
+      console.error("Missing postId, token, or comment text");
+      return;
+    }
+  
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/comment/add-comment",
+        {
+          journalId: postId,
+          comment: commentText,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      if (response.status === 200) {
+        // Assuming the response contains the newly added comment with its details (like id, username, etc.)
+        const newComment = response.data;
+  
+        // Update the comments state with the new comment
+        setComments((prevComments) => [...prevComments, newComment]);
+  
+        setNewComment(""); // Clear the input field after adding the comment
+        console.log("Comment added successfully");
+      }
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
+  };
+  
+  const handleEditComment = async (id, updatedCommentText) => {
+    if (!id || !postId || !token || !updatedCommentText.trim()) {
+      console.error("Missing id, postId, token, or updated comment text");
+      return;
+    }
+    try {
+      const response = await axios.put(
+        "http://localhost:8000/comment/edit-comment",
+        {
+          id: id,
+          journalId: postId,
+          comment: updatedCommentText,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 200) {
+        setComments((prevComments) =>
+          prevComments.map((comment) =>
+            comment.id === id ? { ...comment, text: updatedCommentText, username: comment.username } : comment
+          )
+        );
+        console.log("Comment edited successfully");
+      } else {
+        console.error("Failed to edit comment:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error editing comment:", error);
+    }
+  };
+  
+
+  const handleSummarize = async () => {
+    if (!postId) {
+      console.error("No postId found in localStorage");
+      return;
+    }
+
+    try {
+      console.log("Calling summary API with postId:", postId);
+
+      const response = await axios.post(
+        "http://localhost:8000/summary",
+        postId,
+        {
+          headers: {
+            "Content-Type": "application/string",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Summary fetched successfully:", response.data);
+        setSummary(response.data);
+      } else {
+        console.error("Failed to fetch summary. Status code:", response.status);
+      }
+    } catch (error) {
+      console.error("Error fetching summary:", error.message);
+    }
+  };
+
+  const handleRepost = async () => {
+    if (!postId || !token) {
+      console.error("Missing postId or token");
+      return;
+    }
+  
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/journal/save-journal",
+        postId,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/string",
+          },
+        }
+      );
+  
+      if (response.status === 200) {
+        console.log("jounral saved successfully");
+        alert("Your journal has been saved successfully.");
+      } else {
+        console.error("Failed to save journal. Status code:", response.status);
+      }
+    } catch (error) {
+      console.error("Error saving journal:", error.message);
+    }
+  };
+
+  const fetchSavedJournals = async () => {
+    if (!token) {
+      console.error("Missing auth token");
+      return;
+    }
+  
+    try {
+      const response = await axios.get("http://localhost:8000/user/saved", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      if (response.status === 200) {
+        console.log("Saved journals:", response.data);
+        // Handle saved journals data (e.g., set state)
+      } else {
+        console.error("Failed to fetch saved journals. Status code:", response.status);
+      }
+    } catch (error) {
+      console.error("Error fetching saved journals:", error.message);
+    }
+  };
+
+  const handleDeleteComment = async (index) => {
+    const commentToDelete = comments[index];
+  
+    if (!commentToDelete || !token) {
+      console.error("Missing comment or authentication token");
+      return;
+    }
+  
+    try {
+      const response = await axios.delete(
+        "http://localhost:8000/comment/delete-comment",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/string",
+          },
+          data: commentToDelete.id, // Pass comment ID as the body
+        }
+      );
+  
+      if (response.status === 200) {
+        console.log("Comment deleted successfully");
+  
+        // Refresh the comments list
+        setComments((prevComments) =>
+          prevComments.filter((_, i) => i !== index)
+        );
+      } else {
+        console.error("Failed to delete comment:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
+  };
+  
+  
+  
   return (
     <div
       className="min-h-screen flex justify-center items-center bg-cover bg-center"
@@ -60,77 +268,38 @@ export default function Interaction() {
     >
       <div className="max-w-4xl mx-auto p-7 relative bg-white bg-opacity-40 rounded-lg">
         <div className="relative">
-          {/* Edit Button */}
-          <div className="absolute top-4 right-4 z-10">
-            <EditJournal
-              handleEditJournal={handleToggleEdit}
-              isEditing={isEditing}
-            />
-          </div>
-
-          {/* Journal Content Section */}
           <div className="bg-white p-10 rounded-lg shadow-lg mb-6 relative border border-gray-800 pb-16">
             <div className="text-lg text-gray-800 mb-4">
               <h2 className="text-2xl font-bold mb-2">{journalTitle}</h2>
-              {isEditing ? (
-                <textarea
-                  value={journalContent}
-                  onChange={(e) => setJournalContent(e.target.value)}
-                  className="w-full p-6 h-64 border border-gray-300 rounded-md"
-                />
-              ) : (
-                <div
-                  className="journal-content"
-                  dangerouslySetInnerHTML={{ __html: journalContent }}
-                />
-              )}
+              <p className="text-justify">{parse(journalContent)}</p>
             </div>
           </div>
-
-          {/* Interaction Buttons */}
           <div className="absolute bottom-4 left-4 flex space-x-1">
-            <Like
-              isLiked={isLiked}
-              handleLike={() => setIsLiked(!isLiked)}
-              className="px-1 py-0.5 text-xs"
-            />
-            <Repost
-              handleRepost={() => alert("Journal has been reposted.")}
-              className="px-1 py-0.5 text-xs"
-            />
-            <Summarizer
-              handleSummarize={() => alert("Summary generated.")}
-              summary={summary}
-              className="px-1 py-0.5 text-xs"
-            />
-            <Report
-              handleReport={() => setIsReported(true)}
-              className="px-1 py-0.5 text-xs"
-            />
+            <Like isLiked={isLiked} likeCount={likeCount} handleLike={handleLike} />
+            <Repost handleRepost={handleRepost} />
+            <Summarizer handleSummarize={handleSummarize} summary={summary} />
+            <Report handleReport={() => setIsReported(true)} className="px-1 py-0.5 text-xs" />
           </div>
         </div>
-
-        {/* Comment Section */}
         <div className="bg-white p-6 rounded-lg shadow-lg mb-6 border border-gray-40">
           <Comment
             comments={comments}
             newComment={newComment}
             setNewComment={setNewComment}
-            handleAddComment={(comment) =>
-              setComments((prevComments) => [...prevComments, comment])
-            }
-            handleSaveComment={(index, updatedComment) =>
+            handleAddComment={handleAddComment}
+            handleSaveComment={(index, updatedComment) => {
+              const commentToEdit = comments[index];
+              handleEditComment(commentToEdit.id, updatedComment.text);
               setComments((prevComments) => {
                 const updatedComments = [...prevComments];
-                updatedComments[index] = updatedComment;
+                updatedComments[index] = { ...commentToEdit, text: updatedComment.text };
                 return updatedComments;
-              })
-            }
-            handleDeleteComment={(index) =>
-              setComments((prevComments) =>
-                prevComments.filter((_, i) => i !== index)
-              )
-            }
+              });
+            }}
+            handleDeleteComment={handleDeleteComment}
+            //handleDeleteComment={(index) => {
+              //setComments((prevComments) => prevComments.filter((_, i) => i !== index));
+            //}}
           />
         </div>
       </div>

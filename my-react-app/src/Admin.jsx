@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import AdminBack from "./AdminBack";
 import JournalRemove from "./JournalRemove";
 import ReportLog from "./ReportLog";
@@ -13,6 +13,31 @@ export default function AdminPanel() {
     { id: 2, user: "JaneSmith", content: "Inappropriate comment", status: "Pending" },
     { id: 3, user: "AliceBrown", content: "Harassment in messages", status: "Resolved" },
   ]);
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem("adminAuthToken");
+
+    try {
+      const response = await fetch("http://localhost:8000/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        console.log("Logout successfull");
+        // Clear token and redirect to login
+        localStorage.removeItem("adminAuthToken");
+        window.location.href = "/login";
+      } else {
+        console.error("Failed to log out:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
 
   const renderFeature = () => {
     switch (activeFeature) {
@@ -68,6 +93,12 @@ export default function AdminPanel() {
             onClick={() => setActiveFeature("ManageTags")}
           >
             Manage Tags
+          </button>
+          <button
+            className="mt-auto py-2 px-4 text-left bg-gray-800 hover:bg-red-900 transition duration-200"
+            onClick={handleLogout}
+          >
+            Logout
           </button>
         </div>
 
