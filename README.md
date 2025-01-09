@@ -1,1 +1,0 @@
-# Online-Journal-Publishing-Platform
