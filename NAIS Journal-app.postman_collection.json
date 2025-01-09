@@ -7,6 +7,162 @@
 	},
 	"item": [
 		{
+			"name": "PublicAccess",
+			"item": [
+				{
+					"name": "Popular",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recent",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"recent"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/search?query=art",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "art"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "JournalAccess",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677e2a0422a9837137b7c698",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/article",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Summarizer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "677702aaae9be405a9ed4e70",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/summary",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Announcement",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/announcement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"announcement"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Authentications",
 			"item": [
 				{
@@ -256,7 +412,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtZXNzaSIsImlhdCI6MTczNjI3MTEzNCwiZXhwIjoxNzM2MzU3NTM0fQ.TD8NUyYQCrqz4zUKFtrJwhQDEnUK0PPgrxHosVn4nFw",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzU2MTA1LCJleHAiOjE3MzY0NDI1MDV9.55MFYF3Y0Gwj9Ab4N64jkAfSBeQ2rt59UMxClY9xrRk",
 									"type": "string"
 								}
 							]
@@ -491,7 +647,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzE5NjkzLCJleHAiOjE3MzY0MDYwOTN9.TyqNT9P2wwAfIzTE2CjEYLdMBc__Gt_In51vTqvCmLM",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzU2MTA1LCJleHAiOjE3MzY0NDI1MDV9.55MFYF3Y0Gwj9Ab4N64jkAfSBeQ2rt59UMxClY9xrRk",
 									"type": "string"
 								}
 							]
@@ -500,7 +656,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "677e23e9250cac401b301321",
+							"raw": "677ea4eaea15e9267da3129e",
 							"options": {
 								"raw": {
 									"language": "text"
@@ -530,7 +686,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGFuIiwiaWF0IjoxNzM1NzkxMjQyLCJleHAiOjE3MzU4Nzc2NDJ9.o9jgzCF0rm62ylooAycWi5Lc2ri94pdZK10V3z9FtgQ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmluIiwiaWF0IjoxNzM2MzU2MTA1LCJleHAiOjE3MzY0NDI1MDV9.55MFYF3Y0Gwj9Ab4N64jkAfSBeQ2rt59UMxClY9xrRk",
 									"type": "string"
 								}
 							]
@@ -539,10 +695,10 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "67760c7be2ce0e09923e3877",
+							"raw": "677ea4eaea15e9267da3129e",
 							"options": {
 								"raw": {
-									"language": "json"
+									"language": "text"
 								}
 							}
 						},
@@ -767,6 +923,170 @@
 			"name": "Admin",
 			"item": [
 				{
+					"name": "Announcements",
+					"item": [
+						{
+							"name": "AllAnnouncements",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/admin/announcements",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"announcements"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddAnnouncement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"body\": \"Hello Everyone\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/admin/add-announcement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"add-announcement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EditAnnouncement",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"677f73a93a91ca358e6168a7\",\r\n    \"body\": \"Welcome to the NAIS-Journal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/admin/edit-announcement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"edit-announcement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteAnnouncement",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTczNjQwNTI1OCwiZXhwIjoxNzM2NDkxNjU4fQ.qh4WznKM2VcJs6MKdNGm6hl5LygXovkdm1XKLOitQHM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "677f73a93a91ca358e6168a7",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/admin/remove-announcement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"admin",
+										"remove-announcement"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "admin-login",
 					"request": {
 						"auth": {
@@ -930,143 +1250,6 @@
 							"path": [
 								"admin",
 								"remove-journal"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "PublicAccess",
-			"item": [
-				{
-					"name": "Popular",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000"
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Recent",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/recent",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"recent"
-							],
-							"query": [
-								{
-									"key": "query",
-									"value": null,
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Search",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/search?query=art",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"search"
-							],
-							"query": [
-								{
-									"key": "query",
-									"value": "art"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "JournalAccess",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "677e2a0422a9837137b7c698",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/article",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"article"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Summarizer",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "677702aaae9be405a9ed4e70",
-							"options": {
-								"raw": {
-									"language": "text"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/summary",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"summary"
 							]
 						}
 					},
