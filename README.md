@@ -3,6 +3,7 @@
 ## 📝 Overview
 
 The **Online Journal Publishing Platform** is a full-stack web application designed to enable users to create, publish, and manage journal entries. The platform supports rich-text formatting and robust user authentication mechanisms. It integrates cutting-edge front-end and back-end technologies to deliver an efficient and scalable user experience. This project is now open for **open-source collaboration**.
+
 📌 **This project was developed as part of a university course project.**
 
 ---
