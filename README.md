@@ -2,8 +2,7 @@
 
 ## 📝 Overview
 
-The **Online Journal Publishing Platform** is a full-stack web application designed to enable users to create, publish, and manage journal entries. The platform supports rich-text formatting and robust user authentication mechanisms. It integrates cutting-edge frontend and backend technologies to deliver an efficient and scalable user experience. This project is open for **open-source collaboration**, encouraging developers to contribute and enhance its capabilities.
-
+The **Online Journal Publishing Platform** is a full-stack web application designed to enable users to create, publish, and manage journal entries. The platform supports rich-text formatting and robust user authentication mechanisms. It integrates cutting-edge front-end and back-end technologies to deliver an efficient and scalable user experience. This project is now open for **open-source collaboration**.
 📌 **This project was developed as part of a university course project.**
 
 ---
@@ -32,7 +31,7 @@ The **Online Journal Publishing Platform** is a full-stack web application desig
 
 4. **📚 Journal Management**
    - Create, read, update, and delete journal entries.
-   - Interactive indexing make it easier to search and find the desired journal.
+   - Interactive indexing makes it easier to search and find the desired journal.
 
 5. **❤️ Like and Save Journals**
    - Journals can be **liked** to indicate appreciation.
@@ -43,7 +42,7 @@ The **Online Journal Publishing Platform** is a full-stack web application desig
      
 7. **📢 Announcements**
    - Admins can create and manage announcements visible to all users.
-   - Disseminates critical updates and information.
+   - Disseminate critical updates and information.
 
 8. **🤖 Summarizer Feature**
    - Summarises journal content using the **Facebook BERT model** for NLP.
