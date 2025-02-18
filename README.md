@@ -46,7 +46,7 @@ The **Online Journal Publishing Platform** is a full-stack web application desig
    - Disseminate critical updates and information.
 
 8. **🤖 Summarizer Feature**
-   - Summarises journal content using the **Facebook BERT model** for NLP.
+   - Summarises journal content using the **Facebook BART model** for NLP.
 
 9. **🕒 Session Management**
    - JWT-based session handling ensures secure user interactions with automatic logout after **24 hours**.
